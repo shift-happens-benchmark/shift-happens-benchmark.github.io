@@ -15,4 +15,4 @@ Our goal is to bring the robustness, domain adaptation, and out-of-distribution 
 
 ## Submissions & Information
 
-The benchmark will be available on https://github.com/shift-happens-benchmark/iclr-2022
+The benchmark will be available on [github.com/shift-happens-benchmark/iclr-2022](https://github.com/shift-happens-benchmark/iclr-2022).
