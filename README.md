@@ -15,8 +15,8 @@ Our goal is to bring the robustness, domain adaptation, and out-of-distribution 
 
 ## Submissions & Information
 
-The benchmark will be available on [github.com/shift-happens-benchmark/iclr-2022](https://github.com/shift-happens-benchmark/iclr-2022).
-API docs are available on [shift-happens-benchmark.github.io/iclr-2022/](https://shift-happens-benchmark.github.io/iclr-2022/).
+The benchmark will be available on [github.com/shift-happens-benchmark/icml-2022](https://github.com/shift-happens-benchmark/icml-2022).
+API docs are available on [shift-happens-benchmark.github.io/icml-2022/](https://shift-happens-benchmark.github.io/icml-2022/).
 
 The workshop aims to build up a range of evaluation datasets that
 together allow for a detailed overview of a model's strengths and
