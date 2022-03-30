@@ -1,0 +1,373 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Related Software Packages &#8212; Shift Happens (ICML 2022) 0.0.1-alpha documentation</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/blank.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/custom.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+<a class="navbar-brand" href="index.html">
+<p class="title">Shift Happens (ICML 2022)</p>
+</a>
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="call_for_papers.html">
+  Call for Submissions
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="call_for_reviewers.html">
+  Call for Reviewers
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="api.html">
+  Benchmark API Docs
+ </a>
+</li>
+
+    
+    <li class="nav-item">
+        <a class="nav-link nav-external" href="https://shift-happens-benchmark.github.io/">Home<i class="fas fa-external-link-alt"></i></a>
+    </li>
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/shift-happens-benchmark/iclr-2022" rel="noopener" target="_blank" title="Github">
+            <span><i class="fab fa-github"></i></span>
+            <label class="sr-only">Github</label>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://pypi.org/project/shifthappens/" rel="noopener" target="_blank" title="PyPI">
+            <span><i class="fab fa-python"></i></span>
+            <label class="sr-only">PyPI</label>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="mailto:shifthappens@bethgelab.org" rel="noopener" target="_blank" title="Contact us!">
+            <span><i class="fas fa-envelope"></i></span>
+            <label class="sr-only">Contact us!</label>
+          </a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    
+  </div>
+</nav>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#wilds-benchmark">
+   WILDS Benchmark
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#robusta">
+   Robusta
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#visual-decathlon">
+   Visual Decathlon
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#visual-task-adaptation-benchmark-vtab">
+   Visual Task Adaptation Benchmark (VTAB)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#imagenet-c-imagenet-p-imagenet-r-imagenet-a-imagenet-o">
+   ImageNet-C, ImageNet-P, ImageNet-R, ImageNet-A, ImageNet-O
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#objectnet">
+   ObjectNet
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#model-vs-human">
+   Model vs. Human
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#robustbench">
+   RobustBench
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#foolbox">
+   Foolbox
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#timm">
+   Timm
+  </a>
+ </li>
+</ul>
+
+</nav>
+              </div>
+              
+              <div class="toc-item">
+                
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <section id="related-software-packages">
+<h1>Related Software Packages<a class="headerlink" href="#related-software-packages" title="Permalink to this headline">¶</a></h1>
+<p>Below we list a set of related works in open-source software, benchmarks
+and datasets released in the past years and gained popularity in
+different communities. While some datasets are orthogonal to our effort,
+we plan to seek active collaborations and discussions in case of
+potential synergies. The organizing committee and invited speakers
+already cover a considerable number of packages mentioned below.</p>
+<section id="wilds-benchmark">
+<h2><a class="reference external" href="https://wilds.stanford.edu/">WILDS Benchmark</a><a class="headerlink" href="#wilds-benchmark" title="Permalink to this headline">¶</a></h2>
+<p>WILDS is “a benchmark of in-the-wild distribution shifts spanning
+diverse data modalities and applications, from tumor identification to
+wildlife monitoring to poverty mapping”. In contrast to the ShiftHappens
+benchmark, WILDS is not primarily focused on the evaluation of
+pre-trained ImageNet trained models but mainly considers the setting of
+domain generalization on a broader range of tasks, which requires model
+training.</p>
+<p>However, we think that many synergies exist between our workshop goal
+and the WILDS benchmark and are in contact with some of the authors who
+will join the workshop as confirmed speakers.</p>
+</section>
+<section id="robusta">
+<h2><a class="reference external" href="https://github.com/bethgelab/robustness">Robusta</a><a class="headerlink" href="#robusta" title="Permalink to this headline">¶</a></h2>
+<p>Robusta is a growing collection of helper functions, tools and methods
+for robustness evaluation and adaptation of ImageNet scale models. The
+focus is on simple methods that work at scale.</p>
+</section>
+<section id="visual-decathlon">
+<h2><a class="reference external" href="https://www.robots.ox.ac.uk/~vgg/decathlon/">Visual Decathlon</a><a class="headerlink" href="#visual-decathlon" title="Permalink to this headline">¶</a></h2>
+<p>The Visual Decathlon challenge requires simultaneously solving ten image
+classification problems representative of very different visual domains.
+For this challenge, the participants were allowed to use the train and
+validation splits of the different datasets to train their classifier
+(or several classifiers). While the Visual Declathon requires a training
+phase, the envisioned ShiftHappens benchmark focuses on evaluating
+ImageNet pre-trained models.</p>
+</section>
+<section id="visual-task-adaptation-benchmark-vtab">
+<h2><a class="reference external" href="https://github.com/google-research/task_adaptation">Visual Task Adaptation Benchmark (VTAB)</a><a class="headerlink" href="#visual-task-adaptation-benchmark-vtab" title="Permalink to this headline">¶</a></h2>
+<p>VTAB contains 19 challenging downstream tasks for evaluating vision
+models. The tasks stem from different domains such as natural images,
+artificial environments (structured), and images captured with
+non-standard cameras (specialized). VTAB focuses on task adaptation,
+needs a lot of compute for fine-tuning the models on the target tasks,
+and is, therefore, orthogonal to our proposed benchmark (which will only
+contain test datasets).</p>
+</section>
+<section id="imagenet-c-imagenet-p-imagenet-r-imagenet-a-imagenet-o">
+<h2><a class="reference external" href="https://github.com/hendrycks/robustness">ImageNet-C</a>, <a class="reference external" href="https://github.com/hendrycks/robustness">ImageNet-P</a>, <a class="reference external" href="https://github.com/hendrycks/imagenet-r">ImageNet-R</a>, <a class="reference external" href="https://github.com/hendrycks/natural-adv-examples">ImageNet-A</a>, <a class="reference external" href="https://github.com/hendrycks/natural-adv-examples">ImageNet-O</a><a class="headerlink" href="#imagenet-c-imagenet-p-imagenet-r-imagenet-a-imagenet-o" title="Permalink to this headline">¶</a></h2>
+<p>ImageNet-C, -P, -R, -A, and -O are ImageNet-compatible datasets that are
+highly relevant to the workshop, widely adopted in the community, and
+will be included as reference datasets into the benchmark (all of them
+are published under suitable open-source licenses). We invited Thomas G.
+Dietterich, one of the ImageNet-C authors to share his thoughts about
+his efforts in robustness evaluation during the workshop.</p>
+</section>
+<section id="objectnet">
+<h2><a class="reference external" href="https://objectnet.dev/">ObjectNet</a><a class="headerlink" href="#objectnet" title="Permalink to this headline">¶</a></h2>
+<p>Similar to ImageNet-C and variants, ObjectNet is a currently isolated
+benchmark dataset that fits the workshop’s scope. We will explore
+possibilities for including ObjectNet in the reference implementation —
+due to the special license of ObjectNet; this will require additional
+attention from the ObjectNet authors.</p>
+</section>
+<section id="model-vs-human">
+<h2><a class="reference external" href="https://github.com/bethgelab/model-vs-human">Model vs. Human</a><a class="headerlink" href="#model-vs-human" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">modelvshuman</span></code> package is centered around benchmarking the
+similarity between ImageNet trained models and human subjects while
+solving the same task. Co-organizers Wieland B. and Matthias B. are
+actively involved in this project, and we are discussing possibilities
+of leveraging synergies between this package and the ShiftHappens
+benchmark.</p>
+</section>
+<section id="robustbench">
+<h2><a class="reference external" href="https://github.com/RobustBench/robustbench">RobustBench</a><a class="headerlink" href="#robustbench" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">robustbench</span></code> package, initiated by co-organizer Matthias H.,
+focuses on evaluating robustness against adversarial perturbations by
+combining different state-of-the-art attack techniques. It also features
+a leaderboard for robustness against the common corruptions in
+CIFAR-C/Imagenet-C. As with other related packages, we will explore
+synergies and potentially leverage functionality from the robustbench
+package in our reference implementation.</p>
+</section>
+<section id="foolbox">
+<h2><a class="reference external" href="https://github.com/bethgelab/foolbox">Foolbox</a><a class="headerlink" href="#foolbox" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">foolbox</span></code> package is a popular package around benchmarking
+adversarial robustness. Co-organizer Wieland B. is one of the initiators
+of this package. While we do not plan to focus specifically on
+robustness to adversarial examples, we do not exclude the possibility
+that some submissions make use of <code class="docutils literal notranslate"><span class="pre">foolbox</span></code> or related libraries for
+robustness evaluation. However, an important criterion will be that
+these datasets test practically relevant aspects (e.g., adding
+adversarial patches to an image or other practically conceivable
+scenarios).</p>
+</section>
+<section id="timm">
+<h2><a class="reference external" href="https://github.com/rwightman/pytorch-image-models">Timm</a><a class="headerlink" href="#timm" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">timm</span></code> package is an increasingly popular package (&gt;14,000 GitHub
+stars) for state-of-the-art computer vision models trained with PyTorch.
+The package includes reference results for robustness on
+ImageNet-A,-R,-C <a class="footnote-reference brackets" href="#id2" id="id1">1</a>, and we will explore possibilities of leveraging
+the well-designed API and variety of models for our benchmark, e.g. by
+making it easier to include <code class="docutils literal notranslate"><span class="pre">timm</span></code> models in the evaluation and
+generation of model scorecards.</p>
+<dl class="footnote brackets">
+<dt class="label" id="id2"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>See
+<a class="reference external" href="https://github.com/rwightman/pytorch-image-models/tree/master/results">https://github.com/rwightman/pytorch-image-models/tree/master/results</a></p>
+</dd>
+</dl>
+</section>
+</section>
+
+
+              </div>
+              
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+<footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2021 - 2022, Julian Bitterwolf, Evgenia Rusak, Steffen Schneider, Roland S. Zimmermann and contributors. Released under an Apache 2.0 License.<br>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>

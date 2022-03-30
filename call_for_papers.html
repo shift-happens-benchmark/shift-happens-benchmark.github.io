@@ -1,0 +1,381 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Call for Submissions &#8212; Shift Happens (ICML 2022) 0.0.1-alpha documentation</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/blank.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/custom.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Call for Reviewers" href="call_for_reviewers.html" />
+    <link rel="prev" title="Shift happens: Crowdsourcing metrics and test datasets beyond ImageNet" href="index.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+<a class="navbar-brand" href="index.html">
+<p class="title">Shift Happens (ICML 2022)</p>
+</a>
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 current active nav-item">
+ <a class="current reference internal nav-link" href="#">
+  Call for Submissions
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="call_for_reviewers.html">
+  Call for Reviewers
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="api.html">
+  Benchmark API Docs
+ </a>
+</li>
+
+    
+    <li class="nav-item">
+        <a class="nav-link nav-external" href="https://shift-happens-benchmark.github.io/">Home<i class="fas fa-external-link-alt"></i></a>
+    </li>
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/shift-happens-benchmark/iclr-2022" rel="noopener" target="_blank" title="Github">
+            <span><i class="fab fa-github"></i></span>
+            <label class="sr-only">Github</label>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://pypi.org/project/shifthappens/" rel="noopener" target="_blank" title="PyPI">
+            <span><i class="fab fa-python"></i></span>
+            <label class="sr-only">PyPI</label>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="mailto:shifthappens@bethgelab.org" rel="noopener" target="_blank" title="Contact us!">
+            <span><i class="fas fa-envelope"></i></span>
+            <label class="sr-only">Contact us!</label>
+          </a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    
+  </div>
+</nav>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tl-dr">
+   TL;DR
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#deadlines">
+   Deadlines
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#detailed-information-on-submission-types">
+   Detailed Information on Submission Types
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#report-instructions">
+   Report Instructions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#code-and-data-instructions">
+   Code and Data Instructions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#evaluation-criteria-for-submissions">
+   Evaluation Criteria for Submissions
+  </a>
+ </li>
+</ul>
+
+</nav>
+              </div>
+              
+              <div class="toc-item">
+                
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <section id="call-for-submissions">
+<h1>Call for Submissions<a class="headerlink" href="#call-for-submissions" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This page is still under construction and might contain inaccurate information.
+Please wait with the preparation of your submission until this note disappears.</p>
+</div>
+<section id="tl-dr">
+<h2>TL;DR<a class="headerlink" href="#tl-dr" title="Permalink to this headline">¶</a></h2>
+<p>Submissions consist of</p>
+<ul class="simple">
+<li><p>A short report of the task, metrics and datasets,</p></li>
+<li><p>An implementation of the task, metrics and/or datasets, comprised of a plugin to the <code class="docutils literal notranslate"><span class="pre">shifthappens</span></code> benchmark package, and all required external data files.</p></li>
+</ul>
+<p>Both components will be submitted via OpenReview, and reviewing is double-blind (<strong>submission link TBA</strong>).
+The workshop will not have any official proceedings, so it is non-archival.
+Tasks that have been part of a recent submission/publication are allowed, in which case the overlapping
+works should be mentioned.</p>
+<p><strong>Examples</strong> of possible contributions:</p>
+<ul class="simple">
+<li><p>Collections of images to be evaluated w.r.t. one or more existing tasks like classification or OOD detection (e.g. ImageNet-A).
+Submissions of this type can consist of (labeled) images only.</p></li>
+<li><p>Re-definitions of tasks/new metrics on existing datasets
+(e.g. new calibration metrics, fairness metrics, …).</p></li>
+<li><p>Completely new tasks and datasets that highlight differences between ImageNet models (see below for details).</p></li>
+</ul>
+<p>Submissions creating links to communities interested in problems besides standard, “accuracy-focused” settings
+are very welcome.</p>
+</section>
+<section id="deadlines">
+<h2>Deadlines<a class="headerlink" href="#deadlines" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Submission Deadline: mid-end May, 2022 (final date TBA)</p></li>
+<li><p>Reviews Posted: June 3, 2022</p></li>
+<li><p>Acceptance Notification: June 6, 2022</p></li>
+<li><p>Camera and Dataset Ready: July 1, 2022</p></li>
+<li><p>ICML 2022 Workshop dates: July 22 and 23 (final date TBA)</p></li>
+</ul>
+<p>Please note that it is <strong>not required</strong> to post the final dataset by the submission deadline.
+It is sufficient to start working on the final dataset collection after the acceptance notification until the
+camera ready deadline.</p>
+</section>
+<section id="detailed-information-on-submission-types">
+<h2>Detailed Information on Submission Types<a class="headerlink" href="#detailed-information-on-submission-types" title="Permalink to this headline">¶</a></h2>
+<p>Besides compatibility to ImageNet scale models, the scope of possible
+benchmarks and datasets is intentionally broad:</p>
+<ul class="simple">
+<li><p>Submissions that <strong>provide their own evaluation criterion</strong> and discuss its value in applications are particularly encouraged. Submissions should explain why the submitted dataset and metric are well-suited to inform about the specified property.</p></li>
+<li><p>It is also encouraged to submit <strong>datasets</strong> that can be evaluated with one of the following <strong>standard criteria</strong>:</p>
+<ul>
+<li><p>Robustness to domain shifts (classification accuracy)</p></li>
+<li><p>Out-of-distribution detection (AUROC, FPR, AUPR)</p></li>
+</ul>
+</li>
+<li><p>Any other form of dataset and task that can be evaluated on a pre-trained (standard or non-standard training) ImageNet model.</p></li>
+</ul>
+<p>There are <em>no constraints</em> on the possible metrics, as long as they are based on the features, class scores,
+class uncertainties and in-distribution scores of such a model (also see our <a class="reference external" href="https://shift-happens-benchmark.github.io/icml-2022/">reference implementation</a> for examples).</p>
+<p>In all cases, it is possible to re-submit <strong>existing and potentially published</strong> benchmarks, datasets, and evaluation tasks to
+consolidate them in one benchmark suite and/or if they are known only to a particular community. Examples include small datasets that test an
+interesting distribution shift, such as shifts occurring due to applications in the real world, and
+insightful benchmarks that you might have included in a publication highlighting the advantages or problems
+of certain models.</p>
+<p>Submissions are allowed to contain <strong>multiple related datasets</strong>, e.g.,
+a dataset like ImageNet-C could have been submitted as a collection of
+15 evaluation datasets, corresponding to the different corruptions
+ImageNet-C is comprised of.</p>
+<p>Correspondingly, tasks do not need to output one single number. For example, a
+submission might include multiple (related) OOD datasets and demand that an
+ideal model be not fooled by any of them. It might of course makes sense for a
+<strong>multi-score</strong> benchmark to <em>also</em> calculate an average performance.</p>
+</section>
+<section id="report-instructions">
+<h2>Report Instructions<a class="headerlink" href="#report-instructions" title="Permalink to this headline">¶</a></h2>
+<p>The short report should</p>
+<ul class="simple">
+<li><p>motivate why the submitted task is interesting,</p></li>
+<li><p>describe how the data was collected, as well as give an overview over the data,</p></li>
+<li><p>state how the data can be accessed,</p></li>
+<li><p>specify if there are special requirements on the models to be evaluated,</p></li>
+<li><p>detail the evaluation procedure and outline how the evaluation outputs can be interpreted,</p></li>
+<li><p>provide a short analysis how the task is challenging for some existing models
+(including the relevant provided ones),</p></li>
+<li><p>and establish context within related works.</p></li>
+</ul>
+<p>The report should be limited to 2-4 pages without references.
+If it includes an Appendix, it should be reserved for additional
+sample images and technical details.</p>
+<p>For the submission, the report should be formatted according to the <a class="reference external" href="https://icml.cc/Conferences/2022/StyleAuthorInstructions">ICML style instructions</a>, by using the
+provided <a class="reference external" href="https://media.icml.cc/Conferences/ICML2022/Styles/icml2022.zip">LaTeX files</a>.</p>
+</section>
+<section id="code-and-data-instructions">
+<h2>Code and Data Instructions<a class="headerlink" href="#code-and-data-instructions" title="Permalink to this headline">¶</a></h2>
+<p>Submissions must include a link to the dataset (hosted on a suitable platform),
+as well as code (building on top of the provided <a class="reference external" href="https://shift-happens-benchmark.github.io/icml-2022/">reference implementation</a>) for
+running the evaluation process. Datasets can be hosted on <a class="reference external" href="https://zenodo.org/">zenodo</a>,
+<a class="reference external" href="https://www.google.com/drive/">google drive</a> (by only providing an anonymous google drive ID), or other platforms.</p>
+<p>The data/images need to be usable for research purposes. Their license should
+be stated in the report.</p>
+<p>The implementation leverages our example <a class="reference external" href="api.html">API</a> implementation:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">shifthappens.task</span> <span class="kn">import</span> <span class="n">Result</span><span class="p">,</span> <span class="n">Task</span><span class="p">,</span> <span class="n">register</span>
+
+<span class="nd">@register</span>
+<span class="k">class</span> <span class="nc">MyExampleTask</span><span class="p">(</span><span class="n">Task</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">_evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">):</span>
+        <span class="o">...</span>
+        <span class="k">return</span> <span class="n">Result</span><span class="p">(</span>
+            <span class="n">accuracy</span> <span class="o">=</span> <span class="mf">0.42</span><span class="p">,</span>
+            <span class="n">calibration</span> <span class="o">=</span> <span class="mf">0.44</span>
+        <span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="evaluation-criteria-for-submissions">
+<h2>Evaluation Criteria for Submissions<a class="headerlink" href="#evaluation-criteria-for-submissions" title="Permalink to this headline">¶</a></h2>
+<p>Submissions will be judged according to the following criteria:</p>
+<ol class="arabic simple">
+<li><p><strong>Correctness:</strong> For labeled datasets, the labels should make sense to a
+human reviewer. For OOD datasets, no in-distribution objects can be
+visible on the images. During the review of large datasets, random
+samples and the worst mistakes of some models will be checked. The
+correctness will mainly be reviewed based on the submitted dataset
+and the technical report.</p></li>
+<li><p><strong>Novelty</strong>: Datasets which allow for a more insightful evaluation beyond
+the standard test accuracy of ImageNet are encouraged.
+This can include well-motivated new criteria, new datasets with emphasized
+practical relevance, as well as tasks that demonstrate theoretically
+predicted weaknesses of certain popular models.</p></li>
+<li><p><strong>Difficulty for current models</strong>: If the task can easily be solved by
+humans but some models fail moderately or spectacularly, it is an
+interesting addition to the benchmark.
+This will formally be benchmarked by evaluating a set of standard models
+(including robustified, task-specific ones) on the
+provided task.</p></li>
+</ol>
+</section>
+</section>
+
+
+              </div>
+              
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+<footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2021 - 2022, Julian Bitterwolf, Evgenia Rusak, Steffen Schneider, Roland S. Zimmermann and contributors. Released under an Apache 2.0 License.<br>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>

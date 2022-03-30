@@ -1,0 +1,257 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Building the Community Benchmark &#8212; Shift Happens (ICML 2022) 0.0.1-alpha documentation</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/blank.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/custom.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+<a class="navbar-brand" href="index.html">
+<p class="title">Shift Happens (ICML 2022)</p>
+</a>
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="call_for_papers.html">
+  Call for Submissions
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="call_for_reviewers.html">
+  Call for Reviewers
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="api.html">
+  Benchmark API Docs
+ </a>
+</li>
+
+    
+    <li class="nav-item">
+        <a class="nav-link nav-external" href="https://shift-happens-benchmark.github.io/">Home<i class="fas fa-external-link-alt"></i></a>
+    </li>
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/shift-happens-benchmark/iclr-2022" rel="noopener" target="_blank" title="Github">
+            <span><i class="fab fa-github"></i></span>
+            <label class="sr-only">Github</label>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://pypi.org/project/shifthappens/" rel="noopener" target="_blank" title="PyPI">
+            <span><i class="fab fa-python"></i></span>
+            <label class="sr-only">PyPI</label>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="mailto:shifthappens@bethgelab.org" rel="noopener" target="_blank" title="Contact us!">
+            <span><i class="fas fa-envelope"></i></span>
+            <label class="sr-only">Contact us!</label>
+          </a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    
+  </div>
+</nav>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#post-submission">
+   Post-Submission
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#community-hackathon">
+   Community Hackathon
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ensuring-long-term-access">
+   Ensuring Long-Term Access
+  </a>
+ </li>
+</ul>
+
+</nav>
+              </div>
+              
+              <div class="toc-item">
+                
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <section id="building-the-community-benchmark">
+<h1>Building the Community Benchmark<a class="headerlink" href="#building-the-community-benchmark" title="Permalink to this headline">¶</a></h1>
+<section id="post-submission">
+<h2>Post-Submission<a class="headerlink" href="#post-submission" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>The <a class="reference external" href="call_for_reviewers.html#reviewing-process">review process</a> will center around the code and data submission. Including the community in an open review process will be an opportunity to increase chances for later adaptations of the benchmark. The tools that will be made available for facilitating the reviewers’ jobs will later be released as open-source tools.</p></li>
+<li><p>In parallel to the reviewing phase, the workshop organizers will start running tests on the submitted benchmarks for an extended collection of established vision models.</p></li>
+<li><p>While adding comments on OpenReview will be limited to the reviewers, code review (and proposal of improvements) on GitHub is open to the public — this also includes discussion of the data collection process described in the technical report.</p></li>
+<li><p>Public discussion — and community building relevant for the benchmark after the workshop ends — will be encouraged on GitHub.</p></li>
+<li><p>In the discussion phase, authors are allowed to update both their technical report and the submitted code.</p></li>
+<li><p>After the final decisions, all submissions will be de-anonymized both on OpenReview and on GitHub.</p></li>
+<li><p>The review process will ensure that for this final set of camera-ready submissions, a set of datasets with reviewed descriptions (submitted reports), and high-quality code ready to merge into the benchmark will be available. After the camera-ready phase, and after ensuring technical soundness of the submitted pull requests, an initial version of the benchmark will be released that allows for contributing of additional models and techniques, as well as for making suggestions on improving the benchmarks and metrics.</p></li>
+<li><p>During a <a class="reference external" href="community_benchmark.html#hackathon">community hackathon</a>, the benchmark will be polished.</p></li>
+<li><p>All accepted submissions will be part of the <code class="docutils literal notranslate"><span class="pre">shifthappens</span></code> benchmark suite. This will ensure that after the workshop all benchmarks are accessible to the community.</p></li>
+<li><p>$$$</p></li>
+</ul>
+</section>
+<section id="community-hackathon">
+<h2>Community Hackathon<a class="headerlink" href="#community-hackathon" title="Permalink to this headline">¶</a></h2>
+<p>Two weeks prior to the workshop, a hackathon aimed at
+community building around the benchmark will be hosted by the workshop
+organizers. For this, discussions will
+happen on GitHub, and the community will be able to contribute
+changes to the benchmark. The best contributions from this phase will
+get a short talk (time depends on the number of contributions) at the
+workshop.</p>
+</section>
+<section id="ensuring-long-term-access">
+<h2>Ensuring Long-Term Access<a class="headerlink" href="#ensuring-long-term-access" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+
+
+              </div>
+              
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+<footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2021 - 2022, Julian Bitterwolf, Evgenia Rusak, Steffen Schneider, Roland S. Zimmermann and contributors. Released under an Apache 2.0 License.<br>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>
