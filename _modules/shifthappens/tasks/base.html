@@ -165,7 +165,24 @@
               <div>
                 
   <h1>Source code for shifthappens.tasks.base</h1><div class="highlight"><pre>
-<span></span><span class="sd">&quot;&quot;&quot;Base definition of a task in the shift happens benchmark.&quot;&quot;&quot;</span>
+<span></span><span class="sd">&quot;&quot;&quot;Base definition of a task in the shift happens benchmark.</span>
+
+<span class="sd">Fully defined tasks should subclass the :py:class:`Task` abstract base class, and implement all</span>
+<span class="sd">mixins based on the required model outputs to evaluate the task, also part of this module.</span>
+
+<span class="sd">Implementing a new task consists of the following steps:</span>
+
+<span class="sd">1. Subclass the :py:class:`Task` class and implement its abstract methods to specify the task</span>
+<span class="sd">   setup and evaluation scheme</span>
+<span class="sd">2. Implement any number of mixins specified in this module. You just need to include</span>
+<span class="sd">   the mixin in the class definition, e.g. ``class MyTask(Task, ConfidenceTaskMixin)``,</span>
+<span class="sd">   and do not need to implement additional methods. My specifying the mixin, it will be</span>
+<span class="sd">   assured that your task gets the correct model outputs.</span>
+<span class="sd">   See the individual mixin classes, or the :py:class:`shifthappens.models.models.base.ModelResult`</span>
+<span class="sd">   class for further details.</span>
+<span class="sd">3. Register your class to the benchmark using the :py:func`shifthappens.benchmark.register_task`</span>
+<span class="sd">   decorator, along with a name and data path for your benchmark. </span>
+<span class="sd">&quot;&quot;&quot;</span>
 
 <span class="kn">import</span> <span class="nn">dataclasses</span>
 <span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">ABC</span>
@@ -228,7 +245,15 @@
 
 <div class="viewcode-block" id="Task"><a class="viewcode-back" href="../../../api.html#shifthappens.tasks.base.Task">[docs]</a><span class="nd">@dataclasses</span><span class="o">.</span><span class="n">dataclass</span>  <span class="c1"># type: ignore</span>
 <span class="k">class</span> <span class="nc">Task</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Task base class.&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Task base class.</span>
+
+<span class="sd">    Override the :py:meth:`setup`, :py:meth:`_prepare_dataloader` and :py:meth:`_evaluate` methods to define</span>
+<span class="sd">    your task. Also make sure to add in additional mixins from :py:mod:`shifthappens.tasks.base` to specify</span>
+<span class="sd">    which models your task is compatible to (e.g., specify that your task needs labels, or confidences from</span>
+<span class="sd">    a model).</span>
+
+<span class="sd">    To include the task in the benchmark, use the :py:func:`shifthappens.benchmark.register_task` decorator.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">data_root</span><span class="p">:</span> <span class="nb">str</span>
 
@@ -318,43 +343,83 @@
 
 <div class="viewcode-block" id="Task._prepare_dataloader"><a class="viewcode-back" href="../../../api.html#shifthappens.tasks.base.Task._prepare_dataloader">[docs]</a>    <span class="nd">@abstractmethod</span>
     <span class="k">def</span> <span class="nf">_prepare_dataloader</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">DataLoader</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;Prepares a dataloader for just the images (i.e. no labels, etc.) which will be passed to the model</span>
-<span class="sd">        before the actual evaluation. This allows models to, e.g., run unsupervised domain adaptation techniques.&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;Prepare a dataloader for just the images (i.e. no labels, etc.) which will be passed to the model</span>
+<span class="sd">        before the actual evaluation. This allows models to, e.g., run unsupervised domain adaptation techniques.</span>
+
+<span class="sd">        If intended, the implementation of this function should call the :py:func:`shifthappens.models.model.Model.prepare`</span>
+<span class="sd">        function and pass (parts) of the data through a data loader. The model could potentially use this data for</span>
+<span class="sd">        test-time adaptation, calibration, or orther purposes.</span>
+
+<span class="sd">        Note that this function could also be used to create domain shift for such adaptation methods, by passing</span>
+<span class="sd">        a different dataloader in this prepare function than used during :py:meth:`evaluate`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="Task._evaluate"><a class="viewcode-back" href="../../../api.html#shifthappens.tasks.base.Task._evaluate">[docs]</a>    <span class="nd">@abstractmethod</span>
     <span class="k">def</span> <span class="nf">_evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span> <span class="n">sh_models</span><span class="o">.</span><span class="n">Model</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TaskResult</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Implement this function to evaluate the task and return a dictionary with the</span>
-<span class="sd">        calculated metrics.&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;Evaluate the task and return a dictionary with the calculated metrics.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            model: The passed model implementents a ``predict`` function returning an iterator</span>
+<span class="sd">            over :py:meth:`shifthappens.models.base.ModelResult`. Each result contains predictions such as</span>
+<span class="sd">            the class labels assigned to the images, confidences, etc., based on which mixins were</span>
+<span class="sd">            implemented by this task to request these prediction outputs.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            :py:class:`shifthappens.tasks.task_result.TaskResult`: The results of the task in the</span>
+<span class="sd">            form of a :py:class:`shifthappens.tasks.task_result.TaskResult` containing an</span>
+<span class="sd">            arbitrary dictionary of metrics, along with a specifiction of which of these</span>
+<span class="sd">            metrics are main results/summary metrics for the task.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span></div></div>
 
 
 <div class="viewcode-block" id="LabelTaskMixin"><a class="viewcode-back" href="../../../api.html#shifthappens.tasks.base.LabelTaskMixin">[docs]</a><span class="k">class</span> <span class="nc">LabelTaskMixin</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Indicates that the task requires the model to return the predicted labels.&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Indicates that the task requires the model to return the predicted labels.</span>
+
+<span class="sd">    Tasks implementing this mixin will be provided with the ``class_labels`` attribute in the</span>
+<span class="sd">    :py:class:`shifthappens.models.base.ModelResult` returned during evaluation.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">pass</span></div>
 
 
 <div class="viewcode-block" id="ConfidenceTaskMixin"><a class="viewcode-back" href="../../../api.html#shifthappens.tasks.base.ConfidenceTaskMixin">[docs]</a><span class="k">class</span> <span class="nc">ConfidenceTaskMixin</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Indicates that the task requires the model to return the confidence scores.&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Indicates that the task requires the model to return the confidence scores.</span>
+
+<span class="sd">    Tasks implementing this mixin will be provided with the ``confidences`` attribute in the</span>
+<span class="sd">    :py:class:`shifthappens.models.base.ModelResult` returned during evaluation.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">pass</span></div>
 
 
 <div class="viewcode-block" id="UncertaintyTaskMixin"><a class="viewcode-back" href="../../../api.html#shifthappens.tasks.base.UncertaintyTaskMixin">[docs]</a><span class="k">class</span> <span class="nc">UncertaintyTaskMixin</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Indicates that the task requires the model to return the uncertainty scores.&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Indicates that the task requires the model to return the uncertainty scores.</span>
+
+<span class="sd">    Tasks implementing this mixin will be provided with the ``uncertainties`` attribute in the</span>
+<span class="sd">    :py:class:`shifthappens.models.base.ModelResult` returned during evaluation.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">pass</span></div>
 
 
 <div class="viewcode-block" id="OODScoreTaskMixin"><a class="viewcode-back" href="../../../api.html#shifthappens.tasks.base.OODScoreTaskMixin">[docs]</a><span class="k">class</span> <span class="nc">OODScoreTaskMixin</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Indicates that the task requires the model to return the OOD scores.&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Indicates that the task requires the model to return the OOD scores.</span>
+
+<span class="sd">    Tasks implementing this mixin will be provided with the ``ood_scores`` attribute in the</span>
+<span class="sd">    :py:class:`shifthappens.models.base.ModelResult` returned during evaluation.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">pass</span></div>
 
 
 <div class="viewcode-block" id="FeaturesTaskMixin"><a class="viewcode-back" href="../../../api.html#shifthappens.tasks.base.FeaturesTaskMixin">[docs]</a><span class="k">class</span> <span class="nc">FeaturesTaskMixin</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Indicates that the task requires the model to return the raw features.&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Indicates that the task requires the model to return the raw features.</span>
+
+<span class="sd">    Tasks implementing this mixin will be provided with the ``features`` attribute in the</span>
+<span class="sd">    :py:class:`shifthappens.models.base.ModelResult` returned during evaluation.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">pass</span></div>
 </pre></div>
