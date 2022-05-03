@@ -179,6 +179,11 @@
    Model implementations
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#benchmark">
+   Benchmark
+  </a>
+ </li>
 </ul>
 
 </nav>
@@ -214,7 +219,7 @@ properties of computer vision models. Our goal is to bring the robustness, domai
 adaptation, and out-of-distribution detection communities together to work on a new
 <strong>broad-scale benchmark</strong> that tests diverse aspects of current computer
 vision models and guides the way towards the next generation of models.</p>
-<p>Submissions to the workshop will be comprised of an addition of a <code class="docutils literal notranslate"><span class="pre">Task</span></code>, which will be used to test the performance
+<p>Submissions to the workshop will be comprised of an addition of a <a class="reference internal" href="#shifthappens.tasks.base.Task" title="shifthappens.tasks.base.Task"><code class="xref py py-class docutils literal notranslate"><span class="pre">Task</span></code></a>, which will be used to test the performance
 of various computer vision models on a new evaluation task you specify with your submission. Below we provide documentation
 for the <code class="docutils literal notranslate"><span class="pre">shifthappens</span></code> API.</p>
 <p>Also make sure to look at the <a class="reference external" href="https://github.com/shift-happens-benchmark/icml-2022/tree/main/examples">examples</a>
@@ -233,9 +238,9 @@ setup and evaluation scheme</p></li>
 the mixin in the class definition, e.g. <code class="docutils literal notranslate"><span class="pre">class</span> <span class="pre">MyTask(Task,</span> <span class="pre">ConfidenceTaskMixin)</span></code>,
 and do not need to implement additional methods. My specifying the mixin, it will be
 assured that your task gets the correct model outputs.
-See the individual mixin classes, or the <code class="xref py py-class docutils literal notranslate"><span class="pre">shifthappens.models.models.base.ModelResult</span></code>
+See the individual mixin classes, or the <a class="reference internal" href="#shifthappens.models.base.ModelResult" title="shifthappens.models.base.ModelResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">ModelResult</span></code></a>
 class for further details.</p></li>
-<li><p>Register your class to the benchmark using the :py:func`shifthappens.benchmark.register_task`
+<li><p>Register your class to the benchmark using the <code class="xref py py-func docutils literal notranslate"><span class="pre">register_task</span></code>
 decorator, along with a name and data path for your benchmark.</p></li>
 </ol>
 <dl class="py function">
@@ -281,7 +286,8 @@ with a non-abstract variable.</p>
 your task. Also make sure to add in additional mixins from <a class="reference internal" href="#module-shifthappens.tasks.base" title="shifthappens.tasks.base"><code class="xref py py-mod docutils literal notranslate"><span class="pre">shifthappens.tasks.base</span></code></a> to specify
 which models your task is compatible to (e.g., specify that your task needs labels, or confidences from
 a model).</p>
-<p>To include the task in the benchmark, use the <code class="xref py py-func docutils literal notranslate"><span class="pre">shifthappens.benchmark.register_task</span></code> decorator.</p>
+<p>To include the task in the benchmark, use the <code class="xref py py-func docutils literal notranslate"><span class="pre">register_task</span></code>
+decorator.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>data_root</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>) – </p>
@@ -314,7 +320,7 @@ performance using the _evaluate function of this class.</p>
 <dd class="field-odd"><p><strong>model</strong> (<a class="reference internal" href="#shifthappens.models.base.Model" title="shifthappens.models.base.Model"><code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></a>) – </p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.10)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<code class="xref py py-class docutils literal notranslate"><span class="pre">TaskResult</span></code>]</p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.10)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference internal" href="#shifthappens.tasks.task_result.TaskResult" title="shifthappens.tasks.task_result.TaskResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">TaskResult</span></code></a>]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -324,9 +330,10 @@ performance using the _evaluate function of this class.</p>
 <em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">_prepare_dataloader</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/shifthappens/tasks/base.html#Task._prepare_dataloader"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shifthappens.tasks.base.Task._prepare_dataloader" title="Permalink to this definition">¶</a></dt>
 <dd><p>Prepare a dataloader for just the images (i.e. no labels, etc.) which will be passed to the model
 before the actual evaluation. This allows models to, e.g., run unsupervised domain adaptation techniques.</p>
-<p>If intended, the implementation of this function should call the <code class="xref py py-func docutils literal notranslate"><span class="pre">shifthappens.models.model.Model.prepare</span></code>
-function and pass (parts) of the data through a data loader. The model could potentially use this data for
-test-time adaptation, calibration, or orther purposes.</p>
+<p>If intended, the implementation of this function should call the
+<a class="reference internal" href="#shifthappens.models.base.Model.prepare" title="shifthappens.models.base.Model.prepare"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Model.prepare</span></code></a> function and pass (parts) of the data
+through a data loader. The model could potentially use this data for
+test-time adaptation, calibration, or other purposes.</p>
 <p>Note that this function could also be used to create domain shift for such adaptation methods, by passing
 a different dataloader in this prepare function than used during <a class="reference internal" href="#shifthappens.tasks.base.Task.evaluate" title="shifthappens.tasks.base.Task.evaluate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">evaluate</span></code></a>.</p>
 <dl class="field-list simple">
@@ -354,12 +361,12 @@ a different dataloader in this prepare function than used during <a class="refer
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>The results of the task in the
-form of a <code class="xref py py-class docutils literal notranslate"><span class="pre">shifthappens.tasks.task_result.TaskResult</span></code> containing an
+form of a <a class="reference internal" href="#shifthappens.tasks.task_result.TaskResult" title="shifthappens.tasks.task_result.TaskResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">shifthappens.tasks.task_result.TaskResult</span></code></a> containing an
 arbitrary dictionary of metrics, along with a specifiction of which of these
 metrics are main results/summary metrics for the task.</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">shifthappens.tasks.task_result.TaskResult</span></code></p>
+<dd class="field-even"><p><a class="reference internal" href="#shifthappens.tasks.task_result.TaskResult" title="shifthappens.tasks.task_result.TaskResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">shifthappens.tasks.task_result.TaskResult</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -409,6 +416,24 @@ metrics are main results/summary metrics for the task.</p>
 <p>Indicates that the task requires the model to return the raw features.</p>
 <p>Tasks implementing this mixin will be provided with the <code class="docutils literal notranslate"><span class="pre">features</span></code> attribute in the
 <a class="reference internal" href="#shifthappens.models.base.ModelResult" title="shifthappens.models.base.ModelResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">shifthappens.models.base.ModelResult</span></code></a> returned during evaluation.</p>
+</dd></dl>
+
+<span class="target" id="module-shifthappens.tasks.task_result"></span><dl class="py class">
+<dt class="sig sig-object py" id="shifthappens.tasks.task_result.TaskResult">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">shifthappens.tasks.task_result.</span></span><span class="sig-name descname"><span class="pre">TaskResult</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">summary_metrics</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">metrics</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/shifthappens/tasks/task_result.html#TaskResult"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shifthappens.tasks.task_result.TaskResult" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Contains the results of a result, which can be arbitrary metrics.
+At least one of these metrics must be references as a summary metric.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>summary_metrics</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.10)"><em>dict</em></a>) – Associates <a href="#id1"><span class="problematic" id="id2">``</span></a>shifthappens.tasks.metrics.Metric``s
+to the name of metrics calculated by the task.</p></li>
+<li><p><strong>**metrics</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – Metrics’ names and their values.</p></li>
+<li><p><strong>metrics</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>) – </p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 </section>
@@ -468,7 +493,7 @@ metrics are main results/summary metrics for the task.</p>
 <p>Wraps a torch iterable dataset (i.e. torch.utils.data.IterableDataset).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>torch_dataset</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">IterableDataset</span></code>) – </p>
+<dd class="field-odd"><p><strong>torch_dataset</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/data.html#torch.utils.data.IterableDataset" title="(in PyTorch v1.11.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">IterableDataset</span></code></a>) – </p>
 </dd>
 </dl>
 </dd></dl>
@@ -480,7 +505,7 @@ metrics are main results/summary metrics for the task.</p>
 <p>Wraps a torch map-style dataset (i.e. torch.utils.data.Dataset).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>torch_dataset</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Dataset</span></code>) – </p>
+<dd class="field-odd"><p><strong>torch_dataset</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/data.html#torch.utils.data.Dataset" title="(in PyTorch v1.11.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dataset</span></code></a>) – </p>
 </dd>
 </dl>
 </dd></dl>
@@ -488,11 +513,11 @@ metrics are main results/summary metrics for the task.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="shifthappens.data.torch.ImagesOnlyTorchDataset">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">shifthappens.data.torch.</span></span><span class="sig-name descname"><span class="pre">ImagesOnlyTorchDataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/shifthappens/data/torch.html#ImagesOnlyTorchDataset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shifthappens.data.torch.ImagesOnlyTorchDataset" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.utils.data.Dataset</span></code></p>
+<dd><p>Bases: <a class="reference external" href="https://pytorch.org/docs/stable/data.html#torch.utils.data.Dataset" title="(in PyTorch v1.11.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.utils.data.Dataset</span></code></a></p>
 <p>Wraps a torch map-style dataset returning images and labels such that only the images are returned.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>dataset</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Dataset</span></code>) – </p>
+<dd class="field-odd"><p><strong>dataset</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/data.html#torch.utils.data.Dataset" title="(in PyTorch v1.11.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dataset</span></code></a>) – </p>
 </dd>
 </dl>
 </dd></dl>
@@ -561,6 +586,17 @@ representation used to arrive at the given predictions.</p></li>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/abc.html#abc.ABC" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></a></p>
 <p>Model base class.</p>
 <dl class="py method">
+<dt class="sig sig-object py" id="shifthappens.models.base.Model.prepare">
+<span class="sig-name descname"><span class="pre">prepare</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataloader</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/shifthappens/models/base.html#Model.prepare"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shifthappens.models.base.Model.prepare" title="Permalink to this definition">¶</a></dt>
+<dd><p>If the model uses unsupervised adaptation mechanisms, it will run those.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>dataloader</strong> (<a class="reference internal" href="#shifthappens.data.base.DataLoader" title="shifthappens.data.base.DataLoader"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataLoader</span></code></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="shifthappens.models.base.Model.predict">
 <span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_dataloader</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">targets</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/shifthappens/models/base.html#Model.predict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shifthappens.models.base.Model.predict" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
@@ -576,7 +612,7 @@ representation used to arrive at the given predictions.</p></li>
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>Prediction results for the given batch. Depending in the target arguments this
 includes the predicted labels, class confidences, class uncertainties, ood scores,
-and image features, all as <a href="#id1"><span class="problematic" id="id2">``</span></a>np.array``s.</p>
+and image features, all as <a href="#id3"><span class="problematic" id="id4">``</span></a>np.array``s.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -619,6 +655,9 @@ and image features, all as <a href="#id1"><span class="problematic" id="id2">``<
 </dd></dl>
 
 <span class="target" id="module-shifthappens.models.torchvision"></span><p>Torchvision baselines.</p>
+</section>
+<section id="benchmark">
+<h2>Benchmark<a class="headerlink" href="#benchmark" title="Permalink to this headline">¶</a></h2>
 </section>
 </section>
 

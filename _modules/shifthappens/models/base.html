@@ -250,8 +250,9 @@
 <div class="viewcode-block" id="Model"><a class="viewcode-back" href="../../../api.html#shifthappens.models.base.Model">[docs]</a><span class="k">class</span> <span class="nc">Model</span><span class="p">(</span><span class="n">abc</span><span class="o">.</span><span class="n">ABC</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Model base class.&quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">prepare</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataloader</span><span class="p">:</span> <span class="n">DataLoader</span><span class="p">):</span>
-        <span class="k">pass</span>
+<div class="viewcode-block" id="Model.prepare"><a class="viewcode-back" href="../../../api.html#shifthappens.models.base.Model.prepare">[docs]</a>    <span class="k">def</span> <span class="nf">prepare</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataloader</span><span class="p">:</span> <span class="n">DataLoader</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;If the model uses unsupervised adaptation mechanisms, it will run those.&quot;&quot;&quot;</span>
+        <span class="k">pass</span></div>
 
 <div class="viewcode-block" id="Model.predict"><a class="viewcode-back" href="../../../api.html#shifthappens.models.base.Model.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">input_dataloader</span><span class="p">:</span> <span class="n">DataLoader</span><span class="p">,</span> <span class="n">targets</span><span class="p">:</span> <span class="n">PredictionTargets</span>

@@ -178,9 +178,9 @@
 <span class="sd">   the mixin in the class definition, e.g. ``class MyTask(Task, ConfidenceTaskMixin)``,</span>
 <span class="sd">   and do not need to implement additional methods. My specifying the mixin, it will be</span>
 <span class="sd">   assured that your task gets the correct model outputs.</span>
-<span class="sd">   See the individual mixin classes, or the :py:class:`shifthappens.models.models.base.ModelResult`</span>
+<span class="sd">   See the individual mixin classes, or the :py:class:`ModelResult &lt;shifthappens.models.base.ModelResult&gt;`</span>
 <span class="sd">   class for further details.</span>
-<span class="sd">3. Register your class to the benchmark using the :py:func`shifthappens.benchmark.register_task`</span>
+<span class="sd">3. Register your class to the benchmark using the :py:func:`register_task &lt;shifthappens.benchmark.register_task&gt;`</span>
 <span class="sd">   decorator, along with a name and data path for your benchmark. </span>
 <span class="sd">&quot;&quot;&quot;</span>
 
@@ -252,7 +252,8 @@
 <span class="sd">    which models your task is compatible to (e.g., specify that your task needs labels, or confidences from</span>
 <span class="sd">    a model).</span>
 
-<span class="sd">    To include the task in the benchmark, use the :py:func:`shifthappens.benchmark.register_task` decorator.</span>
+<span class="sd">    To include the task in the benchmark, use the :py:func:`register_task &lt;shifthappens.benchmark.register_task&gt;`</span>
+<span class="sd">    decorator.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">data_root</span><span class="p">:</span> <span class="nb">str</span>
@@ -346,9 +347,10 @@
         <span class="sd">&quot;&quot;&quot;Prepare a dataloader for just the images (i.e. no labels, etc.) which will be passed to the model</span>
 <span class="sd">        before the actual evaluation. This allows models to, e.g., run unsupervised domain adaptation techniques.</span>
 
-<span class="sd">        If intended, the implementation of this function should call the :py:func:`shifthappens.models.model.Model.prepare`</span>
-<span class="sd">        function and pass (parts) of the data through a data loader. The model could potentially use this data for</span>
-<span class="sd">        test-time adaptation, calibration, or orther purposes.</span>
+<span class="sd">        If intended, the implementation of this function should call the</span>
+<span class="sd">        :py:meth:`Model.prepare &lt;shifthappens.models.base.Model.prepare&gt;` function and pass (parts) of the data</span>
+<span class="sd">        through a data loader. The model could potentially use this data for</span>
+<span class="sd">        test-time adaptation, calibration, or other purposes.</span>
 
 <span class="sd">        Note that this function could also be used to create domain shift for such adaptation methods, by passing</span>
 <span class="sd">        a different dataloader in this prepare function than used during :py:meth:`evaluate`.</span>
