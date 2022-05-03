@@ -168,11 +168,11 @@
 <span></span><span class="sd">&quot;&quot;&quot;Base classes and helper functions for adding models to the benchmark.</span>
 
 <span class="sd">To add a new model, implement a new wrapper class inheriting from</span>
-<span class="sd">``shifthappens.base.Model``, and from any of the Mixins defined</span>
+<span class="sd">:py:class:`shifthappens.models.base.Model`, and from any of the Mixins defined</span>
 <span class="sd">in this module.</span>
 
-<span class="sd">Model results should be converted to numpy arrays, and packed into an</span>
-<span class="sd">``shifthappens.base.ModelResult`` instance.</span>
+<span class="sd">Model results should be converted to :py:class:`numpy.ndarray` objects, and packed into an</span>
+<span class="sd">:py:class:`shifthappens.models.base.ModelResult` instance.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="kn">import</span> <span class="nn">abc</span>
@@ -192,21 +192,21 @@
 <span class="sd">    regarding the ordering of labels.</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        class_labels: ``(N, k)`` array containing top-k predictions for</span>
+<span class="sd">        class_labels: ``(N, k)``, top-k predictions for</span>
 <span class="sd">            each sample in the batch. Choice of ``k`` can be selected by</span>
 <span class="sd">            the user, and potentially influences the type of accuracy</span>
 <span class="sd">            based benchmarks that the model can be run on. For standard</span>
 <span class="sd">            ImageNet, ImageNet-C evaluation, choose at least ``k=5``.</span>
-<span class="sd">        confidences: optional, ``(N, 1000)`` confidences for each class.</span>
+<span class="sd">        confidences: ``(N, 1000)``, confidences for each class.</span>
 <span class="sd">            Standard PyTorch ImageNet class label order is expected for</span>
 <span class="sd">            this array. Scores can be in the range ``-inf`` to ``inf``.</span>
-<span class="sd">        uncertainties: optional, ``(N, 1000)``, uncertainties for the</span>
+<span class="sd">        uncertainties: ``(N, 1000)``, uncertainties for the</span>
 <span class="sd">            different class predictions. Different from the ``confidences``,</span>
 <span class="sd">            this is a measure of certainty of the given ``confidences`` and</span>
 <span class="sd">            common e.g. in Bayesian Deep neural networks.</span>
-<span class="sd">        ood_scores: optional, ``(N,)``, score for interpreting the sample</span>
+<span class="sd">        ood_scores: ``(N,)``, score for interpreting the sample</span>
 <span class="sd">            as an out-of-distribution class, in the range ``-inf`` to ``inf``.</span>
-<span class="sd">        features: optional, ``(N, d)``, where ``d`` can be arbitrary, feature</span>
+<span class="sd">        features: ``(N, d)``, where ``d`` can be arbitrary, feature</span>
 <span class="sd">            representation used to arrive at the given predictions.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
