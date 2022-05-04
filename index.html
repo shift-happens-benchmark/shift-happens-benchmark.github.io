@@ -10,8 +10,9 @@
 
     <title>Shift happens: Crowdsourcing metrics and test datasets beyond ImageNet &#8212; Shift Happens (ICML 2022) 0.0.1-alpha documentation</title>
     
-  <link href="_static/css/theme.css" rel="stylesheet">
-  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -21,16 +22,12 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/css/blank.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/css/custom.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -48,7 +45,7 @@
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
     
     <div class="container-fluid" id="banner"></div>
 
@@ -108,28 +105,20 @@
       <div class="navbar-end-item">
         <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
         <li class="nav-item">
-          <a class="nav-link" href="https://github.com/shift-happens-benchmark/iclr-2022" rel="noopener" target="_blank" title="Github">
-            <span><i class="fab fa-github"></i></span>
-            <label class="sr-only">Github</label>
-          </a>
+          <a class="nav-link" href="https://github.com/shift-happens-benchmark/iclr-2022" rel="noopener" target="_blank" title="Github"><span><i class="fab fa-github"></i></span>
+            <label class="sr-only">Github</label></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="https://pypi.org/project/shifthappens/" rel="noopener" target="_blank" title="PyPI">
-            <span><i class="fab fa-python"></i></span>
-            <label class="sr-only">PyPI</label>
-          </a>
+          <a class="nav-link" href="https://pypi.org/project/shifthappens/" rel="noopener" target="_blank" title="PyPI"><span><i class="fab fa-python"></i></span>
+            <label class="sr-only">PyPI</label></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="https://join.slack.com/t/shifthappensicml2022/shared_invite/zt-16ewcukds-6jW6xC5DbtRvLCCkhZ~NLg" rel="noopener" target="_blank" title="Slack">
-            <span><i class="fab fa-slack"></i></span>
-            <label class="sr-only">Slack</label>
-          </a>
+          <a class="nav-link" href="https://join.slack.com/t/shifthappensicml2022/shared_invite/zt-16ewcukds-6jW6xC5DbtRvLCCkhZ~NLg" rel="noopener" target="_blank" title="Slack"><span><i class="fab fa-slack"></i></span>
+            <label class="sr-only">Slack</label></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="mailto:shifthappens@bethgelab.org" rel="noopener" target="_blank" title="Contact us!">
-            <span><i class="fas fa-envelope"></i></span>
-            <label class="sr-only">Contact us!</label>
-          </a>
+          <a class="nav-link" href="mailto:shifthappens@bethgelab.org" rel="noopener" target="_blank" title="Contact us!"><span><i class="fas fa-envelope"></i></span>
+            <label class="sr-only">Contact us!</label></a>
         </li>
       </ul>
       </div>
@@ -145,11 +134,15 @@
           
             
             <!-- Only show if we have sidebars configured, else just a small margin  -->
-            <div class="col-12 col-md-3 bd-sidebar"><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+            <div class="col-12 col-md-3 bd-sidebar">
+              <div class="sidebar-start-items"><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
   <div class="bd-toc-item active">
     
   </div>
 </nav>
+              </div>
+              <div class="sidebar-end-items">
+              </div>
             </div>
             
           
@@ -160,7 +153,7 @@
               
               <div class="toc-item">
                 
-<div class="tocsection onthispage pt-5 pb-3">
+<div class="tocsection onthispage mt-5 pt-1 pb-3">
     <i class="fas fa-list"></i> On this page
 </div>
 
@@ -218,7 +211,7 @@
               <div>
                 
   <section id="shift-happens-crowdsourcing-metrics-and-test-datasets-beyond-imagenet">
-<h1>Shift happens: Crowdsourcing metrics and test datasets beyond ImageNet<a class="headerlink" href="#shift-happens-crowdsourcing-metrics-and-test-datasets-beyond-imagenet" title="Permalink to this headline">¶</a></h1>
+<h1>Shift happens: Crowdsourcing metrics and test datasets beyond ImageNet<a class="headerlink" href="#shift-happens-crowdsourcing-metrics-and-test-datasets-beyond-imagenet" title="Permalink to this headline">#</a></h1>
 <p><em>ICML 2022 workshop</em></p>
 <p><strong>We aim to create a community-built benchmark suite for ImageNet models comprised of new datasets for OOD robustness
 and detection, as well as new tasks for existing OOD datasets.</strong></p>
@@ -254,7 +247,7 @@ results intuitively accessible in the form of scorecards.</em></p></td>
 <p>A central part of our package is to facilitate the evaluation of models on different datasets testing their generalization capabilities and providing fine-grained information on model performance using score-cards. To make sure all contributing authors as well as all authors of used (modified or not) pre-existing datasets will get credit for their efforts, we will release a bibtex file and a ‘cite’ macro for LaTeX which will include all contributions and underlying works.</p>
 <p>In addition, participants will have the opportunity to co-author a paper summarizing the benchmark suite and all included contributions.</p>
 <section id="focus-topics">
-<h2>Focus Topics<a class="headerlink" href="#focus-topics" title="Permalink to this headline">¶</a></h2>
+<h2>Focus Topics<a class="headerlink" href="#focus-topics" title="Permalink to this headline">#</a></h2>
 <p>Submissions to the benchmark suite will focus on datasets and evaluation algorithms falling into one or more of the categories
 below:</p>
 <ol class="arabic simple">
@@ -278,7 +271,7 @@ subsets thereof) or come with their own dataset.</p></li>
 </ol>
 </section>
 <section id="submissions">
-<h2>Submissions<a class="headerlink" href="#submissions" title="Permalink to this headline">¶</a></h2>
+<h2>Submissions<a class="headerlink" href="#submissions" title="Permalink to this headline">#</a></h2>
 <p>The benchmark suite will be available on
 <a class="reference external" href="https://github.com/shift-happens-benchmark/icml-2022">GitHub</a>.
 The documentation for the benchmark’s API is available <a class="reference external" href="https://shift-happens-benchmark.github.io/icml-2022/">here</a>.
@@ -288,7 +281,7 @@ discussions about the <code class="docutils literal notranslate"><span class="pr
 or <a class="reference external" href="https://join.slack.com/t/shifthappensicml2022/shared_invite/zt-16ewcukds-6jW6xC5DbtRvLCCkhZ~NLg">join our slack channel</a>.</p>
 </section>
 <section id="important-deadlines">
-<h2>Important Deadlines<a class="headerlink" href="#important-deadlines" title="Permalink to this headline">¶</a></h2>
+<h2>Important Deadlines<a class="headerlink" href="#important-deadlines" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Submission Deadline: mid-end May, 2022 (final date TBA)</p></li>
 <li><p>Reviews Posted: June 3, 2022</p></li>
@@ -302,11 +295,11 @@ It is sufficient to start working on final dataset collections after the accepta
 Also, please consider our <a class="reference internal" href="call_for_reviewers.html"><span class="doc">Call for Reviewers</span></a>.</p>
 </section>
 <section id="prizes-and-travel-grants">
-<h2>Prizes and Travel Grants<a class="headerlink" href="#prizes-and-travel-grants" title="Permalink to this headline">¶</a></h2>
+<h2>Prizes and Travel Grants<a class="headerlink" href="#prizes-and-travel-grants" title="Permalink to this headline">#</a></h2>
 <p>To be announced soon.</p>
 </section>
 <section id="invited-speakers">
-<h2>Invited Speakers<a class="headerlink" href="#invited-speakers" title="Permalink to this headline">¶</a></h2>
+<h2>Invited Speakers<a class="headerlink" href="#invited-speakers" title="Permalink to this headline">#</a></h2>
 <div class="speakers">
     <div>
         <hr>
@@ -347,7 +340,7 @@ Also, please consider our <a class="reference internal" href="call_for_reviewers
 <hr>
 <p>More speakers will be announced soon!</p></section>
 <section id="organizers">
-<h2>Organizers<a class="headerlink" href="#organizers" title="Permalink to this headline">¶</a></h2>
+<h2>Organizers<a class="headerlink" href="#organizers" title="Permalink to this headline">#</a></h2>
 <div class="organizers">
     <div>
         <img alt="Julian Bitterwolf" src="_static/organizers/julian_bitterwolf.png">
@@ -399,7 +392,8 @@ Also, please consider our <a class="reference internal" href="call_for_reviewers
       </div>
     </div>
   
-  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
 <footer class="footer mt-5 mt-md-0">
   <div class="container">
     

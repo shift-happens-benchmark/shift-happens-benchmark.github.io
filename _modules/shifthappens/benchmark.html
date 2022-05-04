@@ -1,0 +1,309 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>shifthappens.benchmark &#8212; Shift Happens (ICML 2022) 0.0.1-alpha documentation</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+<a class="navbar-brand" href="../../index.html">
+<p class="title">Shift Happens (ICML 2022)</p>
+</a>
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../call_for_papers.html">
+  Call for Submissions
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../call_for_reviewers.html">
+  Call for Reviewers
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../api.html">
+  Benchmark API Docs
+ </a>
+</li>
+
+    
+    <li class="nav-item">
+        <a class="nav-link nav-external" href="https://shift-happens-benchmark.github.io/">Home<i class="fas fa-external-link-alt"></i></a>
+    </li>
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/shift-happens-benchmark/iclr-2022" rel="noopener" target="_blank" title="Github"><span><i class="fab fa-github"></i></span>
+            <label class="sr-only">Github</label></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://pypi.org/project/shifthappens/" rel="noopener" target="_blank" title="PyPI"><span><i class="fab fa-python"></i></span>
+            <label class="sr-only">PyPI</label></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://join.slack.com/t/shifthappensicml2022/shared_invite/zt-16ewcukds-6jW6xC5DbtRvLCCkhZ~NLg" rel="noopener" target="_blank" title="Slack"><span><i class="fab fa-slack"></i></span>
+            <label class="sr-only">Slack</label></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="mailto:shifthappens@bethgelab.org" rel="noopener" target="_blank" title="Contact us!"><span><i class="fas fa-envelope"></i></span>
+            <label class="sr-only">Contact us!</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar">
+              <div class="sidebar-start-items"><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    
+  </div>
+</nav>
+              </div>
+              <div class="sidebar-end-items">
+              </div>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <h1>Source code for shifthappens.benchmark</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">dataclasses</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Set</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Tuple</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Type</span>
+
+<span class="kn">import</span> <span class="nn">shifthappens.utils</span> <span class="k">as</span> <span class="nn">sh_utils</span>
+<span class="kn">from</span> <span class="nn">shifthappens.models</span> <span class="kn">import</span> <span class="n">Model</span>
+<span class="kn">from</span> <span class="nn">shifthappens.task_data</span> <span class="kn">import</span> <span class="n">task_metadata</span>
+<span class="kn">from</span> <span class="nn">shifthappens.task_data.task_registration</span> <span class="kn">import</span> <span class="n">TaskRegistration</span>
+<span class="kn">from</span> <span class="nn">shifthappens.tasks.base</span> <span class="kn">import</span> <span class="n">Task</span>
+<span class="kn">from</span> <span class="nn">shifthappens.tasks.task_result</span> <span class="kn">import</span> <span class="n">TaskResult</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;get_registered_tasks&quot;</span><span class="p">,</span> <span class="s2">&quot;evaluate_model&quot;</span><span class="p">,</span> <span class="s2">&quot;register_task&quot;</span><span class="p">]</span>
+<span class="n">__registered_tasks</span><span class="p">:</span> <span class="n">Set</span><span class="p">[</span><span class="n">TaskRegistration</span><span class="p">]</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+
+
+<div class="viewcode-block" id="get_registered_tasks"><a class="viewcode-back" href="../../api.html#shifthappens.benchmark.get_registered_tasks">[docs]</a><span class="k">def</span> <span class="nf">get_registered_tasks</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Type</span><span class="p">[</span><span class="n">Task</span><span class="p">],</span> <span class="o">...</span><span class="p">]:</span>
+    <span class="sd">&quot;&quot;&quot;All tasks currently registered as part of the benchmark.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="nb">tuple</span><span class="p">([</span><span class="n">x</span><span class="o">.</span><span class="n">cls</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">__registered_tasks</span><span class="p">])</span></div>
+
+
+<span class="k">def</span> <span class="nf">get_task_registrations</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">TaskRegistration</span><span class="p">,</span> <span class="o">...</span><span class="p">]:</span>
+    <span class="sd">&quot;&quot;&quot;Registrations for all tasks currently registered as part of the benchmark.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">__registered_tasks</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="register_task"><a class="viewcode-back" href="../../api.html#shifthappens.benchmark.register_task">[docs]</a><span class="k">def</span> <span class="nf">register_task</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">relative_data_folder</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">standalone</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Register as task as part of the benchmark.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        name (str): Name of the task (can contain spaces or special characters).</span>
+<span class="sd">        relative_data_folder (str): Name of the folder in which the data for this dataset will be saved for this task</span>
+<span class="sd">            relative to the root folder of the benchmark.</span>
+<span class="sd">        standalone (bool): Is this task meaningful as a stand-alone task or</span>
+<span class="sd">            will this only be relevant as a part of a collection of tasks?</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">assert</span> <span class="n">sh_utils</span><span class="o">.</span><span class="n">is_pathname_valid</span><span class="p">(</span>
+        <span class="n">relative_data_folder</span>
+    <span class="p">),</span> <span class="s2">&quot;relative_data_folder must only contain valid characters for a path&quot;</span>
+
+    <span class="k">def</span> <span class="nf">_inner_register_task</span><span class="p">(</span><span class="bp">cls</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">Task</span><span class="p">],</span> <span class="o">/</span><span class="p">):</span>
+        <span class="k">assert</span> <span class="nb">issubclass</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">Task</span><span class="p">)</span>
+        <span class="c1"># make sure the class was not registered before</span>
+        <span class="k">if</span> <span class="bp">cls</span> <span class="ow">in</span> <span class="p">[</span><span class="n">t</span><span class="o">.</span><span class="n">cls</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">__registered_tasks</span><span class="p">]:</span>
+            <span class="k">return</span>
+
+        <span class="c1"># check whether the task is marked as a dataclass</span>
+        <span class="c1"># (i.e. defines its own _FIELDS attribute and does not use that of the base task)</span>
+        <span class="k">assert</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">dataclasses</span><span class="p">,</span> <span class="s2">&quot;_FIELDS&quot;</span><span class="p">))</span> <span class="ow">is</span> <span class="ow">not</span> <span class="nb">getattr</span><span class="p">(</span>
+            <span class="n">Task</span><span class="p">,</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">dataclasses</span><span class="p">,</span> <span class="s2">&quot;_FIELDS&quot;</span><span class="p">)</span>
+        <span class="p">),</span> <span class="s2">&quot;Tasks need to be dataclasses (i.e. add a @dataclasses.dataclass() decorator)&quot;</span>
+        <span class="c1"># check that the class did not define any fields the benchmark uses internally</span>
+        <span class="n">forbidden_fields</span> <span class="o">=</span> <span class="p">[</span><span class="n">task_metadata</span><span class="o">.</span><span class="n">_TASK_METADATA_FIELD</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">forbidden_field</span> <span class="ow">in</span> <span class="n">forbidden_fields</span><span class="p">:</span>
+            <span class="k">assert</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span>
+                <span class="bp">cls</span><span class="p">,</span> <span class="n">forbidden_field</span>
+            <span class="p">),</span> <span class="sa">f</span><span class="s2">&quot;Tasks must not have an attribute called `</span><span class="si">{</span><span class="n">forbidden_field</span><span class="si">}</span><span class="s2">`&quot;</span>
+
+        <span class="c1"># add metadata to class definition</span>
+        <span class="n">metadata</span> <span class="o">=</span> <span class="n">task_metadata</span><span class="o">.</span><span class="n">TaskMetadata</span><span class="p">(</span>
+            <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span>
+            <span class="n">relative_data_folder</span><span class="o">=</span><span class="n">relative_data_folder</span><span class="p">,</span>
+            <span class="n">standalone</span><span class="o">=</span><span class="n">standalone</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="nb">setattr</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">task_metadata</span><span class="o">.</span><span class="n">_TASK_METADATA_FIELD</span><span class="p">,</span> <span class="n">metadata</span><span class="p">)</span>
+
+        <span class="c1"># finally register class</span>
+        <span class="n">registration</span> <span class="o">=</span> <span class="n">TaskRegistration</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="n">metadata</span><span class="p">)</span>
+        <span class="n">__registered_tasks</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">registration</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">cls</span>
+
+    <span class="k">return</span> <span class="n">_inner_register_task</span></div>
+
+
+<span class="k">def</span> <span class="nf">unregister_task</span><span class="p">(</span><span class="bp">cls</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">Task</span><span class="p">]):</span>
+    <span class="sd">&quot;&quot;&quot;Unregisters a task by removing it from the task registry.&quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">cls_reg</span> <span class="ow">in</span> <span class="n">__registered_tasks</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">cls_reg</span><span class="o">.</span><span class="n">cls</span> <span class="o">==</span> <span class="bp">cls</span><span class="p">:</span>
+            <span class="n">__registered_tasks</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">cls_reg</span><span class="p">)</span>
+            <span class="k">return</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Task `</span><span class="si">{</span><span class="bp">cls</span><span class="si">}</span><span class="s2">` is not registered.&quot;</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="evaluate_model"><a class="viewcode-back" href="../../api.html#shifthappens.benchmark.evaluate_model">[docs]</a><span class="k">def</span> <span class="nf">evaluate_model</span><span class="p">(</span>
+    <span class="n">model</span><span class="p">:</span> <span class="n">Model</span><span class="p">,</span> <span class="n">data_root</span><span class="p">:</span> <span class="nb">str</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="n">TaskRegistration</span><span class="p">,</span> <span class="n">Optional</span><span class="p">[</span><span class="n">TaskResult</span><span class="p">]]:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Runs all tasks of the benchmarks for the supplied model.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        model (Model): Model to evaluate.</span>
+<span class="sd">        data_root (str): Folder where individual tasks can store their data.</span>
+
+<span class="sd">    Returns (dict):</span>
+<span class="sd">        Associates :py:class:`shifthappens.task_data.task_metadata.TaskMetadata` objects</span>
+<span class="sd">        with the respective :py:class:`shifthappens.tasks.task_result.TaskResult` values.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">results</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">task_registration</span> <span class="ow">in</span> <span class="n">get_task_registrations</span><span class="p">():</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">task_registration</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">standalone</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="n">task_registration</span><span class="o">.</span><span class="n">cls</span><span class="o">.</span><span class="n">iterate_flavours</span><span class="p">(</span>
+            <span class="n">data_root</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+                <span class="n">data_root</span><span class="p">,</span> <span class="n">task_registration</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">relative_data_folder</span>
+            <span class="p">)</span>
+        <span class="p">):</span>
+            <span class="n">task</span><span class="o">.</span><span class="n">setup</span><span class="p">()</span>
+            <span class="n">flavored_task_metadata</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="n">task_metadata</span><span class="o">.</span><span class="n">_TASK_METADATA_FIELD</span><span class="p">)</span>
+            <span class="n">results</span><span class="p">[</span><span class="n">flavored_task_metadata</span><span class="p">]</span> <span class="o">=</span> <span class="n">task</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">results</span></div>
+</pre></div>
+
+              </div>
+              
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+<footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2021 - 2022, Julian Bitterwolf, Evgenia Rusak, Steffen Schneider, Roland S. Zimmermann and contributors. Released under an Apache 2.0 License.<br>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>

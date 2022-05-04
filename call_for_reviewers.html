@@ -8,8 +8,9 @@
 
     <title>Call for Reviewers &#8212; Shift Happens (ICML 2022) 0.0.1-alpha documentation</title>
     
-  <link href="_static/css/theme.css" rel="stylesheet">
-  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -19,16 +20,12 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/css/blank.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/css/custom.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -47,7 +44,7 @@
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
     
     <div class="container-fluid" id="banner"></div>
 
@@ -107,28 +104,20 @@
       <div class="navbar-end-item">
         <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
         <li class="nav-item">
-          <a class="nav-link" href="https://github.com/shift-happens-benchmark/iclr-2022" rel="noopener" target="_blank" title="Github">
-            <span><i class="fab fa-github"></i></span>
-            <label class="sr-only">Github</label>
-          </a>
+          <a class="nav-link" href="https://github.com/shift-happens-benchmark/iclr-2022" rel="noopener" target="_blank" title="Github"><span><i class="fab fa-github"></i></span>
+            <label class="sr-only">Github</label></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="https://pypi.org/project/shifthappens/" rel="noopener" target="_blank" title="PyPI">
-            <span><i class="fab fa-python"></i></span>
-            <label class="sr-only">PyPI</label>
-          </a>
+          <a class="nav-link" href="https://pypi.org/project/shifthappens/" rel="noopener" target="_blank" title="PyPI"><span><i class="fab fa-python"></i></span>
+            <label class="sr-only">PyPI</label></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="https://join.slack.com/t/shifthappensicml2022/shared_invite/zt-16ewcukds-6jW6xC5DbtRvLCCkhZ~NLg" rel="noopener" target="_blank" title="Slack">
-            <span><i class="fab fa-slack"></i></span>
-            <label class="sr-only">Slack</label>
-          </a>
+          <a class="nav-link" href="https://join.slack.com/t/shifthappensicml2022/shared_invite/zt-16ewcukds-6jW6xC5DbtRvLCCkhZ~NLg" rel="noopener" target="_blank" title="Slack"><span><i class="fab fa-slack"></i></span>
+            <label class="sr-only">Slack</label></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="mailto:shifthappens@bethgelab.org" rel="noopener" target="_blank" title="Contact us!">
-            <span><i class="fas fa-envelope"></i></span>
-            <label class="sr-only">Contact us!</label>
-          </a>
+          <a class="nav-link" href="mailto:shifthappens@bethgelab.org" rel="noopener" target="_blank" title="Contact us!"><span><i class="fas fa-envelope"></i></span>
+            <label class="sr-only">Contact us!</label></a>
         </li>
       </ul>
       </div>
@@ -144,11 +133,15 @@
           
             
             <!-- Only show if we have sidebars configured, else just a small margin  -->
-            <div class="col-12 col-md-3 bd-sidebar"><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+            <div class="col-12 col-md-3 bd-sidebar">
+              <div class="sidebar-start-items"><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
   <div class="bd-toc-item active">
     
   </div>
 </nav>
+              </div>
+              <div class="sidebar-end-items">
+              </div>
             </div>
             
           
@@ -159,7 +152,7 @@
               
               <div class="toc-item">
                 
-<div class="tocsection onthispage pt-5 pb-3">
+<div class="tocsection onthispage mt-5 pt-1 pb-3">
     <i class="fas fa-list"></i> On this page
 </div>
 
@@ -209,22 +202,22 @@
               <div>
                 
   <section id="call-for-reviewers">
-<h1>Call for Reviewers<a class="headerlink" href="#call-for-reviewers" title="Permalink to this headline">¶</a></h1>
+<h1>Call for Reviewers<a class="headerlink" href="#call-for-reviewers" title="Permalink to this headline">#</a></h1>
 <p>We will list all participating reviewers as our Program Committee on the workshop website.</p>
 <p>Reviewers will assess the submissions according to the <a class="reference external" href="call_for_papers.html#evaluation-criteria">evaluation criteria</a>
 as part of the <a class="reference external" href="call_for_papers.html#post-submission-and-reviewing">process outlined here</a>.</p>
 <section id="becoming-a-reviewer">
-<h2>Becoming a Reviewer:<a class="headerlink" href="#becoming-a-reviewer" title="Permalink to this headline">¶</a></h2>
+<h2>Becoming a Reviewer:<a class="headerlink" href="#becoming-a-reviewer" title="Permalink to this headline">#</a></h2>
 <p>Please fill out this <a class="reference external" href="https://forms.gle/NzykpxQYycMZSB4b7">form</a>.</p>
 <p>In case of questions, you can use the remarks field or email <a class="reference external" href="mailto:shifthappens&#37;&#52;&#48;bethgelab&#46;org">shifthappens<span>&#64;</span>bethgelab<span>&#46;</span>org</a>.</p>
 </section>
 <section id="recommending-a-reviewer">
-<h2>Recommending a Reviewer:<a class="headerlink" href="#recommending-a-reviewer" title="Permalink to this headline">¶</a></h2>
+<h2>Recommending a Reviewer:<a class="headerlink" href="#recommending-a-reviewer" title="Permalink to this headline">#</a></h2>
 <p>Please direct the candidate reviewer to this website and ask them to fill out the form.</p>
 </section>
 </section>
 <section id="reviewing-process">
-<h1>Reviewing Process<a class="headerlink" href="#reviewing-process" title="Permalink to this headline">¶</a></h1>
+<h1>Reviewing Process<a class="headerlink" href="#reviewing-process" title="Permalink to this headline">#</a></h1>
 <p>To eventually obtain a benchmark that is useful for and usable by the research
 community, the review process will somewhat differ from usual paper review processes
 <em>by centering around the code and data submission</em>.</p>
@@ -253,7 +246,8 @@ according to the <a class="reference external" href="call_for_papers.html#evalua
       </div>
     </div>
   
-  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
 <footer class="footer mt-5 mt-md-0">
   <div class="container">
     
