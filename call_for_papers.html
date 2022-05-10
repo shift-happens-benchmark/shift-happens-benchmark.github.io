@@ -169,6 +169,11 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#abstract-preparation">
+   Abstract Preparation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#detailed-information-on-submission-types">
    Detailed Information on Submission Types
   </a>
@@ -211,6 +216,11 @@
                 
   <section id="call-for-submissions">
 <h1>Call for Submissions<a class="headerlink" href="#call-for-submissions" title="Permalink to this headline">#</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We extended the deadline for submissions to May 27. Please make sure to register your submission and submit your abstract until May 17.
+Submission is possible now <a class="reference external" href="https://openreview.net/group?id=ICML.cc/2022/Workshop/Shift_Happens">on OpenReview</a></p>
+</div>
 <section id="tl-dr">
 <h2>TL;DR<a class="headerlink" href="#tl-dr" title="Permalink to this headline">#</a></h2>
 <p>Submissions consist of</p>
@@ -219,7 +229,7 @@
 <li><p>An implementation of the task, metrics and/or datasets, comprised of a plugin to the <code class="docutils literal notranslate"><span class="pre">shifthappens</span></code> benchmark package, and all required external data files.</p></li>
 </ul>
 <p>Both components will be submitted via OpenReview, and reviewing is double-blind.
-Please submit your paper <a class="reference external" href="https://openreview.net/group?id=ICML.cc/2022/Workshop/Shift_Happens">here</a>.
+Please submit your paper <a class="reference external" href="https://openreview.net/group?id=ICML.cc/2022/Workshop/Shift_Happens">on OpenReview</a>.
 The workshop will not have any official proceedings, so it is non-archival.
 Tasks that have been part of a recent submission/publication are allowed, in which case the overlapping
 works should be mentioned.</p>
@@ -239,16 +249,23 @@ or <a class="reference external" href="https://join.slack.com/t/shifthappensicml
 </section>
 <section id="deadlines">
 <h2>Deadlines<a class="headerlink" href="#deadlines" title="Permalink to this headline">#</a></h2>
+<p>You can find all deadlines as well as the submission page also directly <a class="reference external" href="https://openreview.net/group?id=ICML.cc/2022/Workshop/Shift_Happens">on OpenReview</a>.</p>
 <ul class="simple">
-<li><p>Submission Deadline: mid-end May, 2022 (final date TBA)</p></li>
+<li><p><a class="reference external" href="https://openreview.net/group?id=ICML.cc/2022/Workshop/Shift_Happens">Abstract Deadline</a>: May 17, 2022 (please see notes below)</p></li>
+<li><p><a class="reference external" href="https://openreview.net/group?id=ICML.cc/2022/Workshop/Shift_Happens">Submission Deadline</a>: May 27, 2022 (please see notes below)</p></li>
 <li><p>Reviews Posted: June 3, 2022</p></li>
 <li><p>Acceptance Notification: June 6, 2022</p></li>
 <li><p>Camera and Dataset Ready: July 1, 2022</p></li>
 <li><p>ICML 2022 Workshop dates: July 22 and 23 (final date TBA)</p></li>
 </ul>
 <p>Please note that it is <strong>not required</strong> to post the final dataset by the submission deadline.
-It is sufficient to start working on the final dataset collection after the acceptance notification until the
-camera ready deadline.</p>
+It is sufficient to start working on the final dataset collection as well as the finalizing the code associated with the submission after the acceptance notification until the camera ready deadline.</p>
+<p>Please also note that it is <strong>not required</strong> to post a full implementation for adding your benchmark to the <code class="docutils literal notranslate"><span class="pre">shifthappens</span></code> package by the submission deadline. You can submit any implementation along with your submission, as long at is demonstrates the applicability of your model/task to the problem setup of the workshop. We will work with all authors towards adding all accepted submissions into the final benchmark package until the camera ready deadline.</p>
+</section>
+<section id="abstract-preparation">
+<h2>Abstract Preparation<a class="headerlink" href="#abstract-preparation" title="Permalink to this headline">#</a></h2>
+<p>We invite all authors to <strong>register</strong> their ideas in form of an abstract submission <strong>until May 17</strong>. The title, abstract and even the author list do not need to be final, and can be changed even after the abstract deadline. Still, please refrain from submitting “placeholder abstracts”. The scope of the dataset or task you intend to submit should become clear from the submitted abstract.</p>
+<p>Register your abstract now <a class="reference external" href="https://openreview.net/group?id=ICML.cc/2022/Workshop/Shift_Happens">on OpenReview</a>!</p>
 </section>
 <section id="detailed-information-on-submission-types">
 <h2>Detailed Information on Submission Types<a class="headerlink" href="#detailed-information-on-submission-types" title="Permalink to this headline">#</a></h2>
@@ -301,26 +318,14 @@ provided <a class="reference external" href="https://media.icml.cc/Conferences/I
 </section>
 <section id="code-and-data-instructions">
 <h2>Code and Data Instructions<a class="headerlink" href="#code-and-data-instructions" title="Permalink to this headline">#</a></h2>
-<p>Submissions must include a link to the dataset (hosted on a suitable platform),
+<p><strong>Submissions</strong> should demonstrate the full capability of your dataset/task/benchmark, but do not need to contain a final implementation, a full dataset, etc. yet. Make sure to submit a code sample and (parts of) the dataset as supplementary material to your paper submission, directly on OpenReview. Please make sure that from the submitted code it becomes clear how a model would be evaluated. While we invite you to directly build on top of the provided <a class="reference external" href="https://shift-happens-benchmark.github.io/icml-2022/">reference implementation</a>, this is not a requirement at submission time (for example, it it acceptable to provide code for a reference run of a ResNet50 model, or whatever is suitable for your task, even outside the <code class="docutils literal notranslate"><span class="pre">shifthappens</span></code> package). If you have questions about implementation, please do not hesitate to reach out via email or our slack channel. We will continue to assist authors of accepted submissions to make their submission ready for integration to the <code class="docutils literal notranslate"><span class="pre">shifthappens</span></code> package.</p>
+<p>Until the camera-ready deadline, all submissions need to be updated to include a link to the dataset (hosted on a suitable platform),
 as well as code (building on top of the provided <a class="reference external" href="https://shift-happens-benchmark.github.io/icml-2022/">reference implementation</a>) for
 running the evaluation process. Datasets can be hosted on <a class="reference external" href="https://zenodo.org/">zenodo</a>,
 <a class="reference external" href="https://www.google.com/drive/">google drive</a> (by only providing an anonymous google drive ID), or other platforms.</p>
 <p>The data/images need to be usable for research purposes. Their license should
 be stated in the report.</p>
-<p>The implementation leverages our example <a class="reference external" href="api.html">API</a> implementation:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">shifthappens.task</span> <span class="kn">import</span> <span class="n">Result</span><span class="p">,</span> <span class="n">Task</span><span class="p">,</span> <span class="n">register</span>
-
-<span class="nd">@register</span>
-<span class="k">class</span> <span class="nc">MyExampleTask</span><span class="p">(</span><span class="n">Task</span><span class="p">):</span>
-
-    <span class="k">def</span> <span class="nf">_evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">):</span>
-        <span class="o">...</span>
-        <span class="k">return</span> <span class="n">Result</span><span class="p">(</span>
-            <span class="n">accuracy</span> <span class="o">=</span> <span class="mf">0.42</span><span class="p">,</span>
-            <span class="n">calibration</span> <span class="o">=</span> <span class="mf">0.44</span>
-        <span class="p">)</span>
-</pre></div>
-</div>
+<p>Please refer to the <a class="reference external" href="https://shift-happens-benchmark.github.io/api.html">API Docs</a> for further information on how to implement benchmarks and datasets directly in the <code class="docutils literal notranslate"><span class="pre">shifthappens</span></code> package (not required, but encouraged at submission time).</p>
 </section>
 <section id="evaluation-criteria-for-submissions">
 <h2>Evaluation Criteria for Submissions<a class="headerlink" href="#evaluation-criteria-for-submissions" title="Permalink to this headline">#</a></h2>
