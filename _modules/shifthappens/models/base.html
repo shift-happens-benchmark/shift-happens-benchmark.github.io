@@ -162,10 +162,10 @@
 
 <span class="sd">To add a new model, implement a new wrapper class inheriting from</span>
 <span class="sd">:py:class:`shifthappens.models.base.Model`, and from any of the Mixins defined</span>
-<span class="sd">in this module.</span>
+<span class="sd">in :py:mod:`shifthappens.models.mixins`.</span>
 
-<span class="sd">Model results should be converted to :py:class:`numpy.ndarray` objects, and packed into an</span>
-<span class="sd">:py:class:`shifthappens.models.base.ModelResult` instance.</span>
+<span class="sd">Model results should be converted to :py:class:`numpy.ndarray` objects, and</span>
+<span class="sd">packed into an :py:class:`shifthappens.models.base.ModelResult` instance.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="kn">import</span> <span class="nn">abc</span>
@@ -175,6 +175,7 @@
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="kn">from</span> <span class="nn">shifthappens.data.base</span> <span class="kn">import</span> <span class="n">DataLoader</span>
+<span class="kn">from</span> <span class="nn">shifthappens.models</span> <span class="kn">import</span> <span class="n">mixins</span>
 
 
 <div class="viewcode-block" id="ModelResult"><a class="viewcode-back" href="../../../api.html#shifthappens.models.base.ModelResult">[docs]</a><span class="k">class</span> <span class="nc">ModelResult</span><span class="p">:</span>
@@ -228,6 +229,18 @@
 
 <div class="viewcode-block" id="PredictionTargets"><a class="viewcode-back" href="../../../api.html#shifthappens.models.base.PredictionTargets">[docs]</a><span class="nd">@dataclasses</span><span class="o">.</span><span class="n">dataclass</span>
 <span class="k">class</span> <span class="nc">PredictionTargets</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Contains boolean flags of which type of targets model is predicting. Note</span>
+<span class="sd">    that at least one flag should be set as ``True`` and model should be inherited</span>
+<span class="sd">    from corresponding ModelMixin.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        class_labels: Set to ``True`` if model returns predicted labels.</span>
+<span class="sd">        confidences: Set to ``True`` if model returns confidences.</span>
+<span class="sd">        uncertainties: Set to ``True`` if model returns uncertainties.</span>
+<span class="sd">        ood_scores: Set to ``True`` if model returns ood scores.</span>
+<span class="sd">        features: Set to ``True`` if model returns features.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
     <span class="n">class_labels</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
     <span class="n">confidences</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
     <span class="n">uncertainties</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
@@ -241,40 +254,58 @@
 
 
 <div class="viewcode-block" id="Model"><a class="viewcode-back" href="../../../api.html#shifthappens.models.base.Model">[docs]</a><span class="k">class</span> <span class="nc">Model</span><span class="p">(</span><span class="n">abc</span><span class="o">.</span><span class="n">ABC</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Model base class.&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Model base class.</span>
+
+<span class="sd">    Override the :py:meth:`_predict` method to define predictions type of your specific model.</span>
+<span class="sd">    If your model uses unsupervised adaptation mechanisms override :py:meth:`prepare`</span>
+<span class="sd">    as well.</span>
+
+<span class="sd">    Also make sure that your model inherits from the mixins from :py:mod:`shifthappens.models.mixins`</span>
+<span class="sd">    corresponding to your model predictions type (e.g., :py:class:`LabelModelMixin &lt;shifthappens.models.mixins.LabelModelMixin&gt;` for labels</span>
+<span class="sd">    or :py:class:`ConfidenceModelMixin &lt;shifthappens.models.mixins.ConfidenceModelMixin&gt;` for confidences).</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="Model.prepare"><a class="viewcode-back" href="../../../api.html#shifthappens.models.base.Model.prepare">[docs]</a>    <span class="k">def</span> <span class="nf">prepare</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataloader</span><span class="p">:</span> <span class="n">DataLoader</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;If the model uses unsupervised adaptation mechanisms, it will run those.&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;If the model uses unsupervised adaptation mechanisms, it will run those.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            dataloader: Dataloader producing batches of data.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">pass</span></div>
 
 <div class="viewcode-block" id="Model.predict"><a class="viewcode-back" href="../../../api.html#shifthappens.models.base.Model.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">input_dataloader</span><span class="p">:</span> <span class="n">DataLoader</span><span class="p">,</span> <span class="n">targets</span><span class="p">:</span> <span class="n">PredictionTargets</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">ModelResult</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;Yield all the predictions of the model for all data samples contained in the data loader</span>
+        <span class="sd">&quot;&quot;&quot;Yield all the predictions of the model for all data samples contained</span>
+<span class="sd">        in the dataloader</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            input_dataloader: Dataloader producing batches of data.</span>
-<span class="sd">            targets: Indicates which kinds of targets should be predicted.</span>
+<span class="sd">            targets: Indicates which kinds of targets should</span>
+<span class="sd">                be predicted.</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">            Prediction results for the given batch. Depending in the target arguments this</span>
-<span class="sd">            includes the predicted labels, class confidences, class uncertainties, ood scores,</span>
-<span class="sd">            and image features, all as :py:class:`numpy.ndarray` objects.</span>
+<span class="sd">            Prediction results for the given batch. Depending on the target</span>
+<span class="sd">            arguments this includes the predicted labels, class confidences,</span>
+<span class="sd">            class uncertainties, ood scores, and image features, all as</span>
+<span class="sd">            :py:class:`numpy.ndarray` objects.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+
         <span class="k">if</span> <span class="n">targets</span><span class="o">.</span><span class="n">class_labels</span><span class="p">:</span>
-            <span class="k">assert</span> <span class="nb">issubclass</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">),</span> <span class="n">LabelModelMixin</span><span class="p">)</span>
+            <span class="k">assert</span> <span class="nb">issubclass</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">),</span> <span class="n">mixins</span><span class="o">.</span><span class="n">LabelModelMixin</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">targets</span><span class="o">.</span><span class="n">confidences</span><span class="p">:</span>
-            <span class="k">assert</span> <span class="nb">issubclass</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">),</span> <span class="n">ConfidenceModelMixin</span><span class="p">)</span>
+            <span class="k">assert</span> <span class="nb">issubclass</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">),</span> <span class="n">mixins</span><span class="o">.</span><span class="n">ConfidenceModelMixin</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">targets</span><span class="o">.</span><span class="n">uncertainties</span><span class="p">:</span>
-            <span class="k">assert</span> <span class="nb">issubclass</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">),</span> <span class="n">UncertaintyModelMixin</span><span class="p">)</span>
+            <span class="k">assert</span> <span class="nb">issubclass</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">),</span> <span class="n">mixins</span><span class="o">.</span><span class="n">UncertaintyModelMixin</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">targets</span><span class="o">.</span><span class="n">ood_scores</span><span class="p">:</span>
-            <span class="k">assert</span> <span class="nb">issubclass</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">),</span> <span class="n">OODScoreModelMixin</span><span class="p">)</span>
+            <span class="k">assert</span> <span class="nb">issubclass</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">),</span> <span class="n">mixins</span><span class="o">.</span><span class="n">OODScoreModelMixin</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">targets</span><span class="o">.</span><span class="n">features</span><span class="p">:</span>
-            <span class="k">assert</span> <span class="nb">issubclass</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">),</span> <span class="n">FeaturesModelMixin</span><span class="p">)</span>
+            <span class="k">assert</span> <span class="nb">issubclass</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">),</span> <span class="n">mixins</span><span class="o">.</span><span class="n">FeaturesModelMixin</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_predict</span><span class="p">(</span><span class="n">input_dataloader</span><span class="p">,</span> <span class="n">targets</span><span class="p">)</span></div>
 
-    <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
+<div class="viewcode-block" id="Model._predict"><a class="viewcode-back" href="../../../api.html#shifthappens.models.base.Model._predict">[docs]</a>    <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
     <span class="k">def</span> <span class="nf">_predict</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">input_dataloader</span><span class="p">:</span> <span class="n">DataLoader</span><span class="p">,</span> <span class="n">targets</span><span class="p">:</span> <span class="n">PredictionTargets</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">ModelResult</span><span class="p">]:</span>
@@ -282,46 +313,16 @@
 <span class="sd">        Override this function for the specific model.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            inputs (np.ndarray): Batch of images.</span>
-<span class="sd">            targets (PredictionTargets): Indicates which kinds of targets should be predicted.</span>
+<span class="sd">            input_dataloader: Dataloader producing batches of data.</span>
+<span class="sd">            targets: Indicates which kinds of targets should be predicted.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            Yields prediction results for all batches yielded by the dataloader.</span>
-<span class="sd">            Depending in the target arguments the model results may include the</span>
+<span class="sd">            Depending on the target arguments the model results may include the</span>
 <span class="sd">            predicted labels, class confidences, class uncertainties, ood scores,</span>
-<span class="sd">            and image features, all as ``np.array``s.</span>
+<span class="sd">            and image features, all as :py:class:`numpy.ndarray` objects.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span></div>
-
-
-<div class="viewcode-block" id="LabelModelMixin"><a class="viewcode-back" href="../../../api.html#shifthappens.models.base.LabelModelMixin">[docs]</a><span class="k">class</span> <span class="nc">LabelModelMixin</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Inherit from this class if your model returns predicted labels.&quot;&quot;&quot;</span>
-
-    <span class="k">pass</span></div>
-
-
-<div class="viewcode-block" id="ConfidenceModelMixin"><a class="viewcode-back" href="../../../api.html#shifthappens.models.base.ConfidenceModelMixin">[docs]</a><span class="k">class</span> <span class="nc">ConfidenceModelMixin</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Inherit from this class if you model returns confidences.&quot;&quot;&quot;</span>
-
-    <span class="k">pass</span></div>
-
-
-<div class="viewcode-block" id="UncertaintyModelMixin"><a class="viewcode-back" href="../../../api.html#shifthappens.models.base.UncertaintyModelMixin">[docs]</a><span class="k">class</span> <span class="nc">UncertaintyModelMixin</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Inherit from this class if your model returns uncertainties.&quot;&quot;&quot;</span>
-
-    <span class="k">pass</span></div>
-
-
-<div class="viewcode-block" id="OODScoreModelMixin"><a class="viewcode-back" href="../../../api.html#shifthappens.models.base.OODScoreModelMixin">[docs]</a><span class="k">class</span> <span class="nc">OODScoreModelMixin</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Inherit from this class if your model returns ood scores.&quot;&quot;&quot;</span>
-
-    <span class="k">pass</span></div>
-
-
-<div class="viewcode-block" id="FeaturesModelMixin"><a class="viewcode-back" href="../../../api.html#shifthappens.models.base.FeaturesModelMixin">[docs]</a><span class="k">class</span> <span class="nc">FeaturesModelMixin</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Inherit from this class if your model returns features.&quot;&quot;&quot;</span>
-
-    <span class="k">pass</span></div>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span></div></div>
 </pre></div>
 
               </div>

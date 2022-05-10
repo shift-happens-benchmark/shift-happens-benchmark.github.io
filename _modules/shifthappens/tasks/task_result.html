@@ -170,16 +170,31 @@
 <span class="sd">    At least one of these metrics must be references as a summary metric.</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        summary_metrics (dict): Associates :py:class:`shifthappens.tasks.metrics.Metric` values</span>
+<span class="sd">        summary_metrics: Associates :py:class:`shifthappens.tasks.metrics.Metric` values</span>
 <span class="sd">            to the name of metrics calculated by the task.</span>
-<span class="sd">        **metrics (float, int): Metrics&#39; names and their values.</span>
+<span class="sd">        metrics: Metrics&#39; names and their values.</span>
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; @dataclasses.dataclass</span>
+<span class="sd">        &gt;&gt;&gt; class CustomTask(Task):</span>
+<span class="sd">        &gt;&gt;&gt;     ...</span>
+<span class="sd">        &gt;&gt;&gt;     def _evaluate(self, model: shifthappens.models.base.Model) -&gt; DataLoader:</span>
+<span class="sd">        &gt;&gt;&gt;         ...</span>
+<span class="sd">        &gt;&gt;&gt;         return TaskResult(</span>
+<span class="sd">        &gt;&gt;&gt;                 your_robustness_metric=your_robustness_metric,</span>
+<span class="sd">        &gt;&gt;&gt;                 your_calibration_metric=your_calibration_metric,</span>
+<span class="sd">        &gt;&gt;&gt;                 your_custom_metric=1.0 - your_custom_metric,</span>
+<span class="sd">        &gt;&gt;&gt;                 summary_metrics={</span>
+<span class="sd">        &gt;&gt;&gt;                    Metric.Robustness: &quot;your_robustness_metric&quot;,</span>
+<span class="sd">        &gt;&gt;&gt;                    Metric.Calibration: &quot;your_calibration_metric&quot;},</span>
+<span class="sd">        &gt;&gt;&gt;                 )</span>
+<span class="sd">        &gt;&gt;&gt;     ...</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="o">*</span><span class="p">,</span>
         <span class="n">summary_metrics</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="n">Metric</span><span class="p">,</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="o">...</span><span class="p">]]],</span>
-        <span class="o">**</span><span class="n">metrics</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">metrics</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">int</span><span class="p">],</span>
     <span class="p">):</span>
         <span class="c1"># validate that metrics referenced in summary metrics exist</span>
         <span class="k">for</span> <span class="n">sm</span> <span class="ow">in</span> <span class="n">summary_metrics</span><span class="p">:</span>

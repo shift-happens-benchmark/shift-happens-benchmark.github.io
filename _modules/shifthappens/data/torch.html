@@ -158,7 +158,8 @@
               <div>
                 
   <h1>Source code for shifthappens.data.torch</h1><div class="highlight"><pre>
-<span></span><span class="sd">&quot;&quot;&quot;Wrappers for PyTorch datasets such that they can be used as datasets for the benchmark.&quot;&quot;&quot;</span>
+<span></span><span class="sd">&quot;&quot;&quot;Wrappers for PyTorch datasets such that they can be used as datasets</span>
+<span class="sd">for the benchmark.&quot;&quot;&quot;</span>
 <span class="kn">import</span> <span class="nn">collections</span>
 <span class="kn">import</span> <span class="nn">typing</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Sequence</span>
@@ -185,7 +186,12 @@
 
 
 <div class="viewcode-block" id="TorchDataset"><a class="viewcode-back" href="../../../api.html#shifthappens.data.torch.TorchDataset">[docs]</a><span class="k">class</span> <span class="nc">TorchDataset</span><span class="p">(</span><span class="n">Dataset</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Wraps a torch iterable dataset (i.e. torch.utils.data.IterableDataset).&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Wraps a torch iterable dataset</span>
+<span class="sd">    (i.e. :py:class:`torch.utils.data.IterableDataset`).</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">            torch_dataset: Dataset from which to load the data.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">torch_dataset</span><span class="p">:</span> <span class="n">ch_data</span><span class="o">.</span><span class="n">IterableDataset</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">torch_dataset</span> <span class="o">=</span> <span class="n">torch_dataset</span>
@@ -200,7 +206,12 @@
 
 
 <div class="viewcode-block" id="IndexedTorchDataset"><a class="viewcode-back" href="../../../api.html#shifthappens.data.torch.IndexedTorchDataset">[docs]</a><span class="k">class</span> <span class="nc">IndexedTorchDataset</span><span class="p">(</span><span class="n">IndexedDataset</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Wraps a torch map-style dataset (i.e. torch.utils.data.Dataset).&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Wraps a torch map-style dataset</span>
+<span class="sd">    (i.e. :py:class:`torch.utils.data.Dataset`).</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">            torch_dataset: Dataset from which to load the data.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">torch_dataset</span><span class="p">:</span> <span class="n">ch_data</span><span class="o">.</span><span class="n">Dataset</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">torch_dataset</span> <span class="o">=</span> <span class="n">torch_dataset</span>
@@ -214,7 +225,12 @@
 
 
 <div class="viewcode-block" id="ImagesOnlyTorchDataset"><a class="viewcode-back" href="../../../api.html#shifthappens.data.torch.ImagesOnlyTorchDataset">[docs]</a><span class="k">class</span> <span class="nc">ImagesOnlyTorchDataset</span><span class="p">(</span><span class="n">ch_data</span><span class="o">.</span><span class="n">Dataset</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Wraps a torch map-style dataset returning images and labels such that only the images are returned.&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Wraps a torch map-style dataset returning images and labels such that</span>
+<span class="sd">    only the images are returned.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">            dataset: Dataset from which to load the data.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataset</span><span class="p">:</span> <span class="n">ch_data</span><span class="o">.</span><span class="n">Dataset</span><span class="p">):</span>
         <span class="k">assert</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="s2">&quot;__getitem__&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">hasattr</span><span class="p">(</span>

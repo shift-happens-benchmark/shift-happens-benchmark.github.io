@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>shifthappens.task_data.task_registration &#8212; Shift Happens (ICML 2022) 0.0.1-alpha documentation</title>
+    <title>shifthappens.models.mixins &#8212; Shift Happens (ICML 2022) 0.0.1-alpha documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -157,29 +157,38 @@
               
               <div>
                 
-  <h1>Source code for shifthappens.task_data.task_registration</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Type</span>
-
-<span class="kn">from</span> <span class="nn">shifthappens.task_data.task_metadata</span> <span class="kn">import</span> <span class="n">TaskMetadata</span>
-<span class="kn">from</span> <span class="nn">shifthappens.tasks.base</span> <span class="kn">import</span> <span class="n">Task</span>
+  <h1>Source code for shifthappens.models.mixins</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Model mixins indicate the supported prediction types of a model.&quot;&quot;&quot;</span>
 
 
-<div class="viewcode-block" id="TaskRegistration"><a class="viewcode-back" href="../../../api.html#shifthappens.task_data.task_registration.TaskRegistration">[docs]</a><span class="nd">@dataclass</span>
-<span class="k">class</span> <span class="nc">TaskRegistration</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Class for storing a task&#39;s registration for the benchmark. Arguments initialized</span>
-<span class="sd">    automatically during task registration process.</span>
+<div class="viewcode-block" id="LabelModelMixin"><a class="viewcode-back" href="../../../api.html#shifthappens.models.mixins.LabelModelMixin">[docs]</a><span class="k">class</span> <span class="nc">LabelModelMixin</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Inherit from this class if your model returns predicted labels.&quot;&quot;&quot;</span>
 
-<span class="sd">    Args:</span>
-<span class="sd">        cls: Task class.</span>
-<span class="sd">        metadata: Task metadata passed with :py:meth:`shifthappens.benchmark.register_task`.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
 
-    <span class="bp">cls</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">Task</span><span class="p">]</span>
-    <span class="n">metadata</span><span class="p">:</span> <span class="n">TaskMetadata</span>
 
-    <span class="k">def</span> <span class="fm">__hash__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="nb">hash</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cls</span><span class="p">)</span></div>
+<div class="viewcode-block" id="ConfidenceModelMixin"><a class="viewcode-back" href="../../../api.html#shifthappens.models.mixins.ConfidenceModelMixin">[docs]</a><span class="k">class</span> <span class="nc">ConfidenceModelMixin</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Inherit from this class if your model returns confidences.&quot;&quot;&quot;</span>
+
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="UncertaintyModelMixin"><a class="viewcode-back" href="../../../api.html#shifthappens.models.mixins.UncertaintyModelMixin">[docs]</a><span class="k">class</span> <span class="nc">UncertaintyModelMixin</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Inherit from this class if your model returns uncertainties.&quot;&quot;&quot;</span>
+
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="OODScoreModelMixin"><a class="viewcode-back" href="../../../api.html#shifthappens.models.mixins.OODScoreModelMixin">[docs]</a><span class="k">class</span> <span class="nc">OODScoreModelMixin</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Inherit from this class if your model returns ood scores.&quot;&quot;&quot;</span>
+
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="FeaturesModelMixin"><a class="viewcode-back" href="../../../api.html#shifthappens.models.mixins.FeaturesModelMixin">[docs]</a><span class="k">class</span> <span class="nc">FeaturesModelMixin</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Inherit from this class if your model returns features.&quot;&quot;&quot;</span>
+
+    <span class="k">pass</span></div>
 </pre></div>
 
               </div>

@@ -163,7 +163,18 @@
 
 <div class="viewcode-block" id="TaskMetadata"><a class="viewcode-back" href="../../../api.html#shifthappens.task_data.task_metadata.TaskMetadata">[docs]</a><span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">eq</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="k">class</span> <span class="nc">TaskMetadata</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Class for storing a task&#39;s metadata required by the task registration mechanism.&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Class for storing a task&#39;s metadata required by the task registration mechanism.</span>
+<span class="sd">    Arguments are passed by :py:meth:`shifthappens.benchmark.register_task` and are the same.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        name: Name of the task (can contain spaces or special characters).</span>
+<span class="sd">        relative_data_folder: Name of the folder in which the data for</span>
+<span class="sd">            this dataset will be saved for this task relative to the root folder</span>
+<span class="sd">            of the benchmark.</span>
+<span class="sd">        standalone: Boolean which represents if this task meaningful as a</span>
+<span class="sd">            standalone task or will this only be relevant as a part of a</span>
+<span class="sd">            collection of tasks.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">relative_data_folder</span><span class="p">:</span> <span class="nb">str</span>

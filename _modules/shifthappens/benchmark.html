@@ -158,7 +158,17 @@
               <div>
                 
   <h1>Source code for shifthappens.benchmark</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">dataclasses</span>
+<span></span><span class="sd">&quot;&quot;&quot;Base functions to register new tasks to the benchmark and evaluate models.</span>
+
+<span class="sd">To register add a new task decorate a task class inherited from</span>
+<span class="sd">:py:class:`shifthappens.tasks.base.Task` with :py:meth:`shifthappens.benchmark.register_task`</span>
+<span class="sd">function.</span>
+
+<span class="sd">To evaluate model on all the registered tasks run</span>
+<span class="sd">:py:meth:`shifthappens.benchmark.evaluate_model`.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">dataclasses</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
@@ -173,12 +183,17 @@
 <span class="kn">from</span> <span class="nn">shifthappens.tasks.base</span> <span class="kn">import</span> <span class="n">Task</span>
 <span class="kn">from</span> <span class="nn">shifthappens.tasks.task_result</span> <span class="kn">import</span> <span class="n">TaskResult</span>
 
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;get_registered_tasks&quot;</span><span class="p">,</span> <span class="s2">&quot;evaluate_model&quot;</span><span class="p">,</span> <span class="s2">&quot;register_task&quot;</span><span class="p">]</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;evaluate_model&quot;</span><span class="p">,</span> <span class="s2">&quot;register_task&quot;</span><span class="p">,</span> <span class="s2">&quot;get_registered_tasks&quot;</span><span class="p">]</span>
 <span class="n">__registered_tasks</span><span class="p">:</span> <span class="n">Set</span><span class="p">[</span><span class="n">TaskRegistration</span><span class="p">]</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
 
 
 <div class="viewcode-block" id="get_registered_tasks"><a class="viewcode-back" href="../../api.html#shifthappens.benchmark.get_registered_tasks">[docs]</a><span class="k">def</span> <span class="nf">get_registered_tasks</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Type</span><span class="p">[</span><span class="n">Task</span><span class="p">],</span> <span class="o">...</span><span class="p">]:</span>
-    <span class="sd">&quot;&quot;&quot;All tasks currently registered as part of the benchmark.&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;All tasks currently registered as part of the benchmark.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        A tuple of all currently registered tasks as part of the benchmark. This</span>
+<span class="sd">        tuple used for task iteration in :py:meth:`shifthappens.benchmark.evaluate_model`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="nb">tuple</span><span class="p">([</span><span class="n">x</span><span class="o">.</span><span class="n">cls</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">__registered_tasks</span><span class="p">])</span></div>
 
 
@@ -188,14 +203,27 @@
 
 
 <div class="viewcode-block" id="register_task"><a class="viewcode-back" href="../../api.html#shifthappens.benchmark.register_task">[docs]</a><span class="k">def</span> <span class="nf">register_task</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">relative_data_folder</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">standalone</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Register as task as part of the benchmark.</span>
+    <span class="sd">&quot;&quot;&quot;Registers a task class inherited from :py:class:`shifthappens.tasks.base.Task`</span>
+<span class="sd">    as task as part of the benchmark.</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        name (str): Name of the task (can contain spaces or special characters).</span>
-<span class="sd">        relative_data_folder (str): Name of the folder in which the data for this dataset will be saved for this task</span>
-<span class="sd">            relative to the root folder of the benchmark.</span>
-<span class="sd">        standalone (bool): Is this task meaningful as a stand-alone task or</span>
-<span class="sd">            will this only be relevant as a part of a collection of tasks?</span>
+<span class="sd">        name: Name of the task (can contain spaces or special characters).</span>
+<span class="sd">        relative_data_folder: Name of the folder in which the data for</span>
+<span class="sd">            this dataset will be saved for this task relative to the root folder</span>
+<span class="sd">            of the benchmark.</span>
+<span class="sd">        standalone: Boolean which represents if this task meaningful as a</span>
+<span class="sd">            standalone task or will this only be relevant as a part of a</span>
+<span class="sd">            collection of tasks.</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; @shifthappens.benchmark.register_task(</span>
+<span class="sd">                name=&quot;CustomTask&quot;,</span>
+<span class="sd">                relative_data_folder=&quot;path_to_store_task_data&quot;,</span>
+<span class="sd">                standalone=True</span>
+<span class="sd">            )</span>
+<span class="sd">        &gt;&gt;&gt; @dataclasses.dataclass</span>
+<span class="sd">        &gt;&gt;&gt; class CustomTaskClass(Task):</span>
+<span class="sd">                ...</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">assert</span> <span class="n">sh_utils</span><span class="o">.</span><span class="n">is_pathname_valid</span><span class="p">(</span>
@@ -249,16 +277,24 @@
     <span class="n">model</span><span class="p">:</span> <span class="n">Model</span><span class="p">,</span> <span class="n">data_root</span><span class="p">:</span> <span class="nb">str</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="n">TaskRegistration</span><span class="p">,</span> <span class="n">Optional</span><span class="p">[</span><span class="n">TaskResult</span><span class="p">]]:</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Runs all tasks of the benchmarks for the supplied model.</span>
+<span class="sd">    Runs all registered tasks of the benchmark</span>
+<span class="sd">    which are supported by the supplied model.</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        model (Model): Model to evaluate.</span>
-<span class="sd">        data_root (str): Folder where individual tasks can store their data.</span>
+<span class="sd">        model: Model to evaluate.</span>
+<span class="sd">        data_root: Folder where individual tasks can store their data.</span>
 
-<span class="sd">    Returns (dict):</span>
-<span class="sd">        Associates :py:class:`shifthappens.task_data.task_metadata.TaskMetadata` objects</span>
-<span class="sd">        with the respective :py:class:`shifthappens.tasks.task_result.TaskResult` values.</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        Associates :py:class:`shifthappens.task_data.task_metadata.TaskMetadata` with the</span>
+<span class="sd">        respective :py:class:`shifthappens.tasks.task_result.TaskResult`.</span>
 
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; import shifthappens.benchmark</span>
+<span class="sd">        &gt;&gt;&gt; from shifthappens.models.torchvision import resnet18</span>
+<span class="sd">        &gt;&gt;&gt; # import existing model or create a custom one inherited from</span>
+<span class="sd">        &gt;&gt;&gt; # shifthappens.models.base.Model and ModelMixin&#39;s</span>
+<span class="sd">        &gt;&gt;&gt; model = resnet18()</span>
+<span class="sd">        &gt;&gt;&gt; shifthappens.benchmark.evaluate_model(model, &quot;path_to_store_tasks_data&quot;)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">results</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
