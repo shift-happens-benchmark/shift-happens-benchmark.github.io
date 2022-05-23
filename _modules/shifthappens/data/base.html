@@ -238,6 +238,11 @@
             <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
                 <span class="n">dataset_exhausted</span> <span class="o">=</span> <span class="kc">True</span>
 
+                <span class="c1"># at the end of the dataset we need to check whether there is</span>
+                <span class="c1"># any data left to return; otherwise, leave this iterator</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">batch</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="k">return</span>
+
             <span class="k">yield</span> <span class="n">batch</span></div>
 
 

@@ -166,6 +166,7 @@
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">torch</span>
 <span class="kn">import</span> <span class="nn">torchvision</span>
+<span class="kn">from</span> <span class="nn">surgeon_pytorch</span> <span class="kn">import</span> <span class="n">Inspect</span>
 <span class="kn">from</span> <span class="nn">torch</span> <span class="kn">import</span> <span class="n">nn</span>
 <span class="kn">from</span> <span class="nn">torchvision.transforms</span> <span class="kn">import</span> <span class="n">functional</span> <span class="k">as</span> <span class="n">tv_functional</span>
 
@@ -174,8 +175,29 @@
 <span class="kn">from</span> <span class="nn">shifthappens.data.base</span> <span class="kn">import</span> <span class="n">DataLoader</span>
 
 
-<div class="viewcode-block" id="__TorchModel"><a class="viewcode-back" href="../../../api.html#shifthappens.models.torchvision.__TorchModel">[docs]</a><span class="k">class</span> <span class="nc">__TorchModel</span><span class="p">(</span>
-    <span class="n">sh_models</span><span class="o">.</span><span class="n">Model</span><span class="p">,</span> <span class="n">sh_mixins</span><span class="o">.</span><span class="n">LabelModelMixin</span><span class="p">,</span> <span class="n">sh_mixins</span><span class="o">.</span><span class="n">ConfidenceModelMixin</span>
+<div class="viewcode-block" id="__TorchvisionPreProcessingMixin"><a class="viewcode-back" href="../../../api.html#shifthappens.models.torchvision.__TorchvisionPreProcessingMixin">[docs]</a><span class="k">class</span> <span class="nc">__TorchvisionPreProcessingMixin</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Performs the default preprocessing for torchvision ImageNet classifiers.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">_pre_process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">],</span> <span class="n">device</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
+        <span class="n">inputs</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">batch</span><span class="p">:</span>
+            <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span>
+            <span class="n">item_t</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">transpose</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)))</span>
+            <span class="n">item_t</span> <span class="o">=</span> <span class="n">tv_functional</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">item_t</span><span class="p">,</span> <span class="mi">256</span><span class="p">)</span>
+            <span class="n">item_t</span> <span class="o">=</span> <span class="n">tv_functional</span><span class="o">.</span><span class="n">center_crop</span><span class="p">(</span><span class="n">item_t</span><span class="p">,</span> <span class="mi">224</span><span class="p">)</span>
+            <span class="n">inputs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item_t</span><span class="p">)</span>
+
+        <span class="n">inputs_t</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">inputs_t</span> <span class="o">=</span> <span class="n">inputs_t</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">inputs_t</span></div>
+
+
+<div class="viewcode-block" id="__TorchvisionModel"><a class="viewcode-back" href="../../../api.html#shifthappens.models.torchvision.__TorchvisionModel">[docs]</a><span class="k">class</span> <span class="nc">__TorchvisionModel</span><span class="p">(</span>
+    <span class="n">sh_models</span><span class="o">.</span><span class="n">Model</span><span class="p">,</span>
+    <span class="n">__TorchvisionPreProcessingMixin</span><span class="p">,</span>
+    <span class="n">sh_mixins</span><span class="o">.</span><span class="n">LabelModelMixin</span><span class="p">,</span>
+    <span class="n">sh_mixins</span><span class="o">.</span><span class="n">ConfidenceModelMixin</span><span class="p">,</span>
+    <span class="n">sh_mixins</span><span class="o">.</span><span class="n">FeaturesModelMixin</span><span class="p">,</span>
 <span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Wraps a torchvision model.</span>
 
@@ -185,22 +207,20 @@
 <span class="sd">        device: Selected device to run the model on.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span> <span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">,</span> <span class="n">max_batch_size</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">device</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;cpu&quot;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">model</span><span class="p">:</span> <span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">,</span>
+        <span class="n">feature_layer</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">max_batch_size</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">device</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;cpu&quot;</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="k">assert</span> <span class="ow">not</span> <span class="nb">issubclass</span><span class="p">(</span>
+            <span class="nb">type</span><span class="p">(</span><span class="n">model</span><span class="p">),</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">DataParallel</span>
+        <span class="p">),</span> <span class="s2">&quot;Parallel models are not yet supported&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">model</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">max_batch_size</span> <span class="o">=</span> <span class="n">max_batch_size</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">device</span> <span class="o">=</span> <span class="n">device</span>
-
-    <span class="k">def</span> <span class="nf">_pre_process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="n">inputs</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">batch</span><span class="p">:</span>
-            <span class="n">item_t</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">transpose</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)))</span>
-            <span class="n">item_t</span> <span class="o">=</span> <span class="n">tv_functional</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">item_t</span><span class="p">,</span> <span class="mi">256</span><span class="p">)</span>
-            <span class="n">item_t</span> <span class="o">=</span> <span class="n">tv_functional</span><span class="o">.</span><span class="n">center_crop</span><span class="p">(</span><span class="n">item_t</span><span class="p">,</span> <span class="mi">224</span><span class="p">)</span>
-            <span class="n">inputs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item_t</span><span class="p">)</span>
-
-        <span class="n">inputs_t</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-        <span class="n">inputs_t</span> <span class="o">=</span> <span class="n">inputs_t</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">inputs_t</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hooked_model</span> <span class="o">=</span> <span class="n">Inspect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="n">layer</span><span class="o">=</span><span class="n">feature_layer</span><span class="p">)</span>
 
     <span class="nd">@torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">_predict</span><span class="p">(</span>
@@ -208,26 +228,64 @@
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">sh_models</span><span class="o">.</span><span class="n">ModelResult</span><span class="p">]:</span>
         <span class="k">for</span> <span class="n">batch</span> <span class="ow">in</span> <span class="n">input_dataloader</span><span class="o">.</span><span class="n">iterate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">max_batch_size</span><span class="p">):</span>
             <span class="c1"># pre-process batch</span>
-            <span class="n">inputs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pre_process</span><span class="p">(</span><span class="n">batch</span><span class="p">)</span>
-            <span class="n">logits</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span>
+            <span class="n">inputs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pre_process</span><span class="p">(</span><span class="n">batch</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+            <span class="n">logits</span><span class="p">,</span> <span class="n">features</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">hooked_model</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+            <span class="n">features</span> <span class="o">=</span> <span class="n">features</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">features</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">logits</span><span class="p">,</span> <span class="n">features</span> <span class="o">=</span> <span class="n">logits</span><span class="o">.</span><span class="n">cpu</span><span class="p">(),</span> <span class="n">features</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span>
             <span class="n">probabilities</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">logits</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
             <span class="n">predictions</span> <span class="o">=</span> <span class="n">logits</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 
             <span class="k">yield</span> <span class="n">sh_models</span><span class="o">.</span><span class="n">ModelResult</span><span class="p">(</span>
-                <span class="n">class_labels</span><span class="o">=</span><span class="n">predictions</span><span class="o">.</span><span class="n">numpy</span><span class="p">(),</span> <span class="n">confidences</span><span class="o">=</span><span class="n">probabilities</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+                <span class="n">class_labels</span><span class="o">=</span><span class="n">predictions</span><span class="o">.</span><span class="n">numpy</span><span class="p">(),</span>
+                <span class="n">confidences</span><span class="o">=</span><span class="n">probabilities</span><span class="o">.</span><span class="n">numpy</span><span class="p">(),</span>
+                <span class="n">features</span><span class="o">=</span><span class="n">features</span><span class="o">.</span><span class="n">numpy</span><span class="p">(),</span>
             <span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="resnet18"><a class="viewcode-back" href="../../../api.html#shifthappens.models.torchvision.resnet18">[docs]</a><span class="k">def</span> <span class="nf">resnet18</span><span class="p">(</span><span class="n">max_batch_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">16</span><span class="p">,</span> <span class="n">device</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;cpu&quot;</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Torchvision ResNet-18 implementation.</span>
+<span class="sd">    Load a ResNet18 network trained on the ImageNet 2012 train set from torchvision.</span>
+<span class="sd">    See :py:func:`torchvision.models.resnet18` for details.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        max_batch_size: How many samples allowed per batch to load.</span>
 <span class="sd">        device: Selected device to run the model on.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">__TorchModel</span><span class="p">(</span>
+    <span class="k">return</span> <span class="n">__TorchvisionModel</span><span class="p">(</span>
         <span class="n">torchvision</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">resnet18</span><span class="p">(</span><span class="n">pretrained</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+        <span class="s2">&quot;avgpool&quot;</span><span class="p">,</span>
+        <span class="n">max_batch_size</span><span class="o">=</span><span class="n">max_batch_size</span><span class="p">,</span>
+        <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span>
+    <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="resnet50"><a class="viewcode-back" href="../../../api.html#shifthappens.models.torchvision.resnet50">[docs]</a><span class="k">def</span> <span class="nf">resnet50</span><span class="p">(</span><span class="n">max_batch_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">16</span><span class="p">,</span> <span class="n">device</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;cpu&quot;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Load a ResNet50 network trained on the ImageNet 2012 train set from torchvision.</span>
+<span class="sd">    See :py:func:`torchvision.models.resnet50` for details.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        max_batch_size: How many samples allowed per batch to load.</span>
+<span class="sd">        device: Selected device to run the model on.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">__TorchvisionModel</span><span class="p">(</span>
+        <span class="n">torchvision</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">resnet50</span><span class="p">(</span><span class="n">pretrained</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+        <span class="s2">&quot;avgpool&quot;</span><span class="p">,</span>
+        <span class="n">max_batch_size</span><span class="o">=</span><span class="n">max_batch_size</span><span class="p">,</span>
+        <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span>
+    <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="vgg16"><a class="viewcode-back" href="../../../api.html#shifthappens.models.torchvision.vgg16">[docs]</a><span class="k">def</span> <span class="nf">vgg16</span><span class="p">(</span><span class="n">max_batch_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">16</span><span class="p">,</span> <span class="n">device</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;cpu&quot;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Load a VGG16 network trained on the ImageNet 2012 train set from torchvision.</span>
+<span class="sd">    See :py:func:`torchvision.models.vgg16` for details.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        max_batch_size: How many samples allowed per batch to load.</span>
+<span class="sd">        device: Selected device to run the model on.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">__TorchvisionModel</span><span class="p">(</span>
+        <span class="n">torchvision</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">vgg16</span><span class="p">(</span><span class="n">pretrained</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+        <span class="s2">&quot;avgpool&quot;</span><span class="p">,</span>
         <span class="n">max_batch_size</span><span class="o">=</span><span class="n">max_batch_size</span><span class="p">,</span>
         <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span>
     <span class="p">)</span></div>

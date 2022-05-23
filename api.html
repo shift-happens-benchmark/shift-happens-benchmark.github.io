@@ -820,9 +820,16 @@ and image features, all as <a class="reference external" href="https://numpy.org
 <span id="model-implementations-from-torchvision"></span><h4>Model implementations from torchvision<a class="headerlink" href="#module-shifthappens.models.torchvision" title="Permalink to this headline">#</a></h4>
 <p>Model baselines from torchvision.</p>
 <dl class="py class">
-<dt class="sig sig-object py" id="shifthappens.models.torchvision.__TorchModel">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">shifthappens.models.torchvision.</span></span><span class="sig-name descname"><span class="pre">__TorchModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_batch_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cpu'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/shifthappens/models/torchvision.html#__TorchModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shifthappens.models.torchvision.__TorchModel" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#shifthappens.models.base.Model" title="shifthappens.models.base.Model"><code class="xref py py-class docutils literal notranslate"><span class="pre">shifthappens.models.base.Model</span></code></a>, <a class="reference internal" href="#shifthappens.models.mixins.LabelModelMixin" title="shifthappens.models.mixins.LabelModelMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">shifthappens.models.mixins.LabelModelMixin</span></code></a>, <a class="reference internal" href="#shifthappens.models.mixins.ConfidenceModelMixin" title="shifthappens.models.mixins.ConfidenceModelMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">shifthappens.models.mixins.ConfidenceModelMixin</span></code></a></p>
+<dt class="sig sig-object py" id="shifthappens.models.torchvision.__TorchvisionPreProcessingMixin">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">shifthappens.models.torchvision.</span></span><span class="sig-name descname"><span class="pre">__TorchvisionPreProcessingMixin</span></span><a class="reference internal" href="_modules/shifthappens/models/torchvision.html#__TorchvisionPreProcessingMixin"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shifthappens.models.torchvision.__TorchvisionPreProcessingMixin" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Performs the default preprocessing for torchvision ImageNet classifiers.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="shifthappens.models.torchvision.__TorchvisionModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">shifthappens.models.torchvision.</span></span><span class="sig-name descname"><span class="pre">__TorchvisionModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_layer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_batch_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cpu'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/shifthappens/models/torchvision.html#__TorchvisionModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shifthappens.models.torchvision.__TorchvisionModel" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#shifthappens.models.base.Model" title="shifthappens.models.base.Model"><code class="xref py py-class docutils literal notranslate"><span class="pre">shifthappens.models.base.Model</span></code></a>, <a class="reference internal" href="#shifthappens.models.torchvision.__TorchvisionPreProcessingMixin" title="shifthappens.models.torchvision.__TorchvisionPreProcessingMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">shifthappens.models.torchvision.__TorchvisionPreProcessingMixin</span></code></a>, <a class="reference internal" href="#shifthappens.models.mixins.LabelModelMixin" title="shifthappens.models.mixins.LabelModelMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">shifthappens.models.mixins.LabelModelMixin</span></code></a>, <a class="reference internal" href="#shifthappens.models.mixins.ConfidenceModelMixin" title="shifthappens.models.mixins.ConfidenceModelMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">shifthappens.models.mixins.ConfidenceModelMixin</span></code></a>, <a class="reference internal" href="#shifthappens.models.mixins.FeaturesModelMixin" title="shifthappens.models.mixins.FeaturesModelMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">shifthappens.models.mixins.FeaturesModelMixin</span></code></a></p>
 <p>Wraps a torchvision model.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -830,12 +837,13 @@ and image features, all as <a class="reference external" href="https://numpy.org
 <li><p><strong>model</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v1.11.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></a>) – Pretrained torchvision model.</p></li>
 <li><p><strong>max_batch_size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>) – How many samples allowed per batch to load.</p></li>
 <li><p><strong>device</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, default: <code class="docutils literal notranslate"><span class="pre">'cpu'</span></code>) – Selected device to run the model on.</p></li>
+<li><p><strong>feature_layer</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>) – </p></li>
 </ul>
 </dd>
 </dl>
 <dl class="py method">
-<dt class="sig sig-object py" id="shifthappens.models.torchvision.__TorchModel._predict">
-<span class="sig-name descname"><span class="pre">_predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_dataloader</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">targets</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#shifthappens.models.torchvision.__TorchModel._predict" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="shifthappens.models.torchvision.__TorchvisionModel._predict">
+<span class="sig-name descname"><span class="pre">_predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_dataloader</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">targets</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#shifthappens.models.torchvision.__TorchvisionModel._predict" title="Permalink to this definition">#</a></dt>
 <dd><p>Override this function for the specific model.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -861,7 +869,38 @@ and image features, all as <a class="reference external" href="https://numpy.org
 <dl class="py function">
 <dt class="sig sig-object py" id="shifthappens.models.torchvision.resnet18">
 <span class="sig-prename descclassname"><span class="pre">shifthappens.models.torchvision.</span></span><span class="sig-name descname"><span class="pre">resnet18</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">max_batch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">16</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cpu'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/shifthappens/models/torchvision.html#resnet18"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shifthappens.models.torchvision.resnet18" title="Permalink to this definition">#</a></dt>
-<dd><p>Torchvision ResNet-18 implementation.</p>
+<dd><p>Load a ResNet18 network trained on the ImageNet 2012 train set from torchvision.
+See <a class="reference external" href="https://pytorch.org/vision/stable/generated/torchvision.models.resnet18.html#torchvision.models.resnet18" title="(in Torchvision vmain (0.12.0a0+9b5a3fe ))"><code class="xref py py-func docutils literal notranslate"><span class="pre">torchvision.models.resnet18</span></code></a> for details.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>max_batch_size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, default: <code class="docutils literal notranslate"><span class="pre">16</span></code>) – How many samples allowed per batch to load.</p></li>
+<li><p><strong>device</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, default: <code class="docutils literal notranslate"><span class="pre">'cpu'</span></code>) – Selected device to run the model on.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="shifthappens.models.torchvision.resnet50">
+<span class="sig-prename descclassname"><span class="pre">shifthappens.models.torchvision.</span></span><span class="sig-name descname"><span class="pre">resnet50</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">max_batch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">16</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cpu'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/shifthappens/models/torchvision.html#resnet50"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shifthappens.models.torchvision.resnet50" title="Permalink to this definition">#</a></dt>
+<dd><p>Load a ResNet50 network trained on the ImageNet 2012 train set from torchvision.
+See <a class="reference external" href="https://pytorch.org/vision/stable/generated/torchvision.models.resnet50.html#torchvision.models.resnet50" title="(in Torchvision vmain (0.12.0a0+9b5a3fe ))"><code class="xref py py-func docutils literal notranslate"><span class="pre">torchvision.models.resnet50</span></code></a> for details.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>max_batch_size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, default: <code class="docutils literal notranslate"><span class="pre">16</span></code>) – How many samples allowed per batch to load.</p></li>
+<li><p><strong>device</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, default: <code class="docutils literal notranslate"><span class="pre">'cpu'</span></code>) – Selected device to run the model on.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="shifthappens.models.torchvision.vgg16">
+<span class="sig-prename descclassname"><span class="pre">shifthappens.models.torchvision.</span></span><span class="sig-name descname"><span class="pre">vgg16</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">max_batch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">16</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cpu'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/shifthappens/models/torchvision.html#vgg16"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shifthappens.models.torchvision.vgg16" title="Permalink to this definition">#</a></dt>
+<dd><p>Load a VGG16 network trained on the ImageNet 2012 train set from torchvision.
+See <a class="reference external" href="https://pytorch.org/vision/stable/generated/torchvision.models.vgg16.html#torchvision.models.vgg16" title="(in Torchvision vmain (0.12.0a0+9b5a3fe ))"><code class="xref py py-func docutils literal notranslate"><span class="pre">torchvision.models.vgg16</span></code></a> for details.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
