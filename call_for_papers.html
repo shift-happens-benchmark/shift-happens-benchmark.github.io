@@ -1,18 +1,22 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Call for Submissions &#8212; Shift Happens (ICML 2022) 0.0.1-alpha documentation</title>
-    
+    <title>Call for Submissions &#8212; Shift Happens (ICML 2022)  documentation</title>
+<script>
+  document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+  document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
+</script>
+
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="_static/styles/theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=92025949c220c2e29695" rel="stylesheet">
 
-    
+
   <link rel="stylesheet"
     href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
   <link rel="preload" as="font" type="font/woff2" crossorigin
@@ -23,13 +27,14 @@
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/css/custom.css" />
-    
+
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
@@ -37,32 +42,40 @@
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Call for Reviewers" href="call_for_reviewers.html" />
     <link rel="prev" title="Shift happens: Crowdsourcing metrics and test datasets beyond ImageNet" href="index.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="docsearch:language" content="en">
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+    <div class="bd-header-announcement container-fluid" id="banner">
+      
+
+    </div>
 
     
-    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+    <nav class="bd-header navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="bd-header__inner container-xl">
 
   <div id="navbar-start">
     
     
-<a class="navbar-brand" href="index.html">
-<p class="title">Shift Happens (ICML 2022)</p>
-</a>
+  
 
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Shift Happens (ICML 2022)  documentation</p>
+  
+</a>
     
   </div>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
+    <span class="fas fa-bars"></span>
   </button>
 
   
@@ -89,6 +102,12 @@
  </a>
 </li>
 
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="papers.html">
+  Accepted Papers
+ </a>
+</li>
+
     
     <li class="nav-item">
         <a class="nav-link nav-external" href="https://shift-happens-benchmark.github.io/">Home<i class="fas fa-external-link-alt"></i></a>
@@ -100,6 +119,14 @@
     </div>
 
     <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <span id="theme-switch" class="btn btn-sm btn-outline-primary navbar-btn rounded-circle">
+    <a class="theme-switch" data-mode="light"><i class="fas fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="far fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fas fa-adjust"></i></a>
+</span>
+      </div>
       
       <div class="navbar-end-item">
         <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
@@ -128,30 +155,31 @@
     </nav>
     
 
-    <div class="container-xl">
-      <div class="row">
+    <div class="bd-container container-xl">
+      <div class="bd-container__inner row">
           
-            
-            <!-- Only show if we have sidebars configured, else just a small margin  -->
-            <div class="col-12 col-md-3 bd-sidebar">
-              <div class="sidebar-start-items"><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+
+<!-- Only show if we have sidebars configured, else just a small margin  -->
+<div class="bd-sidebar-primary col-12 col-md-3 bd-sidebar">
+  <div class="sidebar-start-items"><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
   <div class="bd-toc-item active">
     
   </div>
 </nav>
-              </div>
-              <div class="sidebar-end-items">
-              </div>
-            </div>
-            
-          
+  </div>
+  <div class="sidebar-end-items">
+  </div>
+</div>
+
 
           
-          <div class="d-none d-xl-block col-xl-2 bd-toc">
-            
-              
-              <div class="toc-item">
-                
+
+
+<div class="bd-sidebar-secondary d-none d-xl-block col-xl-2 bd-toc">
+  
+    
+    <div class="toc-item">
+      
 <div class="tocsection onthispage mt-5 pt-1 pb-3">
     <i class="fas fa-list"></i> On this page
 </div>
@@ -203,26 +231,24 @@
 </ul>
 
 </nav>
-              </div>
-              
-              <div class="toc-item">
-                
-              </div>
-              
-            
-          </div>
-          
+    </div>
+    
+    <div class="toc-item">
+      
+    </div>
+    
+  
+</div>
+
 
           
           
-            
-          
-          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+          <div class="bd-content col-12 col-md-9 col-xl-7">
               
-              <div>
+              <article class="bd-article" role="main">
                 
   <section id="call-for-submissions">
-<h1>Call for Submissions<a class="headerlink" href="#call-for-submissions" title="Permalink to this headline">#</a></h1>
+<h1>Call for Submissions<a class="headerlink" href="#call-for-submissions" title="Permalink to this heading">#</a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>We offer up to 5 free registrations to the ICML as prizes for outstanding submissions!</p>
@@ -233,7 +259,7 @@ For authors of the <a class="reference external" href="https://neurips.cc/Confer
 <p>Submit your contribution <a class="reference external" href="https://openreview.net/group?id=ICML.cc/2022/Workshop/Shift_Happens">on OpenReview</a>. In case of technical issues, please contact us at <a class="reference external" href="mailto:shifthappens&#37;&#52;&#48;bethgelab&#46;org">shifthappens<span>&#64;</span>bethgelab<span>&#46;</span>org</a>.</p>
 </div>
 <section id="tl-dr">
-<h2>TL;DR<a class="headerlink" href="#tl-dr" title="Permalink to this headline">#</a></h2>
+<h2>TL;DR<a class="headerlink" href="#tl-dr" title="Permalink to this heading">#</a></h2>
 <p>We accept the following submission types:
 Full submissions and extended abstracts (<a class="reference external" href="https://drive.google.com/file/d/1bRp0Pp2ek_KbuQILyNPuOgJcUD3EuCR3/view?usp=sharing">example</a>).</p>
 <p><strong>Full submissions</strong> consist of:</p>
@@ -267,7 +293,7 @@ discussions about the <code class="docutils literal notranslate"><span class="pr
 or <a class="reference external" href="https://join.slack.com/t/shifthappensicml2022/shared_invite/zt-16ewcukds-6jW6xC5DbtRvLCCkhZ~NLg">join our slack channel</a>.</p>
 </section>
 <section id="deadlines">
-<h2>Deadlines<a class="headerlink" href="#deadlines" title="Permalink to this headline">#</a></h2>
+<h2>Deadlines<a class="headerlink" href="#deadlines" title="Permalink to this heading">#</a></h2>
 <p>You can find all deadlines as well as the submission page also directly <a class="reference external" href="https://openreview.net/group?id=ICML.cc/2022/Workshop/Shift_Happens">on OpenReview</a>.</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://openreview.net/group?id=ICML.cc/2022/Workshop/Shift_Happens">Abstract Deadline</a>: June 9, 2022 (previously: June 3, May 27)</p></li>
@@ -283,16 +309,16 @@ It is sufficient to start working on the final dataset collection as well as the
 <p>Please also note that it is <strong>not required</strong> to post a full implementation for adding your benchmark to the <code class="docutils literal notranslate"><span class="pre">shifthappens</span></code> package by the submission deadline. You can submit any implementation along with your submission, as long at is demonstrates the applicability of your model/task to the problem setup of the workshop. We will work with all authors towards adding all accepted submissions into the final benchmark package until the camera ready deadline.</p>
 </section>
 <section id="detailed-information-on-submission-types-and-topics">
-<h2>Detailed Information on Submission Types and Topics<a class="headerlink" href="#detailed-information-on-submission-types-and-topics" title="Permalink to this headline">#</a></h2>
+<h2>Detailed Information on Submission Types and Topics<a class="headerlink" href="#detailed-information-on-submission-types-and-topics" title="Permalink to this heading">#</a></h2>
 <section id="submission-types">
-<h3>Submission Types<a class="headerlink" href="#submission-types" title="Permalink to this headline">#</a></h3>
+<h3>Submission Types<a class="headerlink" href="#submission-types" title="Permalink to this heading">#</a></h3>
 <p>Extended abstracts are one to two page descriptions of an idea for a task, dataset or benchmark that will not be actively collected and integrated as part of the benchmark. The submission should contain at least one summary figure and should use the standard ICML submission template.
 You can find an example <a class="reference external" href="https://drive.google.com/file/d/1bRp0Pp2ek_KbuQILyNPuOgJcUD3EuCR3/view?usp=sharing">here</a>.
 If you are submitting an extended abstract, no additional supplementary material is allowed.</p>
 <p>Full submissions are comprised of a 2-4 page technical report, along with a code contribution submitted as supplementary material. The code should be a proof-of-concept implementation, which we will later integrate into the <code class="docutils literal notranslate"><span class="pre">shifthappens</span></code> package. If you submit a dataset, provide at least sample data along with your code as supplementary material. For large submissions, we encourage to host data externally and include instructions for downloading.</p>
 </section>
 <section id="topics">
-<h3>Topics<a class="headerlink" href="#topics" title="Permalink to this headline">#</a></h3>
+<h3>Topics<a class="headerlink" href="#topics" title="Permalink to this heading">#</a></h3>
 <p>Besides compatibility to ImageNet scale models, the scope of possible
 benchmarks and datasets is intentionally broad:</p>
 <ul class="simple">
@@ -320,7 +346,7 @@ ideal model be not fooled by any of them. It might of course makes sense for a
 </section>
 </section>
 <section id="report-instructions">
-<h2>Report Instructions<a class="headerlink" href="#report-instructions" title="Permalink to this headline">#</a></h2>
+<h2>Report Instructions<a class="headerlink" href="#report-instructions" title="Permalink to this heading">#</a></h2>
 <p>The short report should</p>
 <ul class="simple">
 <li><p>motivate why the submitted task is interesting,</p></li>
@@ -339,7 +365,7 @@ sample images and technical details.</p>
 provided <a class="reference external" href="https://media.icml.cc/Conferences/ICML2022/Styles/icml2022.zip">LaTeX files</a>.</p>
 </section>
 <section id="code-and-data-instructions">
-<h2>Code and Data Instructions<a class="headerlink" href="#code-and-data-instructions" title="Permalink to this headline">#</a></h2>
+<h2>Code and Data Instructions<a class="headerlink" href="#code-and-data-instructions" title="Permalink to this heading">#</a></h2>
 <p><strong>Submissions</strong> should demonstrate the full capability of your dataset/task/benchmark, but do not need to contain a final implementation, a full dataset, etc. yet. Make sure to submit a code sample and (parts of) the dataset as supplementary material to your paper submission, directly on OpenReview. Please make sure that from the submitted code it becomes clear how a model would be evaluated. While we invite you to directly build on top of the provided <a class="reference external" href="https://shift-happens-benchmark.github.io/icml-2022/">reference implementation</a>, this is not a requirement at submission time (for example, it it acceptable to provide code for a reference run of a ResNet50 model, or whatever is suitable for your task, even outside the <code class="docutils literal notranslate"><span class="pre">shifthappens</span></code> package). If you have questions about implementation, please do not hesitate to reach out via email or our slack channel. We will continue to assist authors of accepted submissions to make their submission ready for integration to the <code class="docutils literal notranslate"><span class="pre">shifthappens</span></code> package.</p>
 <p>Until the camera-ready deadline, all submissions need to be updated to include a link to the dataset (hosted on a suitable platform),
 as well as code (building on top of the provided <a class="reference external" href="https://shift-happens-benchmark.github.io/icml-2022/">reference implementation</a>) for
@@ -350,7 +376,7 @@ be stated in the report.</p>
 <p>Please refer to the <a class="reference external" href="https://shift-happens-benchmark.github.io/api.html">API Docs</a> for further information on how to implement benchmarks and datasets directly in the <code class="docutils literal notranslate"><span class="pre">shifthappens</span></code> package (not required, but encouraged at submission time).</p>
 </section>
 <section id="evaluation-criteria-for-submissions">
-<h2>Evaluation Criteria for Submissions<a class="headerlink" href="#evaluation-criteria-for-submissions" title="Permalink to this headline">#</a></h2>
+<h2>Evaluation Criteria for Submissions<a class="headerlink" href="#evaluation-criteria-for-submissions" title="Permalink to this heading">#</a></h2>
 <p>Submissions will be judged according to the following criteria:</p>
 <ol class="arabic simple">
 <li><p><strong>Correctness:</strong> For labeled datasets, the labels should make sense to a
@@ -375,33 +401,35 @@ provided task.</p></li>
 </section>
 
 
-              </div>
+              </article>
               
-              
-          </main>
-          
 
+              
+          </div>
+          
       </div>
     </div>
+
+  
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
-<footer class="footer mt-5 mt-md-0">
-  <div class="container">
-    
-    <div class="footer-item">
-      <p class="copyright">
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695"></script>
+
+<footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    <p class="copyright">
     &copy; Copyright 2021 - 2022, Julian Bitterwolf, Evgenia Rusak, Steffen Schneider, Roland S. Zimmermann and contributors. Released under an Apache 2.0 License.<br>
 </p>
-    </div>
-    
-    <div class="footer-item">
-      <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br>
-</p>
-    </div>
-    
   </div>
+  
+  <div class="footer-item">
+    <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br>
+</p>
+  </div>
+  
+</div>
 </footer>
   </body>
 </html>
