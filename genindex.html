@@ -215,6 +215,8 @@
 </li>
       <li><a href="api.html#shifthappens.tasks.base.Task._evaluate">_evaluate() (shifthappens.tasks.base.Task method)</a>
 </li>
+      <li><a href="api.html#shifthappens.models.base.Model._get_imagenet_predictions">_get_imagenet_predictions() (shifthappens.models.base.Model method)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api.html#shifthappens.models.base.Model._predict">_predict() (shifthappens.models.base.Model method)</a>
@@ -223,6 +225,8 @@
         <li><a href="api.html#shifthappens.models.torchvision.__TorchvisionModel._predict">(shifthappens.models.torchvision.__TorchvisionModel method)</a>
 </li>
       </ul></li>
+      <li><a href="api.html#shifthappens.models.base.Model._predict_imagenet_val">_predict_imagenet_val() (shifthappens.models.base.Model method)</a>
+</li>
       <li><a href="api.html#shifthappens.tasks.base.Task._prepare_dataloader">_prepare_dataloader() (shifthappens.tasks.base.Task method)</a>
 </li>
   </ul></td>
@@ -239,10 +243,12 @@
 <h2 id="C">C</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api.html#shifthappens.models.mixins.ConfidenceModelMixin">ConfidenceModelMixin (class in shifthappens.models.mixins)</a>
+      <li><a href="api.html#shifthappens.data.imagenet.cache_predictions">cache_predictions() (in module shifthappens.data.imagenet)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api.html#shifthappens.models.mixins.ConfidenceModelMixin">ConfidenceModelMixin (class in shifthappens.models.mixins)</a>
+</li>
       <li><a href="api.html#shifthappens.tasks.mixins.ConfidenceTaskMixin">ConfidenceTaskMixin (class in shifthappens.tasks.mixins)</a>
 </li>
   </ul></td>
@@ -287,6 +293,12 @@
 <h2 id="G">G</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api.html#shifthappens.data.imagenet.get_cached_predictions">get_cached_predictions() (in module shifthappens.data.imagenet)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api.html#shifthappens.data.imagenet.get_imagenet_validation_loader">get_imagenet_validation_loader() (in module shifthappens.data.imagenet)</a>
+</li>
       <li><a href="api.html#shifthappens.benchmark.get_registered_tasks">get_registered_tasks() (in module shifthappens.benchmark)</a>
 </li>
   </ul></td>
@@ -295,13 +307,21 @@
 <h2 id="I">I</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api.html#shifthappens.data.torch.ImagesOnlyTorchDataset">ImagesOnlyTorchDataset (class in shifthappens.data.torch)</a>
+      <li><a href="api.html#shifthappens.models.base.Model.imagenet_validation_result">imagenet_validation_result (shifthappens.models.base.Model property)</a>
 </li>
-      <li><a href="api.html#shifthappens.data.base.IndexedDataset">IndexedDataset (class in shifthappens.data.base)</a>
+      <li><a href="api.html#shifthappens.data.imagenet.ImageNetValidationData">ImageNetValidationData (in module shifthappens.data.imagenet)</a>
+</li>
+      <li><a href="api.html#shifthappens.data.imagenet.ImageNetValidationPredictionsCache">ImageNetValidationPredictionsCache (in module shifthappens.data.imagenet)</a>
+</li>
+      <li><a href="api.html#shifthappens.data.torch.ImagesOnlyTorchDataset">ImagesOnlyTorchDataset (class in shifthappens.data.torch)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api.html#shifthappens.data.base.IndexedDataset">IndexedDataset (class in shifthappens.data.base)</a>
+</li>
       <li><a href="api.html#shifthappens.data.torch.IndexedTorchDataset">IndexedTorchDataset (class in shifthappens.data.torch)</a>
+</li>
+      <li><a href="api.html#shifthappens.data.imagenet.is_cached">is_cached() (in module shifthappens.data.imagenet)</a>
 </li>
       <li><a href="api.html#shifthappens.tasks.base.Task.iterate_flavours">iterate_flavours() (shifthappens.tasks.base.Task class method)</a>
 </li>
@@ -316,6 +336,8 @@
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api.html#shifthappens.tasks.mixins.LabelTaskMixin">LabelTaskMixin (class in shifthappens.tasks.mixins)</a>
+</li>
+      <li><a href="api.html#shifthappens.data.imagenet.load_imagenet_targets">load_imagenet_targets() (in module shifthappens.data.imagenet)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -336,6 +358,8 @@
         <li><a href="api.html#module-shifthappens.benchmark">shifthappens.benchmark</a>
 </li>
         <li><a href="api.html#module-shifthappens.data.base">shifthappens.data.base</a>
+</li>
+        <li><a href="api.html#module-shifthappens.data.imagenet">shifthappens.data.imagenet</a>
 </li>
         <li><a href="api.html#module-shifthappens.data.torch">shifthappens.data.torch</a>
 </li>
@@ -396,9 +420,9 @@
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api.html#shifthappens.models.torchvision.resnet18">resnet18() (in module shifthappens.models.torchvision)</a>
+      <li><a href="api.html#shifthappens.models.torchvision.ResNet18">ResNet18 (class in shifthappens.models.torchvision)</a>
 </li>
-      <li><a href="api.html#shifthappens.models.torchvision.resnet50">resnet50() (in module shifthappens.models.torchvision)</a>
+      <li><a href="api.html#shifthappens.models.torchvision.ResNet50">ResNet50 (class in shifthappens.models.torchvision)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -420,6 +444,13 @@
 
       <ul>
         <li><a href="api.html#module-shifthappens.data.base">module</a>
+</li>
+      </ul></li>
+      <li>
+    shifthappens.data.imagenet
+
+      <ul>
+        <li><a href="api.html#module-shifthappens.data.imagenet">module</a>
 </li>
       </ul></li>
       <li>
@@ -538,7 +569,7 @@
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api.html#shifthappens.models.torchvision.vgg16">vgg16() (in module shifthappens.models.torchvision)</a>
+      <li><a href="api.html#shifthappens.models.torchvision.VGG16">VGG16 (class in shifthappens.models.torchvision)</a>
 </li>
   </ul></td>
 </tr></table>

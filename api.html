@@ -196,6 +196,13 @@
      Task implementations
     </a>
    </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#module-shifthappens.data.imagenet">
+   Accessing Scores for the ImageNet Validation Set
+  </a>
+  <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#module-shifthappens.models.base">
      Model implementations
@@ -675,6 +682,111 @@ to the name of metrics calculated by the task.</p></li>
 </dd></dl>
 
 </section>
+</section>
+<section id="module-shifthappens.data.imagenet">
+<span id="accessing-scores-for-the-imagenet-validation-set"></span><h2>Accessing Scores for the ImageNet Validation Set<a class="headerlink" href="#module-shifthappens.data.imagenet" title="Permalink to this heading">#</a></h2>
+<p>This module provides functionality to access the predictions of a model for the ImageNet validation set.
+Further, the predictions can be cached and loaded from the cache to reduce computational costs.
+Note, that for this to work :py:data:shifthappens.data.imagenet.ImageNetValidationData
+must be set to the ImageNet validation set path. path.</p>
+<dl class="py data">
+<dt class="sig sig-object py" id="shifthappens.data.imagenet.ImageNetValidationData">
+<span class="sig-prename descclassname"><span class="pre">shifthappens.data.imagenet.</span></span><span class="sig-name descname"><span class="pre">ImageNetValidationData</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'shifthappens/imagenet'</span></em><a class="headerlink" href="#shifthappens.data.imagenet.ImageNetValidationData" title="Permalink to this definition">#</a></dt>
+<dd><p>Must be set to ImageNet validation set path (either absolute or relative to working directory).</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="shifthappens.data.imagenet.ImageNetValidationPredictionsCache">
+<span class="sig-prename descclassname"><span class="pre">shifthappens.data.imagenet.</span></span><span class="sig-name descname"><span class="pre">ImageNetValidationPredictionsCache</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'shifthappens/cache'</span></em><a class="headerlink" href="#shifthappens.data.imagenet.ImageNetValidationPredictionsCache" title="Permalink to this definition">#</a></dt>
+<dd><p>Must be set to models’ results caching directory (either absolute or relative to working directory). If the folder does not exist, it will be created.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="shifthappens.data.imagenet.get_imagenet_validation_loader">
+<span class="sig-prename descclassname"><span class="pre">shifthappens.data.imagenet.</span></span><span class="sig-name descname"><span class="pre">get_imagenet_validation_loader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">max_batch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">128</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/shifthappens/data/imagenet.html#get_imagenet_validation_loader"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shifthappens.data.imagenet.get_imagenet_validation_loader" title="Permalink to this definition">#</a></dt>
+<dd><p>Creates a <a class="reference internal" href="#shifthappens.data.base.DataLoader" title="shifthappens.data.base.DataLoader"><code class="xref py py-class docutils literal notranslate"><span class="pre">shifthappens.data.base.DataLoader</span></code></a> for the validation set of ImageNet.
+Note that the path to ImageNet validation set
+<a class="reference internal" href="#shifthappens.data.imagenet.ImageNetValidationData" title="shifthappens.data.imagenet.ImageNetValidationData"><code class="xref py py-data docutils literal notranslate"><span class="pre">shifthappens.data.imagenet.ImageNetValidationData</span></code></a> must be specified.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>max_batch_size</strong> – How many samples allowed per batch to load.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#shifthappens.data.base.DataLoader" title="shifthappens.data.base.DataLoader"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataLoader</span></code></a></p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ImageNet validation set data loader.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="shifthappens.data.imagenet.get_cached_predictions">
+<span class="sig-prename descclassname"><span class="pre">shifthappens.data.imagenet.</span></span><span class="sig-name descname"><span class="pre">get_cached_predictions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cls</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/shifthappens/data/imagenet.html#get_cached_predictions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shifthappens.data.imagenet.get_cached_predictions" title="Permalink to this definition">#</a></dt>
+<dd><p>Checks whether there exist cached results for the model’s class and if so, returns them.
+Note that the path to ImageNet validation set
+<a class="reference internal" href="#shifthappens.data.imagenet.ImageNetValidationData" title="shifthappens.data.imagenet.ImageNetValidationData"><code class="xref py py-data docutils literal notranslate"><span class="pre">shifthappens.data.imagenet.ImageNetValidationData</span></code></a> must be specified.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>cls</strong> – Model’s class. Used for specifying folder name.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a></p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dictionary of loaded model predictions on ImageNet validation set.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="shifthappens.data.imagenet.cache_predictions">
+<span class="sig-prename descclassname"><span class="pre">shifthappens.data.imagenet.</span></span><span class="sig-name descname"><span class="pre">cache_predictions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cls</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">imagenet_validation_result</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/shifthappens/data/imagenet.html#cache_predictions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shifthappens.data.imagenet.cache_predictions" title="Permalink to this definition">#</a></dt>
+<dd><p>Caches model predictions in cls-named folder and load
+model predictions from it. Note that the path to ImageNet validation set
+<a class="reference internal" href="#shifthappens.data.imagenet.ImageNetValidationData" title="shifthappens.data.imagenet.ImageNetValidationData"><code class="xref py py-data docutils literal notranslate"><span class="pre">shifthappens.data.imagenet.ImageNetValidationData</span></code></a> must be specified as
+well as <a class="reference internal" href="#shifthappens.data.imagenet.ImageNetValidationPredictionsCache" title="shifthappens.data.imagenet.ImageNetValidationPredictionsCache"><code class="xref py py-data docutils literal notranslate"><span class="pre">shifthappens.data.imagenet.ImageNetValidationPredictionsCache</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cls</strong> – Model’s class. Used for specifying folder name.</p></li>
+<li><p><strong>imagenet_validation_result</strong> (<a class="reference internal" href="#shifthappens.models.base.ModelResult" title="shifthappens.models.base.ModelResult"><em>ModelResult</em></a>) – Model’s prediction on ImageNet
+validation set.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="shifthappens.data.imagenet.is_cached">
+<span class="sig-prename descclassname"><span class="pre">shifthappens.data.imagenet.</span></span><span class="sig-name descname"><span class="pre">is_cached</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cls</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/shifthappens/data/imagenet.html#is_cached"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shifthappens.data.imagenet.is_cached" title="Permalink to this definition">#</a></dt>
+<dd><p>Checks if model’s results are cached in cls-named folder. Note that the path to the ImageNet validation set
+<a class="reference internal" href="#shifthappens.data.imagenet.ImageNetValidationData" title="shifthappens.data.imagenet.ImageNetValidationData"><code class="xref py py-data docutils literal notranslate"><span class="pre">shifthappens.data.imagenet.ImageNetValidationData</span></code></a> must be specified as
+well as <a class="reference internal" href="#shifthappens.data.imagenet.ImageNetValidationPredictionsCache" title="shifthappens.data.imagenet.ImageNetValidationPredictionsCache"><code class="xref py py-data docutils literal notranslate"><span class="pre">shifthappens.data.imagenet.ImageNetValidationPredictionsCache</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>cls</strong> – Model’s class. Used for specifying folder name.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if model’s results are cached, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="shifthappens.data.imagenet.load_imagenet_targets">
+<span class="sig-prename descclassname"><span class="pre">shifthappens.data.imagenet.</span></span><span class="sig-name descname"><span class="pre">load_imagenet_targets</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/shifthappens/data/imagenet.html#load_imagenet_targets"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shifthappens.data.imagenet.load_imagenet_targets" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns the ground-truth labels of the ImageNet valdation set.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.22)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
 <section id="module-shifthappens.models.base">
 <span id="model-implementations"></span><h3>Model implementations<a class="headerlink" href="#module-shifthappens.models.base" title="Permalink to this heading">#</a></h3>
 <p>Base classes and helper functions for adding models to the benchmark.</p>
@@ -746,6 +858,17 @@ as well.</p>
 <p>Also make sure that your model inherits from the mixins from <a class="reference internal" href="#module-shifthappens.models.mixins" title="shifthappens.models.mixins"><code class="xref py py-mod docutils literal notranslate"><span class="pre">shifthappens.models.mixins</span></code></a>
 corresponding to your model predictions type (e.g., <a class="reference internal" href="#shifthappens.models.mixins.LabelModelMixin" title="shifthappens.models.mixins.LabelModelMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">LabelModelMixin</span></code></a> for labels
 or <a class="reference internal" href="#shifthappens.models.mixins.ConfidenceModelMixin" title="shifthappens.models.mixins.ConfidenceModelMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">ConfidenceModelMixin</span></code></a> for confidences).</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="shifthappens.models.base.Model.imagenet_validation_result">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">imagenet_validation_result</span></span><a class="headerlink" href="#shifthappens.models.base.Model.imagenet_validation_result" title="Permalink to this definition">#</a></dt>
+<dd><p>Access the model’s predictions/evaluation results on the ImageNet validation set.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Model evaluation result on ImageNet validation set wrapped with ModelResult.</p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="shifthappens.models.base.Model.prepare">
 <span class="sig-name descname"><span class="pre">prepare</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataloader</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/shifthappens/models/base.html#Model.prepare"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shifthappens.models.base.Model.prepare" title="Permalink to this definition">#</a></dt>
@@ -780,6 +903,26 @@ class uncertainties, ood scores, and image features, all as
 <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.22)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a> objects.</p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="shifthappens.models.base.Model._get_imagenet_predictions">
+<span class="sig-name descname"><span class="pre">_get_imagenet_predictions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rewrite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/shifthappens/models/base.html#Model._get_imagenet_predictions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shifthappens.models.base.Model._get_imagenet_predictions" title="Permalink to this definition">#</a></dt>
+<dd><p>Loads cached predictions on ImageNet validation set for the model or predicts
+on ImageNet validation set and caches the result whenever there is no cached
+predictions for the model or <code class="docutils literal notranslate"><span class="pre">rewrite</span></code> argument set to <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>rewrite</strong> – <code class="docutils literal notranslate"><span class="pre">True</span></code> if models predictions need to be rewritten.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="shifthappens.models.base.Model._predict_imagenet_val">
+<span class="sig-name descname"><span class="pre">_predict_imagenet_val</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/shifthappens/models/base.html#Model._predict_imagenet_val"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shifthappens.models.base.Model._predict_imagenet_val" title="Permalink to this definition">#</a></dt>
+<dd><p>Evaluates model on ImageNet validation set and store all possible targets scores
+for the particular model.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -856,15 +999,15 @@ and image features, all as <a class="reference external" href="https://numpy.org
 <dl class="py class">
 <dt class="sig sig-object py" id="shifthappens.models.torchvision.__TorchvisionModel">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">shifthappens.models.torchvision.</span></span><span class="sig-name descname"><span class="pre">__TorchvisionModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_layer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_batch_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cpu'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/shifthappens/models/torchvision.html#__TorchvisionModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shifthappens.models.torchvision.__TorchvisionModel" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#shifthappens.models.base.Model" title="shifthappens.models.base.Model"><code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></a>, <a class="reference internal" href="#shifthappens.models.torchvision.__TorchvisionPreProcessingMixin" title="shifthappens.models.torchvision.__TorchvisionPreProcessingMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">__TorchvisionPreProcessingMixin</span></code></a>, <a class="reference internal" href="#shifthappens.models.mixins.LabelModelMixin" title="shifthappens.models.mixins.LabelModelMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">LabelModelMixin</span></code></a>, <a class="reference internal" href="#shifthappens.models.mixins.ConfidenceModelMixin" title="shifthappens.models.mixins.ConfidenceModelMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">ConfidenceModelMixin</span></code></a>, <a class="reference internal" href="#shifthappens.models.mixins.FeaturesModelMixin" title="shifthappens.models.mixins.FeaturesModelMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">FeaturesModelMixin</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="#shifthappens.models.base.Model" title="shifthappens.models.base.Model"><code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></a>, <a class="reference internal" href="#shifthappens.models.torchvision.__TorchvisionPreProcessingMixin" title="shifthappens.models.torchvision.__TorchvisionPreProcessingMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">__TorchvisionPreProcessingMixin</span></code></a>, <a class="reference internal" href="#shifthappens.models.mixins.LabelModelMixin" title="shifthappens.models.mixins.LabelModelMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">LabelModelMixin</span></code></a>, <a class="reference internal" href="#shifthappens.models.mixins.ConfidenceModelMixin" title="shifthappens.models.mixins.ConfidenceModelMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">ConfidenceModelMixin</span></code></a>, <a class="reference internal" href="#shifthappens.models.mixins.FeaturesModelMixin" title="shifthappens.models.mixins.FeaturesModelMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">FeaturesModelMixin</span></code></a>, <a class="reference internal" href="#shifthappens.models.mixins.OODScoreModelMixin" title="shifthappens.models.mixins.OODScoreModelMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">OODScoreModelMixin</span></code></a></p>
 <p>Wraps a torchvision model.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>model</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v1.11.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></a>) – Pretrained torchvision model.</p></li>
 <li><p><strong>max_batch_size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>) – How many samples allowed per batch to load.</p></li>
+<li><p><strong>feature_layer</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>) – Name of the layer that shall be used to extract features/representations..</p></li>
 <li><p><strong>device</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, default: <code class="docutils literal notranslate"><span class="pre">'cpu'</span></code>) – Selected device to run the model on.</p></li>
-<li><p><strong>feature_layer</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>) – </p></li>
 </ul>
 </dd>
 </dl>
@@ -893,25 +1036,23 @@ and image features, all as <a class="reference external" href="https://numpy.org
 
 </dd></dl>
 
-<dl class="py function">
-<dt class="sig sig-object py" id="shifthappens.models.torchvision.resnet18">
-<span class="sig-prename descclassname"><span class="pre">shifthappens.models.torchvision.</span></span><span class="sig-name descname"><span class="pre">resnet18</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">max_batch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">16</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cpu'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/shifthappens/models/torchvision.html#resnet18"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shifthappens.models.torchvision.resnet18" title="Permalink to this definition">#</a></dt>
-<dd><p>Load a ResNet18 network trained on the ImageNet 2012 train set from torchvision.
-See <a class="reference external" href="https://pytorch.org/vision/stable/generated/torchvision.models.resnet18.html#torchvision.models.resnet18" title="(in Torchvision vmain (0.12.0a0+9b5a3fe ))"><code class="xref py py-func docutils literal notranslate"><span class="pre">torchvision.models.resnet18</span></code></a> for details.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>max_batch_size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, default: <code class="docutils literal notranslate"><span class="pre">16</span></code>) – How many samples allowed per batch to load.</p></li>
-<li><p><strong>device</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, default: <code class="docutils literal notranslate"><span class="pre">'cpu'</span></code>) – Selected device to run the model on.</p></li>
-</ul>
-</dd>
-</dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="shifthappens.models.torchvision.ResNet18">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">shifthappens.models.torchvision.</span></span><span class="sig-name descname"><span class="pre">ResNet18</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">max_batch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">16</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cpu'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/shifthappens/models/torchvision.html#ResNet18"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shifthappens.models.torchvision.ResNet18" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#shifthappens.models.torchvision.__TorchvisionModel" title="shifthappens.models.torchvision.__TorchvisionModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">__TorchvisionModel</span></code></a></p>
+<p>ResNet18 network trained on the ImageNet 2012 train set from torchvision.
+See <a class="reference external" href="https://pytorch.org/vision/stable/generated/torchvision.models.resnet18.html#torchvision.models.resnet18" title="(in Torchvision vmain (0.12.0a0+9b5a3fe ))"><code class="xref py py-func docutils literal notranslate"><span class="pre">torchvision.models.resnet18</span></code></a> for details.
+:type max_batch_size: <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, default: <code class="docutils literal notranslate"><span class="pre">16</span></code>
+:param max_batch_size: How many samples allowed per batch to load.
+:type device: <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, default: <code class="docutils literal notranslate"><span class="pre">'cpu'</span></code>
+:param device: Selected device to run the model on.</p>
 </dd></dl>
 
-<dl class="py function">
-<dt class="sig sig-object py" id="shifthappens.models.torchvision.resnet50">
-<span class="sig-prename descclassname"><span class="pre">shifthappens.models.torchvision.</span></span><span class="sig-name descname"><span class="pre">resnet50</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">max_batch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">16</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cpu'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/shifthappens/models/torchvision.html#resnet50"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shifthappens.models.torchvision.resnet50" title="Permalink to this definition">#</a></dt>
-<dd><p>Load a ResNet50 network trained on the ImageNet 2012 train set from torchvision.
+<dl class="py class">
+<dt class="sig sig-object py" id="shifthappens.models.torchvision.ResNet50">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">shifthappens.models.torchvision.</span></span><span class="sig-name descname"><span class="pre">ResNet50</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">max_batch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">16</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cpu'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/shifthappens/models/torchvision.html#ResNet50"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shifthappens.models.torchvision.ResNet50" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#shifthappens.models.torchvision.__TorchvisionModel" title="shifthappens.models.torchvision.__TorchvisionModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">__TorchvisionModel</span></code></a></p>
+<p>Load a ResNet50 network trained on the ImageNet 2012 train set from torchvision.
 See <a class="reference external" href="https://pytorch.org/vision/stable/generated/torchvision.models.resnet50.html#torchvision.models.resnet50" title="(in Torchvision vmain (0.12.0a0+9b5a3fe ))"><code class="xref py py-func docutils literal notranslate"><span class="pre">torchvision.models.resnet50</span></code></a> for details.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -923,10 +1064,11 @@ See <a class="reference external" href="https://pytorch.org/vision/stable/genera
 </dl>
 </dd></dl>
 
-<dl class="py function">
-<dt class="sig sig-object py" id="shifthappens.models.torchvision.vgg16">
-<span class="sig-prename descclassname"><span class="pre">shifthappens.models.torchvision.</span></span><span class="sig-name descname"><span class="pre">vgg16</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">max_batch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">16</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cpu'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/shifthappens/models/torchvision.html#vgg16"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shifthappens.models.torchvision.vgg16" title="Permalink to this definition">#</a></dt>
-<dd><p>Load a VGG16 network trained on the ImageNet 2012 train set from torchvision.
+<dl class="py class">
+<dt class="sig sig-object py" id="shifthappens.models.torchvision.VGG16">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">shifthappens.models.torchvision.</span></span><span class="sig-name descname"><span class="pre">VGG16</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">max_batch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">16</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cpu'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/shifthappens/models/torchvision.html#VGG16"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shifthappens.models.torchvision.VGG16" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#shifthappens.models.torchvision.__TorchvisionModel" title="shifthappens.models.torchvision.__TorchvisionModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">__TorchvisionModel</span></code></a></p>
+<p>Load a VGG16 network trained on the ImageNet 2012 train set from torchvision.
 See <a class="reference external" href="https://pytorch.org/vision/stable/generated/torchvision.models.vgg16.html#torchvision.models.vgg16" title="(in Torchvision vmain (0.12.0a0+9b5a3fe ))"><code class="xref py py-func docutils literal notranslate"><span class="pre">torchvision.models.vgg16</span></code></a> for details.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>

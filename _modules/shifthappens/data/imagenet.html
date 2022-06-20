@@ -1,0 +1,390 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>shifthappens.data.imagenet &#8212; Shift Happens (ICML 2022)  documentation</title>
+<script>
+  document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+  document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
+</script>
+
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+
+
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css" />
+
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="docsearch:language" content="en">
+  </head>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+    <div class="bd-header-announcement container-fluid" id="banner">
+      
+
+    </div>
+
+    
+    <nav class="bd-header navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="bd-header__inner container-xl">
+
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Shift Happens (ICML 2022)  documentation</p>
+  
+</a>
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="fas fa-bars"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../call_for_papers.html">
+  Call for Submissions
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../call_for_reviewers.html">
+  Call for Reviewers
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../api.html">
+  Benchmark API Docs
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../papers.html">
+  Accepted Papers
+ </a>
+</li>
+
+    
+    <li class="nav-item">
+        <a class="nav-link nav-external" href="https://shift-happens-benchmark.github.io/">Home<i class="fas fa-external-link-alt"></i></a>
+    </li>
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <span id="theme-switch" class="btn btn-sm btn-outline-primary navbar-btn rounded-circle">
+    <a class="theme-switch" data-mode="light"><i class="fas fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="far fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fas fa-adjust"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/shift-happens-benchmark/iclr-2022" rel="noopener" target="_blank" title="Github"><span><i class="fab fa-github"></i></span>
+            <label class="sr-only">Github</label></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://pypi.org/project/shifthappens/" rel="noopener" target="_blank" title="PyPI"><span><i class="fab fa-python"></i></span>
+            <label class="sr-only">PyPI</label></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://join.slack.com/t/shifthappensicml2022/shared_invite/zt-16ewcukds-6jW6xC5DbtRvLCCkhZ~NLg" rel="noopener" target="_blank" title="Slack"><span><i class="fab fa-slack"></i></span>
+            <label class="sr-only">Slack</label></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="mailto:shifthappens@bethgelab.org" rel="noopener" target="_blank" title="Contact us!"><span><i class="fas fa-envelope"></i></span>
+            <label class="sr-only">Contact us!</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="bd-container container-xl">
+      <div class="bd-container__inner row">
+          
+
+<!-- Only show if we have sidebars configured, else just a small margin  -->
+<div class="bd-sidebar-primary col-12 col-md-3 bd-sidebar">
+  <div class="sidebar-start-items"><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    
+  </div>
+</nav>
+  </div>
+  <div class="sidebar-end-items">
+  </div>
+</div>
+
+
+          
+
+
+<div class="bd-sidebar-secondary d-none d-xl-block col-xl-2 bd-toc">
+  
+</div>
+
+
+          
+          
+          <div class="bd-content col-12 col-md-9 col-xl-7">
+              
+              <article class="bd-article" role="main">
+                
+  <h1>Source code for shifthappens.data.imagenet</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">This module provides functionality to access the predictions of a model for the ImageNet validation set.</span>
+<span class="sd">Further, the predictions can be cached and loaded from the cache to reduce computational costs.</span>
+<span class="sd">Note, that for this to work :py:data:shifthappens.data.imagenet.ImageNetValidationData</span>
+<span class="sd">must be set to the ImageNet validation set path. path.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">shutil</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">torchvision.datasets</span> <span class="k">as</span> <span class="nn">tv_datasets</span>
+<span class="kn">import</span> <span class="nn">torchvision.transforms</span> <span class="k">as</span> <span class="nn">tv_transforms</span>
+
+<span class="kn">import</span> <span class="nn">shifthappens.data.torch</span> <span class="k">as</span> <span class="nn">sh_data_torch</span>
+<span class="kn">from</span> <span class="nn">shifthappens.data.base</span> <span class="kn">import</span> <span class="n">DataLoader</span>
+
+<span class="c1">#: Must be set to ImageNet validation set path (either absolute or relative to working directory).</span>
+<span class="n">ImageNetValidationData</span> <span class="o">=</span> <span class="s2">&quot;shifthappens/imagenet&quot;</span>
+
+<span class="c1">#: Must be set to models&#39; results caching directory (either absolute or relative to working directory). If the folder does not exist, it will be created.</span>
+<span class="n">ImageNetValidationPredictionsCache</span> <span class="o">=</span> <span class="s2">&quot;shifthappens/cache&quot;</span>
+
+
+<span class="k">def</span> <span class="nf">_check_imagenet_folder</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Checks if path to the ImageNet validation set folder is defined, the folder</span>
+<span class="sd">    exists and contains a thousand folders (one per class).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">assert</span> <span class="p">(</span>
+        <span class="n">ImageNetValidationData</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+    <span class="p">),</span> <span class="s2">&quot;ImagenetValidationData path is not specified.&quot;</span>
+    <span class="k">assert</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">ImageNetValidationData</span><span class="p">),</span> <span class="p">(</span>
+        <span class="s2">&quot;You have specified an incorrect path to the ImageNet validation set. &quot;</span>
+        <span class="s2">&quot;Files not found at location specified in shithappens.data.imagenet.ImageNetValidationData.&quot;</span>
+    <span class="p">)</span>
+
+    <span class="k">assert</span> <span class="p">(</span>
+        <span class="nb">len</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">ImageNetValidationData</span><span class="p">))</span> <span class="o">==</span> <span class="mi">1000</span>
+    <span class="p">),</span> <span class="s2">&quot;ImageNetValidationData folder contains less or more folders than ImageNet classes.&quot;</span>
+
+
+<div class="viewcode-block" id="get_imagenet_validation_loader"><a class="viewcode-back" href="../../../api.html#shifthappens.data.imagenet.get_imagenet_validation_loader">[docs]</a><span class="k">def</span> <span class="nf">get_imagenet_validation_loader</span><span class="p">(</span><span class="n">max_batch_size</span><span class="o">=</span><span class="mi">128</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DataLoader</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Creates a :py:class:`shifthappens.data.base.DataLoader` for the validation set of ImageNet.</span>
+<span class="sd">    Note that the path to ImageNet validation set</span>
+<span class="sd">    :py:data:`shifthappens.data.imagenet.ImageNetValidationData` must be specified.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        max_batch_size: How many samples allowed per batch to load.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        ImageNet validation set data loader.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">_check_imagenet_folder</span><span class="p">()</span>
+    <span class="n">transform</span> <span class="o">=</span> <span class="n">tv_transforms</span><span class="o">.</span><span class="n">Compose</span><span class="p">(</span>
+        <span class="p">[</span>
+            <span class="n">tv_transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">(),</span>
+            <span class="n">tv_transforms</span><span class="o">.</span><span class="n">Lambda</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)),</span>
+        <span class="p">]</span>
+    <span class="p">)</span>
+    <span class="n">imagenet_val_dataset</span> <span class="o">=</span> <span class="n">sh_data_torch</span><span class="o">.</span><span class="n">IndexedTorchDataset</span><span class="p">(</span>
+        <span class="n">sh_data_torch</span><span class="o">.</span><span class="n">ImagesOnlyTorchDataset</span><span class="p">(</span>
+            <span class="n">tv_datasets</span><span class="o">.</span><span class="n">ImageFolder</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="n">ImageNetValidationData</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">transform</span><span class="p">)</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+
+    <span class="n">imagenet_val_dataloader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span>
+        <span class="n">imagenet_val_dataset</span><span class="p">,</span> <span class="n">max_batch_size</span><span class="o">=</span><span class="n">max_batch_size</span>
+    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">imagenet_val_dataloader</span></div>
+
+
+<div class="viewcode-block" id="get_cached_predictions"><a class="viewcode-back" href="../../../api.html#shifthappens.data.imagenet.get_cached_predictions">[docs]</a><span class="k">def</span> <span class="nf">get_cached_predictions</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Checks whether there exist cached results for the model&#39;s class and if so, returns them.</span>
+<span class="sd">    Note that the path to ImageNet validation set</span>
+<span class="sd">    :py:data:`shifthappens.data.imagenet.ImageNetValidationData` must be specified.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        cls: Model&#39;s class. Used for specifying folder name.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Dictionary of loaded model predictions on ImageNet validation set.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">assert</span> <span class="p">(</span>
+        <span class="n">ImageNetValidationPredictionsCache</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+    <span class="p">),</span> <span class="s2">&quot;Cannot get cached model results. ImageNetValidationPredictionsCache path is not specified.&quot;</span>
+
+    <span class="n">load_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+        <span class="n">ImageNetValidationPredictionsCache</span><span class="p">,</span> <span class="bp">cls</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="s2">&quot;&quot;</span>
+    <span class="p">)</span>
+
+    <span class="k">assert</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span>
+        <span class="n">load_path</span>
+    <span class="p">),</span> <span class="sa">f</span><span class="s2">&quot;Cannot get cached model results. </span><span class="si">{</span><span class="n">load_path</span><span class="si">}</span><span class="s2"> folder not found.&quot;</span>
+    <span class="k">assert</span> <span class="p">(</span>
+        <span class="nb">len</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">load_path</span><span class="p">))</span> <span class="o">!=</span> <span class="mi">0</span>
+    <span class="p">),</span> <span class="sa">f</span><span class="s2">&quot;Cannot get cached model results. </span><span class="si">{</span><span class="n">load_path</span><span class="si">}</span><span class="s2"> folder is empty.&quot;</span>
+
+    <span class="n">result_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">load_path</span><span class="p">):</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">load_path</span> <span class="o">+</span> <span class="n">file</span><span class="p">)</span>
+        <span class="n">result_dict</span><span class="p">[</span><span class="n">file</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s2">&quot;.npy&quot;</span><span class="p">)]</span> <span class="o">=</span> <span class="n">result</span>
+    <span class="k">return</span> <span class="n">result_dict</span></div>
+
+
+<div class="viewcode-block" id="cache_predictions"><a class="viewcode-back" href="../../../api.html#shifthappens.data.imagenet.cache_predictions">[docs]</a><span class="k">def</span> <span class="nf">cache_predictions</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">imagenet_validation_result</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Caches model predictions in cls-named folder and load</span>
+<span class="sd">    model predictions from it. Note that the path to ImageNet validation set</span>
+<span class="sd">    :py:data:`shifthappens.data.imagenet.ImageNetValidationData` must be specified as</span>
+<span class="sd">    well as :py:data:`shifthappens.data.imagenet.ImageNetValidationPredictionsCache`.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        cls: Model&#39;s class. Used for specifying folder name.</span>
+<span class="sd">        imagenet_validation_result (ModelResult): Model&#39;s prediction on ImageNet</span>
+<span class="sd">            validation set.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">assert</span> <span class="p">(</span>
+        <span class="n">ImageNetValidationPredictionsCache</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+    <span class="p">),</span> <span class="s2">&quot;Cannot cache model results. ImageNetValidationPredictionsCache path is not specified.&quot;</span>
+    <span class="n">save_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+        <span class="n">ImageNetValidationPredictionsCache</span><span class="p">,</span> <span class="bp">cls</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="s2">&quot;&quot;</span>
+    <span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">save_path</span><span class="p">):</span>
+        <span class="n">shutil</span><span class="o">.</span><span class="n">rmtree</span><span class="p">(</span><span class="n">save_path</span><span class="p">)</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">save_path</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">result_type</span> <span class="ow">in</span> <span class="n">imagenet_validation_result</span><span class="o">.</span><span class="vm">__slots__</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">imagenet_validation_result</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">result_type</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">result</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">save_path</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">result_type</span><span class="p">),</span> <span class="n">result</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="is_cached"><a class="viewcode-back" href="../../../api.html#shifthappens.data.imagenet.is_cached">[docs]</a><span class="k">def</span> <span class="nf">is_cached</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Checks if model&#39;s results are cached in cls-named folder. Note that the path to the ImageNet validation set</span>
+<span class="sd">    :py:data:`shifthappens.data.imagenet.ImageNetValidationData` must be specified as</span>
+<span class="sd">    well as :py:data:`shifthappens.data.imagenet.ImageNetValidationPredictionsCache`.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        cls: Model&#39;s class. Used for specifying folder name.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        ``True`` if model&#39;s results are cached, ``False`` otherwise.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">assert</span> <span class="p">(</span>
+        <span class="n">ImageNetValidationPredictionsCache</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+    <span class="p">),</span> <span class="s2">&quot;Cannot find cached model results. ImageNetValidationPredictionsCache path is not specified.&quot;</span>
+    <span class="n">load_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+        <span class="n">ImageNetValidationPredictionsCache</span><span class="p">,</span> <span class="bp">cls</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="s2">&quot;&quot;</span>
+    <span class="p">)</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">cached_files</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">load_path</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;There is no cached model results on ImageNet at </span><span class="si">{</span><span class="n">load_path</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">return</span> <span class="kc">True</span></div>
+
+
+<div class="viewcode-block" id="load_imagenet_targets"><a class="viewcode-back" href="../../../api.html#shifthappens.data.imagenet.load_imagenet_targets">[docs]</a><span class="k">def</span> <span class="nf">load_imagenet_targets</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Returns the ground-truth labels of the ImageNet valdation set.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">_check_imagenet_folder</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">tv_datasets</span><span class="o">.</span><span class="n">ImageFolder</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="n">ImageNetValidationData</span><span class="p">)</span><span class="o">.</span><span class="n">targets</span></div>
+</pre></div>
+
+              </article>
+              
+
+              
+          </div>
+          
+      </div>
+    </div>
+
+  
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695"></script>
+
+<footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    <p class="copyright">
+    &copy; Copyright 2021 - 2022, Julian Bitterwolf, Evgenia Rusak, Steffen Schneider, Roland S. Zimmermann and contributors. Released under an Apache 2.0 License.<br>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2.<br>
+</p>
+  </div>
+  
+</div>
+</footer>
+  </body>
+</html>
