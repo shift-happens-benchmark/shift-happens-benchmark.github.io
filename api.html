@@ -639,7 +639,8 @@ model’s supported prediction types.</p>
 <a class="reference internal" href="#shifthappens.models.base.ModelResult" title="shifthappens.models.base.ModelResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">shifthappens.models.base.ModelResult</span></code></a> returned during evaluation.</p>
 </dd></dl>
 
-<span class="target" id="module-shifthappens.tasks.task_result"></span><dl class="py class">
+<span class="target" id="module-shifthappens.tasks.task_result"></span><p>Class for representing the results of a single task.</p>
+<dl class="py class">
 <dt class="sig sig-object py" id="shifthappens.tasks.task_result.TaskResult">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">shifthappens.tasks.task_result.</span></span><span class="sig-name descname"><span class="pre">TaskResult</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">summary_metrics</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">metrics</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/shifthappens/tasks/task_result.html#TaskResult"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shifthappens.tasks.task_result.TaskResult" title="Permalink to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
@@ -1115,6 +1116,30 @@ Your map-style datasets should be inherited from this class.</p>
 </ul>
 </dd>
 </dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="shifthappens.data.base.DataLoader.max_batch_size">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">max_batch_size</span></span><a class="headerlink" href="#shifthappens.data.base.DataLoader.max_batch_size" title="Permalink to this definition">#</a></dt>
+<dd><p>Maximum allowed batch size that the dataloader will satisfy for request
+through the <a class="reference internal" href="#shifthappens.data.base.DataLoader.iterate" title="shifthappens.data.base.DataLoader.iterate"><code class="xref py py-func docutils literal notranslate"><span class="pre">iterate</span></code></a> function.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="shifthappens.data.base.DataLoader.iterate">
+<span class="sig-name descname"><span class="pre">iterate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">batch_size</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/shifthappens/data/base.html#DataLoader.iterate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shifthappens.data.base.DataLoader.iterate" title="Permalink to this definition">#</a></dt>
+<dd><p>Iterate through the dataloader and return batches of data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>batch_size</strong> – Maximum batch size the function that requests the data can handle.</p>
+</dd>
+<dt class="field-even">Yields<span class="colon">:</span></dt>
+<dd class="field-even"><p>The dataset split up in batches.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Iterator" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Iterator</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code></a>[<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.23)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></a>]]</p>
+</dd>
+</dl>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="py function">
@@ -1179,6 +1204,7 @@ only the images are returned.</p>
 </section>
 <section id="module-shifthappens.task_data.task_metadata">
 <span id="storing-tasks-within-the-benchmark"></span><h3>Storing tasks within the benchmark<a class="headerlink" href="#module-shifthappens.task_data.task_metadata" title="Permalink to this heading">#</a></h3>
+<p>Class for storing a task’s metadata.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="shifthappens.task_data.task_metadata.TaskMetadata">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">shifthappens.task_data.task_metadata.</span></span><span class="sig-name descname"><span class="pre">TaskMetadata</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">relative_data_folder</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">standalone</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/shifthappens/task_data/task_metadata.html#TaskMetadata"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shifthappens.task_data.task_metadata.TaskMetadata" title="Permalink to this definition">#</a></dt>
@@ -1200,7 +1226,8 @@ collection of tasks.</p></li>
 </dl>
 </dd></dl>
 
-<span class="target" id="module-shifthappens.task_data.task_registration"></span><dl class="py class">
+<span class="target" id="module-shifthappens.task_data.task_registration"></span><p>Class for storing a task’s registration for the benchmark.</p>
+<dl class="py class">
 <dt class="sig sig-object py" id="shifthappens.task_data.task_registration.TaskRegistration">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">shifthappens.task_data.task_registration.</span></span><span class="sig-name descname"><span class="pre">TaskRegistration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cls</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/shifthappens/task_data/task_registration.html#TaskRegistration"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shifthappens.task_data.task_registration.TaskRegistration" title="Permalink to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>

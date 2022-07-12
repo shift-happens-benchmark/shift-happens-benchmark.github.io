@@ -248,9 +248,19 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">max_batch_size</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Maximum allowed batch size that the dataloader will satisfy for request</span>
+<span class="sd">        through the :py:func:`iterate` function.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__max_batch_size</span>
 
-    <span class="k">def</span> <span class="nf">iterate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]]:</span>
+<div class="viewcode-block" id="DataLoader.iterate"><a class="viewcode-back" href="../../../api.html#shifthappens.data.base.DataLoader.iterate">[docs]</a>    <span class="k">def</span> <span class="nf">iterate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]]:</span>
+        <span class="sd">&quot;&quot;&quot;Iterate through the dataloader and return batches of data.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            batch_size: Maximum batch size the function that requests the data can handle.</span>
+
+<span class="sd">        Yields:</span>
+<span class="sd">            The dataset split up in batches.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_batch_size</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">batch_size</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_batch_size</span><span class="p">)</span>
 
@@ -262,7 +272,7 @@
                 <span class="k">yield</span> <span class="n">batch</span>
                 <span class="n">batch</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">batch</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="k">yield</span> <span class="n">batch</span></div>
+            <span class="k">yield</span> <span class="n">batch</span></div></div>
 
 
 <div class="viewcode-block" id="shuffle_data"><a class="viewcode-back" href="../../../api.html#shifthappens.data.base.shuffle_data">[docs]</a><span class="k">def</span> <span class="nf">shuffle_data</span><span class="p">(</span>
