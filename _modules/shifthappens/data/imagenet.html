@@ -187,8 +187,7 @@
 <span></span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">This module provides functionality to access the predictions of a model for the ImageNet validation set.</span>
 <span class="sd">Further, the predictions can be cached and loaded from the cache to reduce computational costs.</span>
-<span class="sd">Note, that for this to work :py:data:shifthappens.data.imagenet.ImageNetValidationData</span>
-<span class="sd">must be set to the ImageNet validation set path. path.</span>
+<span class="sd">For path configuration please have a look at :py:module:shifthappens.config.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">shutil</span>
@@ -197,14 +196,9 @@
 <span class="kn">import</span> <span class="nn">torchvision.datasets</span> <span class="k">as</span> <span class="nn">tv_datasets</span>
 <span class="kn">import</span> <span class="nn">torchvision.transforms</span> <span class="k">as</span> <span class="nn">tv_transforms</span>
 
+<span class="kn">import</span> <span class="nn">shifthappens.config</span>
 <span class="kn">import</span> <span class="nn">shifthappens.data.torch</span> <span class="k">as</span> <span class="nn">sh_data_torch</span>
 <span class="kn">from</span> <span class="nn">shifthappens.data.base</span> <span class="kn">import</span> <span class="n">DataLoader</span>
-
-<span class="c1">#: Must be set to ImageNet validation set path (either absolute or relative to working directory).</span>
-<span class="n">ImageNetValidationData</span> <span class="o">=</span> <span class="s2">&quot;shifthappens/imagenet&quot;</span>
-
-<span class="c1">#: Must be set to models&#39; results caching directory (either absolute or relative to working directory). If the folder does not exist, it will be created.</span>
-<span class="n">ImageNetValidationPredictionsCache</span> <span class="o">=</span> <span class="s2">&quot;shifthappens/cache&quot;</span>
 
 
 <span class="k">def</span> <span class="nf">_check_imagenet_folder</span><span class="p">():</span>
@@ -213,23 +207,23 @@
 <span class="sd">    exists and contains a thousand folders (one per class).</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">assert</span> <span class="p">(</span>
-        <span class="n">ImageNetValidationData</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
-    <span class="p">),</span> <span class="s2">&quot;ImagenetValidationData path is not specified.&quot;</span>
-    <span class="k">assert</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">ImageNetValidationData</span><span class="p">),</span> <span class="p">(</span>
+        <span class="n">shifthappens</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">imagenet_validation_path</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+    <span class="p">),</span> <span class="s2">&quot;shifthappens.config.ImagenetValidationData path is not specified.&quot;</span>
+    <span class="k">assert</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">shifthappens</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">imagenet_validation_path</span><span class="p">),</span> <span class="p">(</span>
         <span class="s2">&quot;You have specified an incorrect path to the ImageNet validation set. &quot;</span>
-        <span class="s2">&quot;Files not found at location specified in shithappens.data.imagenet.ImageNetValidationData.&quot;</span>
+        <span class="s2">&quot;Files not found at location specified in shifthappens.config.imagenet_validation_path.&quot;</span>
     <span class="p">)</span>
-
     <span class="k">assert</span> <span class="p">(</span>
-        <span class="nb">len</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">ImageNetValidationData</span><span class="p">))</span> <span class="o">==</span> <span class="mi">1000</span>
-    <span class="p">),</span> <span class="s2">&quot;ImageNetValidationData folder contains less or more folders than ImageNet classes.&quot;</span>
+        <span class="nb">len</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">shifthappens</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">imagenet_validation_path</span><span class="p">))</span> <span class="o">&gt;=</span> <span class="mi">1000</span>
+    <span class="p">),</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">shifthappens</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">imagenet_validation_path</span><span class="si">}</span><span class="s2"> folder contains less folders than ImageNet classes. &quot;</span>
 
 
 <div class="viewcode-block" id="get_imagenet_validation_loader"><a class="viewcode-back" href="../../../api.html#shifthappens.data.imagenet.get_imagenet_validation_loader">[docs]</a><span class="k">def</span> <span class="nf">get_imagenet_validation_loader</span><span class="p">(</span><span class="n">max_batch_size</span><span class="o">=</span><span class="mi">128</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DataLoader</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Creates a :py:class:`shifthappens.data.base.DataLoader` for the validation set of ImageNet.</span>
-<span class="sd">    Note that the path to ImageNet validation set</span>
-<span class="sd">    :py:data:`shifthappens.data.imagenet.ImageNetValidationData` must be specified.</span>
+<span class="sd">    Creates a :py:class:`shifthappens.data.base.DataLoader` for the</span>
+<span class="sd">    validation set of ImageNet. Note that the path to ImageNet validation set</span>
+<span class="sd">    :py:attr:`shifthappens.config.imagenet_validation_path</span>
+<span class="sd">    &lt;shifthappens.config.Config.imagenet_validation_path&gt;` must be specified.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        max_batch_size: How many samples allowed per batch to load.</span>
@@ -246,7 +240,9 @@
     <span class="p">)</span>
     <span class="n">imagenet_val_dataset</span> <span class="o">=</span> <span class="n">sh_data_torch</span><span class="o">.</span><span class="n">IndexedTorchDataset</span><span class="p">(</span>
         <span class="n">sh_data_torch</span><span class="o">.</span><span class="n">ImagesOnlyTorchDataset</span><span class="p">(</span>
-            <span class="n">tv_datasets</span><span class="o">.</span><span class="n">ImageFolder</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="n">ImageNetValidationData</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">transform</span><span class="p">)</span>
+            <span class="n">tv_datasets</span><span class="o">.</span><span class="n">ImageFolder</span><span class="p">(</span>
+                <span class="n">root</span><span class="o">=</span><span class="n">shifthappens</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">imagenet_validation_path</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">transform</span>
+            <span class="p">)</span>
         <span class="p">)</span>
     <span class="p">)</span>
 
@@ -259,9 +255,10 @@
 
 <div class="viewcode-block" id="get_cached_predictions"><a class="viewcode-back" href="../../../api.html#shifthappens.data.imagenet.get_cached_predictions">[docs]</a><span class="k">def</span> <span class="nf">get_cached_predictions</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Checks whether there exist cached results for the model&#39;s class and if so, returns them.</span>
-<span class="sd">    Note that the path to ImageNet validation set</span>
-<span class="sd">    :py:data:`shifthappens.data.imagenet.ImageNetValidationData` must be specified.</span>
+<span class="sd">    Checks whether there exist cached results for the model&#39;s class and if</span>
+<span class="sd">    so, returns them. Note that the path to ImageNet validation set</span>
+<span class="sd">    :py:attr:`shifthappens.config.imagenet_validation_path</span>
+<span class="sd">    &lt;shifthappens.config.Config.imagenet_validation_path&gt;` must be specified.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        cls: Model&#39;s class. Used for specifying folder name.</span>
@@ -269,12 +266,13 @@
 <span class="sd">    Returns:</span>
 <span class="sd">        Dictionary of loaded model predictions on ImageNet validation set.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">assert</span> <span class="p">(</span>
-        <span class="n">ImageNetValidationPredictionsCache</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
-    <span class="p">),</span> <span class="s2">&quot;Cannot get cached model results. ImageNetValidationPredictionsCache path is not specified.&quot;</span>
+    <span class="k">assert</span> <span class="n">shifthappens</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">cache_directory_path</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">,</span> <span class="p">(</span>
+        <span class="s2">&quot;Cannot get cached model results. &quot;</span>
+        <span class="s2">&quot;shifthappens.config.cache_directory_path is not specified.&quot;</span>
+    <span class="p">)</span>
 
     <span class="n">load_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
-        <span class="n">ImageNetValidationPredictionsCache</span><span class="p">,</span> <span class="bp">cls</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="s2">&quot;&quot;</span>
+        <span class="n">shifthappens</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">cache_directory_path</span><span class="p">,</span> <span class="bp">cls</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="s2">&quot;&quot;</span>
     <span class="p">)</span>
 
     <span class="k">assert</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span>
@@ -293,10 +291,12 @@
 
 <div class="viewcode-block" id="cache_predictions"><a class="viewcode-back" href="../../../api.html#shifthappens.data.imagenet.cache_predictions">[docs]</a><span class="k">def</span> <span class="nf">cache_predictions</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">imagenet_validation_result</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Caches model predictions in cls-named folder and load</span>
-<span class="sd">    model predictions from it. Note that the path to ImageNet validation set</span>
-<span class="sd">    :py:data:`shifthappens.data.imagenet.ImageNetValidationData` must be specified as</span>
-<span class="sd">    well as :py:data:`shifthappens.data.imagenet.ImageNetValidationPredictionsCache`.</span>
+<span class="sd">    Caches model predictions in cls-named folder and load model predictions</span>
+<span class="sd">    from it. Note that the path to ImageNet validation set</span>
+<span class="sd">    :py:attr:`shifthappens.config.imagenet_validation_path</span>
+<span class="sd">    &lt;shifthappens.config.Config.imagenet_validation_path&gt;` must be specified</span>
+<span class="sd">    as well as :py:attr:`shifthappens.config.cache_directory_path</span>
+<span class="sd">    &lt;shifthappens.config.Config.cache_directory_path&gt;`.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        cls: Model&#39;s class. Used for specifying folder name.</span>
@@ -305,10 +305,10 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">assert</span> <span class="p">(</span>
-        <span class="n">ImageNetValidationPredictionsCache</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
-    <span class="p">),</span> <span class="s2">&quot;Cannot cache model results. ImageNetValidationPredictionsCache path is not specified.&quot;</span>
+        <span class="n">shifthappens</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">cache_directory_path</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+    <span class="p">),</span> <span class="s2">&quot;Cannot cache model results. shifthappens.config.cache_directory_path is not specified.&quot;</span>
     <span class="n">save_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
-        <span class="n">ImageNetValidationPredictionsCache</span><span class="p">,</span> <span class="bp">cls</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="s2">&quot;&quot;</span>
+        <span class="n">shifthappens</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">cache_directory_path</span><span class="p">,</span> <span class="bp">cls</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="s2">&quot;&quot;</span>
     <span class="p">)</span>
 
     <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">save_path</span><span class="p">):</span>
@@ -323,9 +323,12 @@
 
 <div class="viewcode-block" id="is_cached"><a class="viewcode-back" href="../../../api.html#shifthappens.data.imagenet.is_cached">[docs]</a><span class="k">def</span> <span class="nf">is_cached</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Checks if model&#39;s results are cached in cls-named folder. Note that the path to the ImageNet validation set</span>
-<span class="sd">    :py:data:`shifthappens.data.imagenet.ImageNetValidationData` must be specified as</span>
-<span class="sd">    well as :py:data:`shifthappens.data.imagenet.ImageNetValidationPredictionsCache`.</span>
+<span class="sd">    Checks if model&#39;s results are cached in cls-named folder. Note that the</span>
+<span class="sd">    path to the ImageNet validation set</span>
+<span class="sd">    :py:attr:`shifthappens.config.imagenet_validation_path</span>
+<span class="sd">    &lt;shifthappens.config.Config.imagenet_validation_path&gt;` must be specified</span>
+<span class="sd">    as well as :py:attr:`shifthappens.config.cache_directory_path</span>
+<span class="sd">    &lt;shifthappens.config.Config.cache_directory_path&gt;`.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        cls: Model&#39;s class. Used for specifying folder name.</span>
@@ -333,11 +336,12 @@
 <span class="sd">    Returns:</span>
 <span class="sd">        ``True`` if model&#39;s results are cached, ``False`` otherwise.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">assert</span> <span class="p">(</span>
-        <span class="n">ImageNetValidationPredictionsCache</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
-    <span class="p">),</span> <span class="s2">&quot;Cannot find cached model results. ImageNetValidationPredictionsCache path is not specified.&quot;</span>
+    <span class="k">assert</span> <span class="n">shifthappens</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">cache_directory_path</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">,</span> <span class="p">(</span>
+        <span class="s2">&quot;Cannot find cached model results. &quot;</span>
+        <span class="s2">&quot;shifthappens.config.cache_directory_path path is not specified. &quot;</span>
+    <span class="p">)</span>
     <span class="n">load_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
-        <span class="n">ImageNetValidationPredictionsCache</span><span class="p">,</span> <span class="bp">cls</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="s2">&quot;&quot;</span>
+        <span class="n">shifthappens</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">cache_directory_path</span><span class="p">,</span> <span class="bp">cls</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="s2">&quot;&quot;</span>
     <span class="p">)</span>
 
     <span class="k">try</span><span class="p">:</span>
@@ -353,7 +357,9 @@
 <span class="sd">    Returns the ground-truth labels of the ImageNet valdation set.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">_check_imagenet_folder</span><span class="p">()</span>
-    <span class="k">return</span> <span class="n">tv_datasets</span><span class="o">.</span><span class="n">ImageFolder</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="n">ImageNetValidationData</span><span class="p">)</span><span class="o">.</span><span class="n">targets</span></div>
+    <span class="k">return</span> <span class="n">tv_datasets</span><span class="o">.</span><span class="n">ImageFolder</span><span class="p">(</span>
+        <span class="n">root</span><span class="o">=</span><span class="n">shifthappens</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">imagenet_validation_path</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">targets</span></div>
 </pre></div>
 
               </article>

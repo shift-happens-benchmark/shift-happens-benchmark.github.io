@@ -196,6 +196,11 @@
      Task implementations
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#module-shifthappens.config">
+     Configuration
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -683,31 +688,99 @@ to the name of metrics calculated by the task.</p></li>
 </dd></dl>
 
 </section>
+<section id="module-shifthappens.config">
+<span id="configuration"></span><h3>Configuration<a class="headerlink" href="#module-shifthappens.config" title="Permalink to this heading">#</a></h3>
+<p>Global configuration options for the benchmark.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="shifthappens.config.Config">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">shifthappens.config.</span></span><span class="sig-name descname"><span class="pre">Config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">imagenet_validation_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'shifthappens/imagenet'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache_directory_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'shifthappens/cache'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/shifthappens/config.html#Config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shifthappens.config.Config" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Global configuration for the benchmark.</p>
+<dl class="simple">
+<dt>Config options can be edited by the following order:</dt><dd><ol class="arabic simple">
+<li><p>By setting variables explicitly when getting the instance via <a class="reference internal" href="#shifthappens.config.get_config" title="shifthappens.config.get_config"><code class="xref py py-func docutils literal notranslate"><span class="pre">shifthappens.config.get_config</span></code></a></p></li>
+<li><p>By setting an environment variable, prefixed as “SH_VARIABLE_NAME”</p></li>
+<li><p>By relying on the default values defined in this class.</p></li>
+</ol>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>imagenet_validation_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, default: <code class="docutils literal notranslate"><span class="pre">'shifthappens/imagenet'</span></code>) – </p></li>
+<li><p><strong>cache_directory_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, default: <code class="docutils literal notranslate"><span class="pre">'shifthappens/cache'</span></code>) – </p></li>
+<li><p><strong>verbose</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>, default: <code class="docutils literal notranslate"><span class="pre">False</span></code>) – </p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="shifthappens.config.Config.imagenet_validation_path">
+<span class="sig-name descname"><span class="pre">imagenet_validation_path</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'shifthappens/imagenet'</span></em><a class="headerlink" href="#shifthappens.config.Config.imagenet_validation_path" title="Permalink to this definition">#</a></dt>
+<dd><p>The imagenet validation path.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="shifthappens.config.Config.cache_directory_path">
+<span class="sig-name descname"><span class="pre">cache_directory_path</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'shifthappens/cache'</span></em><a class="headerlink" href="#shifthappens.config.Config.cache_directory_path" title="Permalink to this definition">#</a></dt>
+<dd><p>The caching directory for model results (either absolute or relative to working directory). If the folder does not exist, it will be created.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="shifthappens.config.Config.verbose">
+<span class="sig-name descname"><span class="pre">verbose</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><span class="pre">bool</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#shifthappens.config.Config.verbose" title="Permalink to this definition">#</a></dt>
+<dd><p>Show additional log messages on stderr (like progress bars).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="shifthappens.config.Config.get_instance">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_instance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">init_kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/shifthappens/config.html#Config.get_instance"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shifthappens.config.Config.get_instance" title="Permalink to this definition">#</a></dt>
+<dd><p>Initializes config with provided arguments. If no arguments are provided,
+a new config will be initialized.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>**init_kwargs</strong> – Values for initializing <a class="reference internal" href="#shifthappens.config.Config" title="shifthappens.config.Config"><code class="xref py py-class docutils literal notranslate"><span class="pre">Config</span></code></a> fields.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Initialized <a class="reference internal" href="#shifthappens.config.Config" title="shifthappens.config.Config"><code class="xref py py-class docutils literal notranslate"><span class="pre">Config</span></code></a>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="shifthappens.config.get_config">
+<span class="sig-prename descclassname"><span class="pre">shifthappens.config.</span></span><span class="sig-name descname"><span class="pre">get_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">init_kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/shifthappens/config.html#get_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shifthappens.config.get_config" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns a global config initialized with provided arguments. This allows you to
+change defaults paths to ImageNet validation set, cached models result, etc.
+Note that reinitializing config will raise an error.
+For more details see <a class="reference internal" href="#shifthappens.config.Config.get_instance" title="shifthappens.config.Config.get_instance"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_instance</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>**init_kwargs</strong> – Values for initializing <a class="reference internal" href="#shifthappens.config.Config" title="shifthappens.config.Config"><code class="xref py py-class docutils literal notranslate"><span class="pre">Config</span></code></a> fields.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#shifthappens.config.Config" title="shifthappens.config.Config"><code class="xref py py-class docutils literal notranslate"><span class="pre">Config</span></code></a></p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Initialized <a class="reference internal" href="#shifthappens.config.Config" title="shifthappens.config.Config"><code class="xref py py-class docutils literal notranslate"><span class="pre">Config</span></code></a>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
 </section>
 <section id="module-shifthappens.data.imagenet">
 <span id="accessing-scores-for-the-imagenet-validation-set"></span><h2>Accessing Scores for the ImageNet Validation Set<a class="headerlink" href="#module-shifthappens.data.imagenet" title="Permalink to this heading">#</a></h2>
 <p>This module provides functionality to access the predictions of a model for the ImageNet validation set.
 Further, the predictions can be cached and loaded from the cache to reduce computational costs.
-Note, that for this to work :py:data:shifthappens.data.imagenet.ImageNetValidationData
-must be set to the ImageNet validation set path. path.</p>
-<dl class="py data">
-<dt class="sig sig-object py" id="shifthappens.data.imagenet.ImageNetValidationData">
-<span class="sig-prename descclassname"><span class="pre">shifthappens.data.imagenet.</span></span><span class="sig-name descname"><span class="pre">ImageNetValidationData</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'shifthappens/imagenet'</span></em><a class="headerlink" href="#shifthappens.data.imagenet.ImageNetValidationData" title="Permalink to this definition">#</a></dt>
-<dd><p>Must be set to ImageNet validation set path (either absolute or relative to working directory).</p>
-</dd></dl>
-
-<dl class="py data">
-<dt class="sig sig-object py" id="shifthappens.data.imagenet.ImageNetValidationPredictionsCache">
-<span class="sig-prename descclassname"><span class="pre">shifthappens.data.imagenet.</span></span><span class="sig-name descname"><span class="pre">ImageNetValidationPredictionsCache</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'shifthappens/cache'</span></em><a class="headerlink" href="#shifthappens.data.imagenet.ImageNetValidationPredictionsCache" title="Permalink to this definition">#</a></dt>
-<dd><p>Must be set to models’ results caching directory (either absolute or relative to working directory). If the folder does not exist, it will be created.</p>
-</dd></dl>
-
+For path configuration please have a look at :py:module:shifthappens.config.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="shifthappens.data.imagenet.get_imagenet_validation_loader">
 <span class="sig-prename descclassname"><span class="pre">shifthappens.data.imagenet.</span></span><span class="sig-name descname"><span class="pre">get_imagenet_validation_loader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">max_batch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">128</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/shifthappens/data/imagenet.html#get_imagenet_validation_loader"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shifthappens.data.imagenet.get_imagenet_validation_loader" title="Permalink to this definition">#</a></dt>
-<dd><p>Creates a <a class="reference internal" href="#shifthappens.data.base.DataLoader" title="shifthappens.data.base.DataLoader"><code class="xref py py-class docutils literal notranslate"><span class="pre">shifthappens.data.base.DataLoader</span></code></a> for the validation set of ImageNet.
-Note that the path to ImageNet validation set
-<a class="reference internal" href="#shifthappens.data.imagenet.ImageNetValidationData" title="shifthappens.data.imagenet.ImageNetValidationData"><code class="xref py py-data docutils literal notranslate"><span class="pre">shifthappens.data.imagenet.ImageNetValidationData</span></code></a> must be specified.</p>
+<dd><p>Creates a <a class="reference internal" href="#shifthappens.data.base.DataLoader" title="shifthappens.data.base.DataLoader"><code class="xref py py-class docutils literal notranslate"><span class="pre">shifthappens.data.base.DataLoader</span></code></a> for the
+validation set of ImageNet. Note that the path to ImageNet validation set
+<a class="reference internal" href="#shifthappens.config.Config.imagenet_validation_path" title="shifthappens.config.Config.imagenet_validation_path"><code class="xref py py-attr docutils literal notranslate"><span class="pre">shifthappens.config.imagenet_validation_path</span></code></a> must be specified.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>max_batch_size</strong> – How many samples allowed per batch to load.</p>
@@ -724,9 +797,9 @@ Note that the path to ImageNet validation set
 <dl class="py function">
 <dt class="sig sig-object py" id="shifthappens.data.imagenet.get_cached_predictions">
 <span class="sig-prename descclassname"><span class="pre">shifthappens.data.imagenet.</span></span><span class="sig-name descname"><span class="pre">get_cached_predictions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cls</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/shifthappens/data/imagenet.html#get_cached_predictions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shifthappens.data.imagenet.get_cached_predictions" title="Permalink to this definition">#</a></dt>
-<dd><p>Checks whether there exist cached results for the model’s class and if so, returns them.
-Note that the path to ImageNet validation set
-<a class="reference internal" href="#shifthappens.data.imagenet.ImageNetValidationData" title="shifthappens.data.imagenet.ImageNetValidationData"><code class="xref py py-data docutils literal notranslate"><span class="pre">shifthappens.data.imagenet.ImageNetValidationData</span></code></a> must be specified.</p>
+<dd><p>Checks whether there exist cached results for the model’s class and if
+so, returns them. Note that the path to ImageNet validation set
+<a class="reference internal" href="#shifthappens.config.Config.imagenet_validation_path" title="shifthappens.config.Config.imagenet_validation_path"><code class="xref py py-attr docutils literal notranslate"><span class="pre">shifthappens.config.imagenet_validation_path</span></code></a> must be specified.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>cls</strong> – Model’s class. Used for specifying folder name.</p>
@@ -743,10 +816,10 @@ Note that the path to ImageNet validation set
 <dl class="py function">
 <dt class="sig sig-object py" id="shifthappens.data.imagenet.cache_predictions">
 <span class="sig-prename descclassname"><span class="pre">shifthappens.data.imagenet.</span></span><span class="sig-name descname"><span class="pre">cache_predictions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cls</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">imagenet_validation_result</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/shifthappens/data/imagenet.html#cache_predictions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shifthappens.data.imagenet.cache_predictions" title="Permalink to this definition">#</a></dt>
-<dd><p>Caches model predictions in cls-named folder and load
-model predictions from it. Note that the path to ImageNet validation set
-<a class="reference internal" href="#shifthappens.data.imagenet.ImageNetValidationData" title="shifthappens.data.imagenet.ImageNetValidationData"><code class="xref py py-data docutils literal notranslate"><span class="pre">shifthappens.data.imagenet.ImageNetValidationData</span></code></a> must be specified as
-well as <a class="reference internal" href="#shifthappens.data.imagenet.ImageNetValidationPredictionsCache" title="shifthappens.data.imagenet.ImageNetValidationPredictionsCache"><code class="xref py py-data docutils literal notranslate"><span class="pre">shifthappens.data.imagenet.ImageNetValidationPredictionsCache</span></code></a>.</p>
+<dd><p>Caches model predictions in cls-named folder and load model predictions
+from it. Note that the path to ImageNet validation set
+<a class="reference internal" href="#shifthappens.config.Config.imagenet_validation_path" title="shifthappens.config.Config.imagenet_validation_path"><code class="xref py py-attr docutils literal notranslate"><span class="pre">shifthappens.config.imagenet_validation_path</span></code></a> must be specified
+as well as <a class="reference internal" href="#shifthappens.config.Config.cache_directory_path" title="shifthappens.config.Config.cache_directory_path"><code class="xref py py-attr docutils literal notranslate"><span class="pre">shifthappens.config.cache_directory_path</span></code></a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -761,9 +834,10 @@ validation set.</p></li>
 <dl class="py function">
 <dt class="sig sig-object py" id="shifthappens.data.imagenet.is_cached">
 <span class="sig-prename descclassname"><span class="pre">shifthappens.data.imagenet.</span></span><span class="sig-name descname"><span class="pre">is_cached</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cls</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/shifthappens/data/imagenet.html#is_cached"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shifthappens.data.imagenet.is_cached" title="Permalink to this definition">#</a></dt>
-<dd><p>Checks if model’s results are cached in cls-named folder. Note that the path to the ImageNet validation set
-<a class="reference internal" href="#shifthappens.data.imagenet.ImageNetValidationData" title="shifthappens.data.imagenet.ImageNetValidationData"><code class="xref py py-data docutils literal notranslate"><span class="pre">shifthappens.data.imagenet.ImageNetValidationData</span></code></a> must be specified as
-well as <a class="reference internal" href="#shifthappens.data.imagenet.ImageNetValidationPredictionsCache" title="shifthappens.data.imagenet.ImageNetValidationPredictionsCache"><code class="xref py py-data docutils literal notranslate"><span class="pre">shifthappens.data.imagenet.ImageNetValidationPredictionsCache</span></code></a>.</p>
+<dd><p>Checks if model’s results are cached in cls-named folder. Note that the
+path to the ImageNet validation set
+<a class="reference internal" href="#shifthappens.config.Config.imagenet_validation_path" title="shifthappens.config.Config.imagenet_validation_path"><code class="xref py py-attr docutils literal notranslate"><span class="pre">shifthappens.config.imagenet_validation_path</span></code></a> must be specified
+as well as <a class="reference internal" href="#shifthappens.config.Config.cache_directory_path" title="shifthappens.config.Config.cache_directory_path"><code class="xref py py-attr docutils literal notranslate"><span class="pre">shifthappens.config.cache_directory_path</span></code></a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>cls</strong> – Model’s class. Used for specifying folder name.</p>
