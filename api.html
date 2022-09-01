@@ -419,10 +419,10 @@ respective <a class="reference internal" href="#shifthappens.tasks.task_result.T
 </dl>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">shifthappens.benchmark</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">shifthappens.models.torchvision</span> <span class="kn">import</span> <span class="n">resnet18</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">shifthappens.models.torchvision</span> <span class="kn">import</span> <span class="n">ResNet18</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># import existing model or create a custom one inherited from</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># shifthappens.models.base.Model and ModelMixin&#39;s</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">resnet18</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">ResNet18</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">shifthappens</span><span class="o">.</span><span class="n">benchmark</span><span class="o">.</span><span class="n">evaluate_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="s2">&quot;path_to_store_tasks_data&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
