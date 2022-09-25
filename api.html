@@ -36,6 +36,7 @@
     <script src="_static/underscore.js"></script>
     <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'api';</script>
@@ -389,15 +390,15 @@ for the <code class="docutils literal notranslate"><span class="pre">shifthappen
 <p>Also make sure to look at the <a class="reference external" href="https://github.com/shift-happens-benchmark/icml-2022/tree/main/examples">examples</a>
 in the github repository. If in doubt or if the API is not yet sufficiently flexible to fit your needs, consider
 opening an issue on github or join our slack channel.</p>
-<section id="module-shifthappens.benchmark">
-<span id="benchmark"></span><h2>Benchmark<a class="headerlink" href="#module-shifthappens.benchmark" title="Permalink to this heading">#</a></h2>
+<section id="benchmark">
+<h2>Benchmark<a class="headerlink" href="#benchmark" title="Permalink to this heading">#</a></h2>
 <p>Base functions to register new tasks to the benchmark and evaluate models.</p>
 <p>To register add a new task decorate a task class inherited from
 <a class="reference internal" href="#shifthappens.tasks.base.Task" title="shifthappens.tasks.base.Task"><code class="xref py py-class docutils literal notranslate"><span class="pre">shifthappens.tasks.base.Task</span></code></a> with <a class="reference internal" href="#shifthappens.benchmark.register_task" title="shifthappens.benchmark.register_task"><code class="xref py py-meth docutils literal notranslate"><span class="pre">shifthappens.benchmark.register_task</span></code></a>
 function.</p>
 <p>To evaluate model on all the registered tasks run
 <a class="reference internal" href="#shifthappens.benchmark.evaluate_model" title="shifthappens.benchmark.evaluate_model"><code class="xref py py-meth docutils literal notranslate"><span class="pre">shifthappens.benchmark.evaluate_model</span></code></a>.</p>
-<dl class="py function">
+<span class="target" id="module-shifthappens.benchmark"></span><dl class="py function">
 <dt class="sig sig-object py" id="shifthappens.benchmark.evaluate_model">
 <span class="sig-prename descclassname"><span class="pre">shifthappens.benchmark.</span></span><span class="sig-name descname"><span class="pre">evaluate_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_root</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/shifthappens/benchmark.html#evaluate_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shifthappens.benchmark.evaluate_model" title="Permalink to this definition">#</a></dt>
 <dd><p>Runs all registered tasks of the benchmark
@@ -474,8 +475,8 @@ tuple used for task iteration in <a class="reference internal" href="#shifthappe
 </dl>
 </dd></dl>
 
-<section id="module-shifthappens.tasks.base">
-<span id="task-implementations"></span><h3>Task implementations<a class="headerlink" href="#module-shifthappens.tasks.base" title="Permalink to this heading">#</a></h3>
+<section id="task-implementations">
+<h3>Task implementations<a class="headerlink" href="#task-implementations" title="Permalink to this heading">#</a></h3>
 <p>Base definition of a task in the shift happens benchmark.</p>
 <p>Fully defined tasks should subclass the <a class="reference internal" href="#shifthappens.tasks.base.Task" title="shifthappens.tasks.base.Task"><code class="xref py py-class docutils literal notranslate"><span class="pre">Task</span></code></a> abstract base class, and implement all
 mixins based on the required model outputs to evaluate the task, also part of this module.</p>
@@ -492,7 +493,7 @@ class for further details.</p></li>
 <li><p>Register your class to the benchmark using the <a class="reference internal" href="#shifthappens.benchmark.register_task" title="shifthappens.benchmark.register_task"><code class="xref py py-func docutils literal notranslate"><span class="pre">register_task</span></code></a>
 decorator, along with a name and data path for your benchmark.</p></li>
 </ol>
-<dl class="py data">
+<span class="target" id="module-shifthappens.tasks.base"></span><dl class="py data">
 <dt class="sig sig-object py" id="shifthappens.tasks.base.T">
 <span class="sig-prename descclassname"><span class="pre">shifthappens.tasks.base.</span></span><span class="sig-name descname"><span class="pre">T</span></span><a class="headerlink" href="#shifthappens.tasks.base.T" title="Permalink to this definition">#</a></dt>
 <dd><p>A generic representing arbitrary types.</p>
@@ -715,9 +716,9 @@ metrics are main results/summary metrics for the task.</p>
 
 </dd></dl>
 
-<span class="target" id="module-shifthappens.tasks.mixins"></span><p>Task mixins indicate the requirements of the task on the model in terms of the
+<p>Task mixins indicate the requirements of the task on the model in terms of the
 model’s supported prediction types.</p>
-<dl class="py class">
+<span class="target" id="module-shifthappens.tasks.mixins"></span><dl class="py class">
 <dt class="sig sig-object py" id="shifthappens.tasks.mixins.LabelTaskMixin">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">shifthappens.tasks.mixins.</span></span><span class="sig-name descname"><span class="pre">LabelTaskMixin</span></span><a class="reference internal" href="_modules/shifthappens/tasks/mixins.html#LabelTaskMixin"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shifthappens.tasks.mixins.LabelTaskMixin" title="Permalink to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
@@ -762,8 +763,8 @@ model’s supported prediction types.</p>
 <a class="reference internal" href="#shifthappens.models.base.ModelResult" title="shifthappens.models.base.ModelResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">shifthappens.models.base.ModelResult</span></code></a> returned during evaluation.</p>
 </dd></dl>
 
-<span class="target" id="module-shifthappens.tasks.task_result"></span><p>Class for representing the results of a single task.</p>
-<dl class="py class">
+<p>Class for representing the results of a single task.</p>
+<span class="target" id="module-shifthappens.tasks.task_result"></span><dl class="py class">
 <dt class="sig sig-object py" id="shifthappens.tasks.task_result.TaskResult">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">shifthappens.tasks.task_result.</span></span><span class="sig-name descname"><span class="pre">TaskResult</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">summary_metrics</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">metrics</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/shifthappens/tasks/task_result.html#TaskResult"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shifthappens.tasks.task_result.TaskResult" title="Permalink to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
@@ -797,8 +798,8 @@ to the name of metrics calculated by the task.</p></li>
 </div>
 </dd></dl>
 
-<span class="target" id="module-shifthappens.tasks.metrics"></span><p>Categories in which metrics of tasks will be grouped.</p>
-<dl class="py class">
+<p>Categories in which metrics of tasks will be grouped.</p>
+<span class="target" id="module-shifthappens.tasks.metrics"></span><dl class="py class">
 <dt class="sig sig-object py" id="shifthappens.tasks.metrics.Metric">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">shifthappens.tasks.metrics.</span></span><span class="sig-name descname"><span class="pre">Metric</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/shifthappens/tasks/metrics.html#Metric"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shifthappens.tasks.metrics.Metric" title="Permalink to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/enum.html#enum.IntEnum" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">IntEnum</span></code></a></p>
@@ -806,10 +807,10 @@ to the name of metrics calculated by the task.</p></li>
 </dd></dl>
 
 </section>
-<section id="module-shifthappens.config">
-<span id="configuration"></span><h3>Configuration<a class="headerlink" href="#module-shifthappens.config" title="Permalink to this heading">#</a></h3>
+<section id="configuration">
+<h3>Configuration<a class="headerlink" href="#configuration" title="Permalink to this heading">#</a></h3>
 <p>Global configuration options for the benchmark.</p>
-<dl class="py class">
+<span class="target" id="module-shifthappens.config"></span><dl class="py class">
 <dt class="sig sig-object py" id="shifthappens.config.Config">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">shifthappens.config.</span></span><span class="sig-name descname"><span class="pre">Config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">imagenet_validation_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'shifthappens/imagenet'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache_directory_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'shifthappens/cache'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/shifthappens/config.html#Config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shifthappens.config.Config" title="Permalink to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
@@ -888,12 +889,12 @@ For more details see <a class="reference internal" href="#shifthappens.config.Co
 
 </section>
 </section>
-<section id="module-shifthappens.data.imagenet">
-<span id="accessing-scores-for-the-imagenet-validation-set"></span><h2>Accessing Scores for the ImageNet Validation Set<a class="headerlink" href="#module-shifthappens.data.imagenet" title="Permalink to this heading">#</a></h2>
+<section id="accessing-scores-for-the-imagenet-validation-set">
+<h2>Accessing Scores for the ImageNet Validation Set<a class="headerlink" href="#accessing-scores-for-the-imagenet-validation-set" title="Permalink to this heading">#</a></h2>
 <p>This module provides functionality to access the predictions of a model for the ImageNet validation set.
 Further, the predictions can be cached and loaded from the cache to reduce computational costs.
 For path configuration please have a look at :py:module:shifthappens.config.</p>
-<dl class="py function">
+<span class="target" id="module-shifthappens.data.imagenet"></span><dl class="py function">
 <dt class="sig sig-object py" id="shifthappens.data.imagenet.get_imagenet_validation_loader">
 <span class="sig-prename descclassname"><span class="pre">shifthappens.data.imagenet.</span></span><span class="sig-name descname"><span class="pre">get_imagenet_validation_loader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">max_batch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">128</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/shifthappens/data/imagenet.html#get_imagenet_validation_loader"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shifthappens.data.imagenet.get_imagenet_validation_loader" title="Permalink to this definition">#</a></dt>
 <dd><p>Creates a <a class="reference internal" href="#shifthappens.data.base.DataLoader" title="shifthappens.data.base.DataLoader"><code class="xref py py-class docutils literal notranslate"><span class="pre">shifthappens.data.base.DataLoader</span></code></a> for the
@@ -980,15 +981,15 @@ as well as <a class="reference internal" href="#shifthappens.config.Config.cache
 </dl>
 </dd></dl>
 
-<section id="module-shifthappens.models.base">
-<span id="model-implementations"></span><h3>Model implementations<a class="headerlink" href="#module-shifthappens.models.base" title="Permalink to this heading">#</a></h3>
+<section id="model-implementations">
+<h3>Model implementations<a class="headerlink" href="#model-implementations" title="Permalink to this heading">#</a></h3>
 <p>Base classes and helper functions for adding models to the benchmark.</p>
 <p>To add a new model, implement a new wrapper class inheriting from
 <a class="reference internal" href="#shifthappens.models.base.Model" title="shifthappens.models.base.Model"><code class="xref py py-class docutils literal notranslate"><span class="pre">shifthappens.models.base.Model</span></code></a>, and from any of the Mixins defined
 in <a class="reference internal" href="#module-shifthappens.models.mixins" title="shifthappens.models.mixins"><code class="xref py py-mod docutils literal notranslate"><span class="pre">shifthappens.models.mixins</span></code></a>.</p>
 <p>Model results should be converted to <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.23)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a> objects, and
 packed into an <a class="reference internal" href="#shifthappens.models.base.ModelResult" title="shifthappens.models.base.ModelResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">shifthappens.models.base.ModelResult</span></code></a> instance.</p>
-<dl class="py class">
+<span class="target" id="module-shifthappens.models.base"></span><dl class="py class">
 <dt class="sig sig-object py" id="shifthappens.models.base.ModelResult">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">shifthappens.models.base.</span></span><span class="sig-name descname"><span class="pre">ModelResult</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">class_labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">confidences</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uncertainties</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ood_scores</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">features</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/shifthappens/models/base.html#ModelResult"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shifthappens.models.base.ModelResult" title="Permalink to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
@@ -1143,8 +1144,8 @@ and image features, all as <a class="reference external" href="https://numpy.org
 
 </dd></dl>
 
-<span class="target" id="module-shifthappens.models.mixins"></span><p>Model mixins indicate the supported prediction types of a model.</p>
-<dl class="py class">
+<p>Model mixins indicate the supported prediction types of a model.</p>
+<span class="target" id="module-shifthappens.models.mixins"></span><dl class="py class">
 <dt class="sig sig-object py" id="shifthappens.models.mixins.LabelModelMixin">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">shifthappens.models.mixins.</span></span><span class="sig-name descname"><span class="pre">LabelModelMixin</span></span><a class="reference internal" href="_modules/shifthappens/models/mixins.html#LabelModelMixin"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shifthappens.models.mixins.LabelModelMixin" title="Permalink to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
@@ -1179,10 +1180,10 @@ and image features, all as <a class="reference external" href="https://numpy.org
 <p>Inherit from this class if your model returns features.</p>
 </dd></dl>
 
-<section id="module-shifthappens.models.torchvision">
-<span id="model-implementations-from-torchvision"></span><h4>Model implementations from torchvision<a class="headerlink" href="#module-shifthappens.models.torchvision" title="Permalink to this heading">#</a></h4>
+<section id="model-implementations-from-torchvision">
+<h4>Model implementations from torchvision<a class="headerlink" href="#model-implementations-from-torchvision" title="Permalink to this heading">#</a></h4>
 <p>Model baselines from torchvision.</p>
-<dl class="py class">
+<span class="target" id="module-shifthappens.models.torchvision"></span><dl class="py class">
 <dt class="sig sig-object py" id="shifthappens.models.torchvision.__TorchvisionPreProcessingMixin">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">shifthappens.models.torchvision.</span></span><span class="sig-name descname"><span class="pre">__TorchvisionPreProcessingMixin</span></span><a class="reference internal" href="_modules/shifthappens/models/torchvision.html#__TorchvisionPreProcessingMixin"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shifthappens.models.torchvision.__TorchvisionPreProcessingMixin" title="Permalink to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
@@ -1275,10 +1276,10 @@ See <a class="reference external" href="https://pytorch.org/vision/stable/models
 
 </section>
 </section>
-<section id="module-shifthappens.data.base">
-<span id="data-loading"></span><h3>Data loading<a class="headerlink" href="#module-shifthappens.data.base" title="Permalink to this heading">#</a></h3>
+<section id="data-loading">
+<h3>Data loading<a class="headerlink" href="#data-loading" title="Permalink to this heading">#</a></h3>
 <p>Base classes and helper functions for data handling (dataset, dataloader).</p>
-<dl class="py class">
+<span class="target" id="module-shifthappens.data.base"></span><dl class="py class">
 <dt class="sig sig-object py" id="shifthappens.data.base.Dataset">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">shifthappens.data.base.</span></span><span class="sig-name descname"><span class="pre">Dataset</span></span><a class="reference internal" href="_modules/shifthappens/data/base.html#Dataset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shifthappens.data.base.Dataset" title="Permalink to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/abc.html#abc.ABC" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></a></p>
@@ -1352,9 +1353,9 @@ through the <a class="reference internal" href="#shifthappens.data.base.DataLoad
 </dl>
 </dd></dl>
 
-<span class="target" id="module-shifthappens.data.torch"></span><p>Wrappers for PyTorch datasets such that they can be used as datasets
+<p>Wrappers for PyTorch datasets such that they can be used as datasets
 for the benchmark.</p>
-<dl class="py class">
+<span class="target" id="module-shifthappens.data.torch"></span><dl class="py class">
 <dt class="sig sig-object py" id="shifthappens.data.torch.TorchDataset">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">shifthappens.data.torch.</span></span><span class="sig-name descname"><span class="pre">TorchDataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">torch_dataset</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/shifthappens/data/torch.html#TorchDataset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shifthappens.data.torch.TorchDataset" title="Permalink to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#shifthappens.data.base.Dataset" title="shifthappens.data.base.Dataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dataset</span></code></a></p>
@@ -1394,10 +1395,10 @@ only the images are returned.</p>
 </dd></dl>
 
 </section>
-<section id="module-shifthappens.task_data.task_metadata">
-<span id="storing-tasks-within-the-benchmark"></span><h3>Storing tasks within the benchmark<a class="headerlink" href="#module-shifthappens.task_data.task_metadata" title="Permalink to this heading">#</a></h3>
+<section id="storing-tasks-within-the-benchmark">
+<h3>Storing tasks within the benchmark<a class="headerlink" href="#storing-tasks-within-the-benchmark" title="Permalink to this heading">#</a></h3>
 <p>Class for storing a task’s metadata.</p>
-<dl class="py class">
+<span class="target" id="module-shifthappens.task_data.task_metadata"></span><dl class="py class">
 <dt class="sig sig-object py" id="shifthappens.task_data.task_metadata.TaskMetadata">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">shifthappens.task_data.task_metadata.</span></span><span class="sig-name descname"><span class="pre">TaskMetadata</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">relative_data_folder</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">standalone</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/shifthappens/task_data/task_metadata.html#TaskMetadata"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shifthappens.task_data.task_metadata.TaskMetadata" title="Permalink to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
@@ -1418,8 +1419,8 @@ collection of tasks.</p></li>
 </dl>
 </dd></dl>
 
-<span class="target" id="module-shifthappens.task_data.task_registration"></span><p>Class for storing a task’s registration for the benchmark.</p>
-<dl class="py class">
+<p>Class for storing a task’s registration for the benchmark.</p>
+<span class="target" id="module-shifthappens.task_data.task_registration"></span><dl class="py class">
 <dt class="sig sig-object py" id="shifthappens.task_data.task_registration.TaskRegistration">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">shifthappens.task_data.task_registration.</span></span><span class="sig-name descname"><span class="pre">TaskRegistration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cls</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/shifthappens/task_data/task_registration.html#TaskRegistration"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shifthappens.task_data.task_registration.TaskRegistration" title="Permalink to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
@@ -1458,48 +1459,626 @@ automatically during task registration process.</p>
 <nav id="bd-toc-nav" class="page-toc">
     <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#module-shifthappens.benchmark">
+  <a class="reference internal nav-link" href="#benchmark">
    Benchmark
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#module-shifthappens.tasks.base">
+    <a class="reference internal nav-link" href="#shifthappens.benchmark.evaluate_model">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       evaluate_model
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#shifthappens.benchmark.register_task">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       register_task
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#shifthappens.benchmark.get_registered_tasks">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       get_registered_tasks
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#task-implementations">
      Task implementations
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#module-shifthappens.config">
-     Configuration
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#module-shifthappens.data.imagenet">
-   Accessing Scores for the ImageNet Validation Set
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#module-shifthappens.models.base">
-     Model implementations
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#module-shifthappens.models.torchvision">
-       Model implementations from torchvision
+      <a class="reference internal nav-link" href="#shifthappens.tasks.base.T">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         T
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#shifthappens.tasks.base.parameter">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         parameter
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#shifthappens.tasks.base.variable">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         variable
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#shifthappens.tasks.base.abstract_variable">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         abstract_variable
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#shifthappens.tasks.base.Task">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Task
+        </span>
+       </code>
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#shifthappens.tasks.base.Task.iterate_flavours">
+         <code class="docutils literal notranslate">
+          <span class="pre">
+           Task.iterate_flavours
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#shifthappens.tasks.base.Task.setup">
+         <code class="docutils literal notranslate">
+          <span class="pre">
+           Task.setup
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#shifthappens.tasks.base.Task.evaluate">
+         <code class="docutils literal notranslate">
+          <span class="pre">
+           Task.evaluate
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#shifthappens.tasks.base.Task._prepare_dataloader">
+         <code class="docutils literal notranslate">
+          <span class="pre">
+           Task._prepare_dataloader
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#shifthappens.tasks.base.Task._evaluate">
+         <code class="docutils literal notranslate">
+          <span class="pre">
+           Task._evaluate
+          </span>
+         </code>
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#shifthappens.tasks.mixins.LabelTaskMixin">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         LabelTaskMixin
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#shifthappens.tasks.mixins.ConfidenceTaskMixin">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         ConfidenceTaskMixin
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#shifthappens.tasks.mixins.UncertaintyTaskMixin">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         UncertaintyTaskMixin
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#shifthappens.tasks.mixins.OODScoreTaskMixin">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         OODScoreTaskMixin
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#shifthappens.tasks.mixins.FeaturesTaskMixin">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         FeaturesTaskMixin
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#shifthappens.tasks.task_result.TaskResult">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         TaskResult
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#shifthappens.tasks.metrics.Metric">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Metric
+        </span>
+       </code>
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#module-shifthappens.data.base">
-     Data loading
+    <a class="reference internal nav-link" href="#configuration">
+     Configuration
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#shifthappens.config.Config">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Config
+        </span>
+       </code>
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#shifthappens.config.Config.imagenet_validation_path">
+         <code class="docutils literal notranslate">
+          <span class="pre">
+           Config.imagenet_validation_path
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#shifthappens.config.Config.cache_directory_path">
+         <code class="docutils literal notranslate">
+          <span class="pre">
+           Config.cache_directory_path
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#shifthappens.config.Config.verbose">
+         <code class="docutils literal notranslate">
+          <span class="pre">
+           Config.verbose
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#shifthappens.config.Config.get_instance">
+         <code class="docutils literal notranslate">
+          <span class="pre">
+           Config.get_instance
+          </span>
+         </code>
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#shifthappens.config.get_config">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         get_config
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#accessing-scores-for-the-imagenet-validation-set">
+   Accessing Scores for the ImageNet Validation Set
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#shifthappens.data.imagenet.get_imagenet_validation_loader">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       get_imagenet_validation_loader
+      </span>
+     </code>
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#module-shifthappens.task_data.task_metadata">
+    <a class="reference internal nav-link" href="#shifthappens.data.imagenet.get_cached_predictions">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       get_cached_predictions
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#shifthappens.data.imagenet.cache_predictions">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       cache_predictions
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#shifthappens.data.imagenet.is_cached">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       is_cached
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#shifthappens.data.imagenet.load_imagenet_targets">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       load_imagenet_targets
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#model-implementations">
+     Model implementations
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#shifthappens.models.base.ModelResult">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         ModelResult
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#shifthappens.models.base.PredictionTargets">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         PredictionTargets
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#shifthappens.models.base.Model">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Model
+        </span>
+       </code>
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#shifthappens.models.base.Model.imagenet_validation_result">
+         <code class="docutils literal notranslate">
+          <span class="pre">
+           Model.imagenet_validation_result
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#shifthappens.models.base.Model.prepare">
+         <code class="docutils literal notranslate">
+          <span class="pre">
+           Model.prepare
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#shifthappens.models.base.Model.predict">
+         <code class="docutils literal notranslate">
+          <span class="pre">
+           Model.predict
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#shifthappens.models.base.Model._get_imagenet_predictions">
+         <code class="docutils literal notranslate">
+          <span class="pre">
+           Model._get_imagenet_predictions
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#shifthappens.models.base.Model._predict_imagenet_val">
+         <code class="docutils literal notranslate">
+          <span class="pre">
+           Model._predict_imagenet_val
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#shifthappens.models.base.Model._predict">
+         <code class="docutils literal notranslate">
+          <span class="pre">
+           Model._predict
+          </span>
+         </code>
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#shifthappens.models.mixins.LabelModelMixin">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         LabelModelMixin
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#shifthappens.models.mixins.ConfidenceModelMixin">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         ConfidenceModelMixin
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#shifthappens.models.mixins.UncertaintyModelMixin">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         UncertaintyModelMixin
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#shifthappens.models.mixins.OODScoreModelMixin">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         OODScoreModelMixin
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#shifthappens.models.mixins.FeaturesModelMixin">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         FeaturesModelMixin
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#model-implementations-from-torchvision">
+       Model implementations from torchvision
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#shifthappens.models.torchvision.__TorchvisionPreProcessingMixin">
+         <code class="docutils literal notranslate">
+          <span class="pre">
+           __TorchvisionPreProcessingMixin
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#shifthappens.models.torchvision.__TorchvisionModel">
+         <code class="docutils literal notranslate">
+          <span class="pre">
+           __TorchvisionModel
+          </span>
+         </code>
+        </a>
+        <ul class="nav section-nav flex-column">
+         <li class="toc-h6 nav-item toc-entry">
+          <a class="reference internal nav-link" href="#shifthappens.models.torchvision.__TorchvisionModel._predict">
+           <code class="docutils literal notranslate">
+            <span class="pre">
+             __TorchvisionModel._predict
+            </span>
+           </code>
+          </a>
+         </li>
+        </ul>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#shifthappens.models.torchvision.ResNet18">
+         <code class="docutils literal notranslate">
+          <span class="pre">
+           ResNet18
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#shifthappens.models.torchvision.ResNet50">
+         <code class="docutils literal notranslate">
+          <span class="pre">
+           ResNet50
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#shifthappens.models.torchvision.VGG16">
+         <code class="docutils literal notranslate">
+          <span class="pre">
+           VGG16
+          </span>
+         </code>
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-loading">
+     Data loading
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#shifthappens.data.base.Dataset">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Dataset
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#shifthappens.data.base.IndexedDataset">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         IndexedDataset
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#shifthappens.data.base.DataLoader">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         DataLoader
+        </span>
+       </code>
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#shifthappens.data.base.DataLoader.max_batch_size">
+         <code class="docutils literal notranslate">
+          <span class="pre">
+           DataLoader.max_batch_size
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#shifthappens.data.base.DataLoader.iterate">
+         <code class="docutils literal notranslate">
+          <span class="pre">
+           DataLoader.iterate
+          </span>
+         </code>
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#shifthappens.data.base.shuffle_data">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         shuffle_data
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#shifthappens.data.torch.TorchDataset">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         TorchDataset
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#shifthappens.data.torch.IndexedTorchDataset">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         IndexedTorchDataset
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#shifthappens.data.torch.ImagesOnlyTorchDataset">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         ImagesOnlyTorchDataset
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#storing-tasks-within-the-benchmark">
      Storing tasks within the benchmark
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#shifthappens.task_data.task_metadata.TaskMetadata">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         TaskMetadata
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#shifthappens.task_data.task_registration.TaskRegistration">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         TaskRegistration
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
    </li>
   </ul>
  </li>
@@ -1556,7 +2135,7 @@ automatically during task registration process.</p>
   <div class="footer-item">
     
 <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.1.1.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.2.0.post0.<br>
 </p>
 
   </div>
