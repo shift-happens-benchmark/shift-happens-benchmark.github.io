@@ -426,8 +426,17 @@
         <span class="s2">&quot;Files not found at location specified in shifthappens.config.imagenet_validation_path.&quot;</span>
     <span class="p">)</span>
     <span class="k">assert</span> <span class="p">(</span>
-        <span class="nb">len</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">shifthappens</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">imagenet_validation_path</span><span class="p">))</span> <span class="o">&gt;=</span> <span class="mi">1000</span>
-    <span class="p">),</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">shifthappens</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">imagenet_validation_path</span><span class="si">}</span><span class="s2"> folder contains less folders than ImageNet classes. &quot;</span>
+        <span class="nb">len</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="n">d_</span>
+                <span class="k">for</span> <span class="n">d_</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">shifthappens</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">imagenet_validation_path</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span>
+                    <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">shifthappens</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">imagenet_validation_path</span><span class="p">,</span> <span class="n">d_</span><span class="p">)</span>
+                <span class="p">)</span>
+            <span class="p">]</span>
+        <span class="p">)</span>
+        <span class="o">==</span> <span class="mi">1000</span>
+    <span class="p">),</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">shifthappens</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">imagenet_validation_path</span><span class="si">}</span><span class="s2"> folder contains less folders than ImageNet classes.&quot;</span>
 
 
 <div class="viewcode-block" id="get_imagenet_validation_loader"><a class="viewcode-back" href="../../../api.html#shifthappens.data.imagenet.get_imagenet_validation_loader">[docs]</a><span class="k">def</span> <span class="nf">get_imagenet_validation_loader</span><span class="p">(</span><span class="n">max_batch_size</span><span class="o">=</span><span class="mi">128</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DataLoader</span><span class="p">:</span>
