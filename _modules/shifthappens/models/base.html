@@ -419,7 +419,7 @@
 
 
 <div class="viewcode-block" id="ModelResult"><a class="viewcode-back" href="../../../api.html#shifthappens.models.base.ModelResult">[docs]</a><span class="k">class</span> <span class="nc">ModelResult</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Emissions of a model after processing a batch of data.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Emissions of a model after processing a batch of data.</span>
 
 <span class="sd">    Each model needs to return class labels that are compatible with</span>
 <span class="sd">    the ILSRC2012 labels. We use the same convention used by PyTorch</span>
@@ -469,7 +469,7 @@
 
 <div class="viewcode-block" id="PredictionTargets"><a class="viewcode-back" href="../../../api.html#shifthappens.models.base.PredictionTargets">[docs]</a><span class="nd">@dataclasses</span><span class="o">.</span><span class="n">dataclass</span>
 <span class="k">class</span> <span class="nc">PredictionTargets</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Contains boolean flags of which type of targets model is predicting. Note</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Contains boolean flags of which type of targets model is predicting. Note</span>
 <span class="sd">    that at least one flag should be set as ``True`` and model should be inherited</span>
 <span class="sd">    from corresponding ModelMixin.</span>
 
@@ -494,7 +494,7 @@
 
 
 <div class="viewcode-block" id="Model"><a class="viewcode-back" href="../../../api.html#shifthappens.models.base.Model">[docs]</a><span class="k">class</span> <span class="nc">Model</span><span class="p">(</span><span class="n">abc</span><span class="o">.</span><span class="n">ABC</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Model base class.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Model base class.</span>
 
 <span class="sd">    Override the :py:meth:`_predict` method to define predictions type of your specific model.</span>
 <span class="sd">    If your model uses unsupervised adaptation mechanisms override :py:meth:`prepare`</span>
@@ -511,7 +511,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">imagenet_validation_result</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Access the model&#39;s predictions/evaluation results on the ImageNet validation set.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Access the model&#39;s predictions/evaluation results on the ImageNet validation set.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            Model evaluation result on ImageNet validation set wrapped with ModelResult.</span>
@@ -522,7 +522,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_imagenet_validation_result</span>
 
 <div class="viewcode-block" id="Model.prepare"><a class="viewcode-back" href="../../../api.html#shifthappens.models.base.Model.prepare">[docs]</a>    <span class="k">def</span> <span class="nf">prepare</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataloader</span><span class="p">:</span> <span class="n">DataLoader</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;If the model uses unsupervised adaptation mechanisms, it will run those.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;If the model uses unsupervised adaptation mechanisms, it will run those.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            dataloader: Dataloader producing batches of data.</span>
@@ -532,7 +532,7 @@
 <div class="viewcode-block" id="Model.predict"><a class="viewcode-back" href="../../../api.html#shifthappens.models.base.Model.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">input_dataloader</span><span class="p">:</span> <span class="n">DataLoader</span><span class="p">,</span> <span class="n">targets</span><span class="p">:</span> <span class="n">PredictionTargets</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">ModelResult</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;Yield all the predictions of the model for all data samples contained</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Yield all the predictions of the model for all data samples contained</span>
 <span class="sd">        in the dataloader</span>
 
 <span class="sd">        Args:</span>
@@ -561,7 +561,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_predict</span><span class="p">(</span><span class="n">input_dataloader</span><span class="p">,</span> <span class="n">targets</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Model._get_imagenet_predictions"><a class="viewcode-back" href="../../../api.html#shifthappens.models.base.Model._get_imagenet_predictions">[docs]</a>    <span class="k">def</span> <span class="nf">_get_imagenet_predictions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rewrite</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Loads cached predictions on ImageNet validation set for the model or predicts</span>
 <span class="sd">        on ImageNet validation set and caches the result whenever there is no cached</span>
 <span class="sd">        predictions for the model or ``rewrite`` argument set to ``True``.</span>
@@ -578,7 +578,7 @@
             <span class="n">sh_imagenet</span><span class="o">.</span><span class="n">cache_predictions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">imagenet_validation_result</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Model._predict_imagenet_val"><a class="viewcode-back" href="../../../api.html#shifthappens.models.base.Model._predict_imagenet_val">[docs]</a>    <span class="k">def</span> <span class="nf">_predict_imagenet_val</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Evaluates model on ImageNet validation set and store all possible targets scores</span>
 <span class="sd">        for the particular model.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -620,7 +620,7 @@
     <span class="k">def</span> <span class="nf">_predict</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">input_dataloader</span><span class="p">:</span> <span class="n">DataLoader</span><span class="p">,</span> <span class="n">targets</span><span class="p">:</span> <span class="n">PredictionTargets</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">ModelResult</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;Override this function for the specific model.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Override this function for the specific model.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            input_dataloader: Dataloader producing batches of data.</span>
@@ -684,7 +684,7 @@
     
 <p class="copyright">
 
-    &copy; Copyright 2021 - 2022, Julian Bitterwolf, Evgenia Rusak, Steffen Schneider, Roland S. Zimmermann and contributors. Released under an Apache 2.0 License.<br>
+    &copy; Copyright 2021 - 2023, Julian Bitterwolf, Evgenia Rusak, Steffen Schneider, Roland S. Zimmermann and contributors. Released under an Apache 2.0 License.<br>
 
 </p>
 

@@ -427,7 +427,7 @@
 
 
 <div class="viewcode-block" id="get_registered_tasks"><a class="viewcode-back" href="../../api.html#shifthappens.benchmark.get_registered_tasks">[docs]</a><span class="k">def</span> <span class="nf">get_registered_tasks</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Type</span><span class="p">[</span><span class="n">Task</span><span class="p">],</span> <span class="o">...</span><span class="p">]:</span>
-    <span class="sd">&quot;&quot;&quot;All tasks currently registered as part of the benchmark.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;All tasks currently registered as part of the benchmark.</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        A tuple of all currently registered tasks as part of the benchmark. This</span>
@@ -437,12 +437,12 @@
 
 
 <span class="k">def</span> <span class="nf">get_task_registrations</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">TaskRegistration</span><span class="p">,</span> <span class="o">...</span><span class="p">]:</span>
-    <span class="sd">&quot;&quot;&quot;Registrations for all tasks currently registered as part of the benchmark.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Registrations for all tasks currently registered as part of the benchmark.&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">__registered_tasks</span><span class="p">)</span>
 
 
 <div class="viewcode-block" id="register_task"><a class="viewcode-back" href="../../api.html#shifthappens.benchmark.register_task">[docs]</a><span class="k">def</span> <span class="nf">register_task</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">relative_data_folder</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">standalone</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Registers a task class inherited from :py:class:`shifthappens.tasks.base.Task`</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Registers a task class inherited from :py:class:`shifthappens.tasks.base.Task`</span>
 <span class="sd">    as task as part of the benchmark.</span>
 
 <span class="sd">    Args:</span>
@@ -504,7 +504,7 @@
 
 
 <span class="k">def</span> <span class="nf">unregister_task</span><span class="p">(</span><span class="bp">cls</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">Task</span><span class="p">]):</span>
-    <span class="sd">&quot;&quot;&quot;Unregisters a task by removing it from the task registry.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Unregisters a task by removing it from the task registry.&quot;&quot;&quot;</span>
     <span class="k">for</span> <span class="n">cls_reg</span> <span class="ow">in</span> <span class="n">__registered_tasks</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">cls_reg</span><span class="o">.</span><span class="n">cls</span> <span class="o">==</span> <span class="bp">cls</span><span class="p">:</span>
             <span class="n">__registered_tasks</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">cls_reg</span><span class="p">)</span>
@@ -515,7 +515,7 @@
 <div class="viewcode-block" id="evaluate_model"><a class="viewcode-back" href="../../api.html#shifthappens.benchmark.evaluate_model">[docs]</a><span class="k">def</span> <span class="nf">evaluate_model</span><span class="p">(</span>
     <span class="n">model</span><span class="p">:</span> <span class="n">Model</span><span class="p">,</span> <span class="n">data_root</span><span class="p">:</span> <span class="nb">str</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="n">TaskRegistration</span><span class="p">,</span> <span class="n">Optional</span><span class="p">[</span><span class="n">TaskResult</span><span class="p">]]:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Runs all registered tasks of the benchmark</span>
 <span class="sd">    which are supported by the supplied model.</span>
 
@@ -601,7 +601,7 @@
     
 <p class="copyright">
 
-    &copy; Copyright 2021 - 2022, Julian Bitterwolf, Evgenia Rusak, Steffen Schneider, Roland S. Zimmermann and contributors. Released under an Apache 2.0 License.<br>
+    &copy; Copyright 2021 - 2023, Julian Bitterwolf, Evgenia Rusak, Steffen Schneider, Roland S. Zimmermann and contributors. Released under an Apache 2.0 License.<br>
 
 </p>
 

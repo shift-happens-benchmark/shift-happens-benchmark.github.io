@@ -409,7 +409,7 @@
 
 
 <div class="viewcode-block" id="Dataset"><a class="viewcode-back" href="../../../api.html#shifthappens.data.base.Dataset">[docs]</a><span class="k">class</span> <span class="nc">Dataset</span><span class="p">(</span><span class="n">abc</span><span class="o">.</span><span class="n">ABC</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    An abstract class representing an `iterable dataset &lt;https://pytorch.org/docs/stable/data.html#iterable-style-datasets&gt;`_.</span>
 <span class="sd">    Your iterable datasets should be inherited from this class.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -420,7 +420,7 @@
 
 
 <div class="viewcode-block" id="IndexedDataset"><a class="viewcode-back" href="../../../api.html#shifthappens.data.base.IndexedDataset">[docs]</a><span class="k">class</span> <span class="nc">IndexedDataset</span><span class="p">(</span><span class="n">Dataset</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A class representing a `map-style dataset &lt;https://pytorch.org/docs/stable/data.html#map-style-datasets&gt;`_.</span>
 <span class="sd">    Your map-style datasets should be inherited from this class.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -446,7 +446,7 @@
 
 
 <div class="viewcode-block" id="DataLoader"><a class="viewcode-back" href="../../../api.html#shifthappens.data.base.DataLoader">[docs]</a><span class="k">class</span> <span class="nc">DataLoader</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Interface b/w model and task, implements restrictions</span>
 <span class="sd">    (e.g. max batch size) for models.</span>
 
@@ -461,12 +461,12 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">max_batch_size</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Maximum allowed batch size that the dataloader will satisfy for request</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Maximum allowed batch size that the dataloader will satisfy for request</span>
 <span class="sd">        through the :py:func:`iterate` function.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__max_batch_size</span>
 
 <div class="viewcode-block" id="DataLoader.iterate"><a class="viewcode-back" href="../../../api.html#shifthappens.data.base.DataLoader.iterate">[docs]</a>    <span class="k">def</span> <span class="nf">iterate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]]:</span>
-        <span class="sd">&quot;&quot;&quot;Iterate through the dataloader and return batches of data.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Iterate through the dataloader and return batches of data.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            batch_size: Maximum batch size the function that requests the data can handle.</span>
@@ -491,7 +491,7 @@
 <div class="viewcode-block" id="shuffle_data"><a class="viewcode-back" href="../../../api.html#shifthappens.data.base.shuffle_data">[docs]</a><span class="k">def</span> <span class="nf">shuffle_data</span><span class="p">(</span>
     <span class="o">*</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">],</span> <span class="n">seed</span><span class="p">:</span> <span class="nb">int</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
-    <span class="sd">&quot;&quot;&quot;Randomly shuffles without replacement an :py:class:`numpy.ndarray`/list of</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Randomly shuffles without replacement an :py:class:`numpy.ndarray`/list of</span>
 <span class="sd">    :py:class:`numpy.ndarray` objects with a fixed random seed.</span>
 
 <span class="sd">    Args:</span>
@@ -566,7 +566,7 @@
     
 <p class="copyright">
 
-    &copy; Copyright 2021 - 2022, Julian Bitterwolf, Evgenia Rusak, Steffen Schneider, Roland S. Zimmermann and contributors. Released under an Apache 2.0 License.<br>
+    &copy; Copyright 2021 - 2023, Julian Bitterwolf, Evgenia Rusak, Steffen Schneider, Roland S. Zimmermann and contributors. Released under an Apache 2.0 License.<br>
 
 </p>
 

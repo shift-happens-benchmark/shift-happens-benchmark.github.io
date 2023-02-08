@@ -415,7 +415,7 @@
 
 
 <div class="viewcode-block" id="__TorchvisionPreProcessingMixin"><a class="viewcode-back" href="../../../api.html#shifthappens.models.torchvision.__TorchvisionPreProcessingMixin">[docs]</a><span class="k">class</span> <span class="nc">__TorchvisionPreProcessingMixin</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Performs the default preprocessing for torchvision ImageNet classifiers.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Performs the default preprocessing for torchvision ImageNet classifiers.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">_pre_process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">],</span> <span class="n">device</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
         <span class="n">inputs</span> <span class="o">=</span> <span class="p">[]</span>
@@ -444,7 +444,7 @@
     <span class="n">sh_mixins</span><span class="o">.</span><span class="n">FeaturesModelMixin</span><span class="p">,</span>
     <span class="n">sh_mixins</span><span class="o">.</span><span class="n">OODScoreModelMixin</span><span class="p">,</span>
 <span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Wraps a torchvision model.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Wraps a torchvision model.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        model: Pretrained torchvision model.</span>
@@ -493,7 +493,7 @@
 
 
 <div class="viewcode-block" id="ResNet18"><a class="viewcode-back" href="../../../api.html#shifthappens.models.torchvision.ResNet18">[docs]</a><span class="k">class</span> <span class="nc">ResNet18</span><span class="p">(</span><span class="n">__TorchvisionModel</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;ResNet18 network trained on the ImageNet 2012 train set from torchvision.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;ResNet18 network trained on the ImageNet 2012 train set from torchvision.</span>
 <span class="sd">    See :py:func:`torchvision.models.resnet18` for details.</span>
 <span class="sd">    Args:</span>
 <span class="sd">        max_batch_size: How many samples allowed per batch to load.</span>
@@ -511,7 +511,7 @@
 
 
 <div class="viewcode-block" id="ResNet50"><a class="viewcode-back" href="../../../api.html#shifthappens.models.torchvision.ResNet50">[docs]</a><span class="k">class</span> <span class="nc">ResNet50</span><span class="p">(</span><span class="n">__TorchvisionModel</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Load a ResNet50 network trained on the ImageNet 2012 train set from torchvision.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Load a ResNet50 network trained on the ImageNet 2012 train set from torchvision.</span>
 <span class="sd">    See :py:func:`torchvision.models.resnet50` for details.</span>
 
 <span class="sd">    Args:</span>
@@ -530,7 +530,7 @@
 
 
 <div class="viewcode-block" id="VGG16"><a class="viewcode-back" href="../../../api.html#shifthappens.models.torchvision.VGG16">[docs]</a><span class="k">class</span> <span class="nc">VGG16</span><span class="p">(</span><span class="n">__TorchvisionModel</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Load a VGG16 network trained on the ImageNet 2012 train set from torchvision.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Load a VGG16 network trained on the ImageNet 2012 train set from torchvision.</span>
 <span class="sd">    See :py:func:`torchvision.models.vgg16` for details.</span>
 
 <span class="sd">    Args:</span>
@@ -597,7 +597,7 @@
     
 <p class="copyright">
 
-    &copy; Copyright 2021 - 2022, Julian Bitterwolf, Evgenia Rusak, Steffen Schneider, Roland S. Zimmermann and contributors. Released under an Apache 2.0 License.<br>
+    &copy; Copyright 2021 - 2023, Julian Bitterwolf, Evgenia Rusak, Steffen Schneider, Roland S. Zimmermann and contributors. Released under an Apache 2.0 License.<br>
 
 </p>
 
